@@ -1,24 +1,36 @@
-# README
+# 手持ちのカード管理
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+カードゲームのしている人に向けての所持カードプールの把握サイト
+​
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+カードゲームをしていると所持しているカードの枚数がものすごい枚数になり管理が大変になります。
+そのため店舗で購入時に実際持っているかどうかを把握できなく余分に購入してしまうことがよくあります。
+そういったことを少しでも減らすためにこのサイトを作りました。
+​
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+カードゲームをしているユーザー​
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+- カードの整理
+- カードの購入時
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Windows10
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
