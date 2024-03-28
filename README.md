@@ -27,11 +27,11 @@
 
 カードや店舗はフリー素材や自作で代用し、実名は避けて使用します。
 
-フリーイラストサイト
+以下、フリーイラストサイト
 
-[イラストセンター](https://illustcenter.com/category/leisure/hobby/){:target="_blank"}
+<a href="https://illustcenter.com/category/leisure/hobby/" target="_blank">イラストセンター</a>
 
-[illustAC](https://www.ac-illust.com/){:target="_blank"}
+<a href="https://www.ac-illust.com/" target="_blank">illustAC</a>
 
 ​
 ## 設計書
