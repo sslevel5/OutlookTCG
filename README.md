@@ -28,10 +28,8 @@
 カードや店舗はフリー素材や自作で代用し、実名は避けて使用します。
 
 以下、フリーイラストサイト
-
-<a href="https://illustcenter.com/category/leisure/hobby/" target="_blank">イラストセンター</a>
-
-<a href="https://www.ac-illust.com/" target="_blank">illustAC</a>
+- <a href="https://illustcenter.com/category/leisure/hobby/" target="_blank">イラストセンター</a>
+- <a href="https://www.ac-illust.com/" target="_blank">illustAC</a>
 
 ​
 ## 設計書
