@@ -1,0 +1,2 @@
+class CardComment < ApplicationRecord
+end

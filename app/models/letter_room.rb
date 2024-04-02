@@ -1,0 +1,2 @@
+class LetterRoom < ApplicationRecord
+end

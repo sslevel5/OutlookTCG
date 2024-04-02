@@ -1,0 +1,2 @@
+class LetterRoomMessage < ApplicationRecord
+end
