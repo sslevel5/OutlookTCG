@@ -2,6 +2,8 @@ class Public::CardsController < ApplicationController
 
   def new
     @card = Card.new
+    @raritys = Rarity.all
+    @stores = Store.all
   end
 
   def index
@@ -10,6 +12,38 @@ class Public::CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    @raritys = Rarity.all
+    @stores = Store.all
+    if @card.save
+     flash[:notice] = "商品を追加しました。"
+      redirect_to admin_card_path(@card.id)
+    else
+     flash.now[:alert] = "商品の追加に失敗しました。"
+      render new_admin_card_path
+    end
+  end
+
+  def show
+   @card = Card.find(params[:id])
+  end
+
+  def edit
+   @card = Card.find(params[:id])
+    @raritys = Rarity.all
+    @stores = Store.all
+  end
+
+  def update
+   @card = Card.find(params[:id])
+    @raritys = Rarity.all
+    @stores = Store.all
+   if @card.update(item_params)
+    flash[:notice] = "状態を変更しました。"
+     redirect_to admin_card_path(@card.id)
+   else
+     flash.now[:alert] = "状態の変更に失敗しました。"
+     render :edit
+   end
   end
 
 
