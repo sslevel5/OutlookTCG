@@ -34,7 +34,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       #ニックネーム
       t.string :name, null: false
       #自己紹介
-      t.text :introduction, null: false
+      t.text :introduction
       #会員ステータス
       t.boolean :is_active, null: false, default: true
 

@@ -1,0 +1,9 @@
+.image-resize {
+  max-width: 100%;
+  height: auto;
+  max-height: 135px; /* サイズを変更したい高さに合わせて調整 */
+  margin: 10px; /* 画像の周りに10pxの余白を追加 */
+  border: 1px solid #000; /* 枠線のスタイルを定義 */
+  padding: 10px; /* 枠線と画像の間に10pxの余白を追加 */
+}
+

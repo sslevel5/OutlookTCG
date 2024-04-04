@@ -1,0 +1,76 @@
+          <ul class="navbar-nav ml-auto">
+            <!-- ログインしていない場合 -->
+            <% unless admin_signed_in? || customer_signed_in? %>
+              <li class="header_text">
+                <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+                  SignUp
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to new_customer_session_path,class: 'nav-link text-light' do %>
+                  Log in
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to public_cards_path,class: 'nav-link text-light' do %>
+                Items
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to about_path,class: 'nav-link text-light' do %>
+                About
+                <% end %>
+              </li>
+            <% end %>
+            <!-- 管理者がログインしている場合 -->
+            <% if admin_signed_in? %>
+              <li class="header_text">
+                <%= link_to admin_cards_path,class: 'nav-link text-light' do %>
+                  投稿一覧
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+                ユーザー一覧
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_raritys_path,class: 'nav-link text-light' do %>
+                  レアリティ一覧
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_stores_path,class: 'nav-link text-light' do %>
+                店舗一覧
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+                Log out
+                <% end %>
+              </li>
+            <% end %>
+            <!-- 顧客がログインしている場合 -->
+            <% if customer_signed_in? %>
+              <li class="header_text">
+                <%= link_to public_customers_path,class: 'nav-link text-light' do %>
+                MyPage
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to public_cards_path,class: 'nav-link text-light' do %>
+                投稿一覧
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to new_public_card_path,class: 'nav-link text-light' do %>
+                新規投稿
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+                Log out
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
