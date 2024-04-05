@@ -19,7 +19,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   # 顧客側
   post '/customers/sign_in', to: 'public/sessions#create'
-  get 'customers/page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
   # 退会処理
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
