@@ -8,6 +8,7 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.boolean :is_active, null: false, default: true
       t.integer :rarity_id, null: false
       t.integer :store_id, null: false
+      t.integer :customer_id
 
       t.timestamps
     end
