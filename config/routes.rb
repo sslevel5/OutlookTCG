@@ -28,7 +28,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
 
   namespace :public, path: '' do
-    resources :cards, except: [:destroy]
+    resources :cards, except: [:destroy] do
+      resources :card_comments, only: [:create]
+    end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :rooms
     resources :sessions, only: [:new, :create, :destroy]
