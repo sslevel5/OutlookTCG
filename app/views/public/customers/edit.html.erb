@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+
+     <h1><%= @customer.name %>さんの会員情報編集</h1>
+
+      <%= form_with model: @customer, url: public_customer_path(@customer), method: :patch, local: true do |f| %>
+       <% if @customer.errors.any? %>
+       <div class="alert alert-danger">
+          <%= @customer.errors.count %>件のエラーが発生しました
+          <ul class="mb-0">
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message.gsub("last_name", "姓").gsub("first_name", "名").gsub("Name", "フリガナ(姓)").gsub("Image", "フリガナ(名)").gsub("Introduction", "郵便番号").gsub("Address", "住所").gsub("telephone_number", "電話番号").gsub("Email", "メールアドレス")  %></li>
+            <% end %>
+            </div>
+          </ul>
+        <% end %>
+         <div class="row">
+              <label class="col-lg-3">ニックネーム</label>
+              <div class="col-lg-9">
+                <%= f.text_field :name,autofocus: true, autocomplete: "name", class: 'form-control' %>
+              </div>
+         </div>
+
+         <div class="row">
+              <label class="col-lg-3">自己紹介</label></label>
+              <div class="col-lg-9">
+                <%= f.text_area :introduction,autofocus: true, autocomplete: "introduction", class: 'form-control' %>
+              </div>
+         </div>
+
+         <div class="row">
+              <label class="col-lg-3">メールアドレス</label>
+              <div class="col-lg-9">
+                <%= f.text_field :email,autofocus: true, autocomplete: "email",class: 'form-control' %>
+              </div>
+         </div>
+
+<%= f.file_field :profile_image, accept: "image/*", class: "btn btn-outline-secondary " %>
+
+         <div class="row justify-content-center">
+            <div> <%= f.submit "編集内容を保存", class: "btn btn-success" %></div>
+            <div><%= link_to "退会する", public_customers_unsubscribe_path, class: "btn btn-danger" %></div>
+         </div>
+
+     <% end %>
+      </div>
+    </div>
+  </div>
+</div>
