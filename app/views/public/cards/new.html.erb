@@ -15,57 +15,50 @@
       <%= form_with url: public_cards_path, method: :post, model: @card do |f| %>
       <table class="table table-borderless">
         <tr>
-          <th class="text-end">カード画像</th>
-            <td>
-              <%= f.file_field :image, accept: "image/*", class: "btn btn-outline-secondary " %>
-            </td>
+          <td><%= f.text_field :title, class: 'form-control', placeholder: 'カード名' %></td>
         </tr>
         <tr>
-          <th class="text-end">カード名</th>
-          <td><%= f.text_field :title, class: 'form-control' %></td>
+          <td><%= f.text_area :body, class: 'form-control', placeholder: 'カード概要' %></td>
         </tr>
         <tr>
-          <th class="text-end">カード説明</th>
-          <td><%= f.text_area :body, class: 'form-control' %></td>
-        </tr>
-        <tr>
-          <th class="text-end">価格</th>
-          <td><%= f.text_field :price, class: 'form-control', pattern: "[0-9]+", placeholder: '半角' %></td>
-        </tr>
-        <tr>
-          <th class="text-end">レアリティ</th>
           <td>
-            <div class="form-group">
-              <%= f.select :rarity_id, options_for_select((@raritys || []).map { |rarity| [rarity.name, rarity.id] }, prompt: "選択してください"), { prompt: "選択してください" }, class: 'form-control' %>
+            <div class="row" >
+              <div class="col-4">
+            <%= f.text_field :price, class: 'form-control', pattern: "[0-9]+", placeholder: '価格(半角)' %>
+              </div>
+              <div class="col-4">
+            <%= f.select :rarity_id, options_for_select((@raritys || []).map { |rarity| [rarity.name, rarity.id] }, prompt: "レアリティ"), { prompt: "レアリティ" }, class: 'form-control' %>
+              </div>
+              <div class="col-4">
+            <%= f.select :store_id, options_for_select((@stores || []).map { |store| [store.name, store.id] }, prompt: "店舗名"), { prompt: "店舗名" }, class: 'form-control' %>
+              </div>
             </div>
           </td>
-        </tr>
+          </tr>
         <tr>
-          <th class="text-end">店舗</th>
           <td>
-            <div class="form-group">
-              <%= f.select :store_id, options_for_select((@stores || []).map { |store| [store.name, store.id] }, prompt: "選択してください"), { prompt: "選択してください" }, class: 'form-control' %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th class="text-end">販売ステータス</th>
-          <td>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-outline-success <%= 'active' if @card.is_active %> rounded">
-                <%= f.radio_button :is_active, true, { checked: @card.is_active, class: 'form-check-input', id: 'active' } %> 投稿
+            <div class="row">
+            <div class="btn-group btn-group-toggle col-4" data-toggle="buttons">
+              <label class="btn btn-outline-success <%= 'active' if @card.is_active %> rounded" style="font-size: 13px;">
+                <%= f.radio_button :is_active, true, { checked: @card.is_active, class: 'form-check-input', id: 'active' } %> 有効
               </label>
               <div class="mx-2"></div> <!-- ボタン間のスペースを調整するための空のディビジョン -->
-              <label class="btn btn-outline-danger <%= 'active' unless @card.is_active %> rounded">
-                <%= f.radio_button :is_active, false, { checked: !@card.is_active, class: 'form-check-input', id: 'inactive' } %> 下書き
+              <label class="btn btn-outline-danger <%= 'active' unless @card.is_active %> rounded" style="font-size: 13px;">
+                <%= f.radio_button :is_active, false, { checked: !@card.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
               </label>
             </div>
-          </td>
-        </tr>
+            <div class="col-5"></div>
+            <div class="col-3">
+                <label for="file-upload" class="custom-file-upload btn btn-outline-secondary m-0" style="font-size: 13px;">
+                  <i class="fa-solid fa-image"></i>
+                </label>
+                <%= f.file_field :image, id: "file-upload", accept: "image/*", style: "display: none;" %>
+                <%= f.submit "投稿", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+            </div>
+            </div>
+              </td>
+            </tr>
       </table>
-      <div class="text-center">
-        <%= f.submit "新規投稿", class: "btn btn-success" %>
-      </div>
       <% end %>
     </div>
   </div>
