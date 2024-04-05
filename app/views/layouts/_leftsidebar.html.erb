@@ -2,8 +2,13 @@
   <!-- ログインしていない場合 -->
   <% unless admin_signed_in? || customer_signed_in? %>
     <li class="header_text">
+      <%= link_to root_path,class: 'nav-link text-light' do %>
+        ロゴ
+      <% end %>
+    </li>
+    <li class="header_text">
       <%= link_to home_path,class: 'nav-link text-light' do %>
-      Home
+        Home
       <% end %>
     </li>
     <li class="header_text">
@@ -23,12 +28,23 @@
     </li>
     <li class="header_text">
       <%= link_to about_path,class: 'nav-link text-light' do %>
-      About
+        About
       <% end %>
     </li>
   <% end %>
   <!-- 管理者がログインしている場合 -->
   <% if admin_signed_in? %>
+    <li class="header_text">
+      <%= link_to home_path,class: 'nav-link text-light' do %>
+        ロゴ
+      <% end %>
+    </li>
+    </li>
+    <li class="header_text">
+      <%= link_to home_path,class: 'nav-link text-light' do %>
+        Home
+      <% end %>
+    </li>
     <li class="header_text">
       <%= link_to admin_cards_path,class: 'nav-link text-light' do %>
         投稿一覧
@@ -59,27 +75,32 @@
   <% if customer_signed_in? %>
     <li class="header_text">
       <%= link_to home_path,class: 'nav-link text-light' do %>
-      Home
+        ロゴ
+      <% end %>
+    </li>
+    <li class="header_text">
+      <%= link_to home_path,class: 'nav-link text-light' do %>
+        Home
       <% end %>
     </li>
     <li class="header_text">
       <%= link_to public_customer_path(current_customer),class: 'nav-link text-light' do %>
-      MyPage
+        MyPage
       <% end %>
     </li>
     <li class="header_text">
       <%= link_to public_cards_path,class: 'nav-link text-light' do %>
-      投稿一覧
+        投稿一覧
       <% end %>
     </li>
     <li class="header_text">
       <%= link_to new_public_card_path,class: 'nav-link text-light' do %>
-      新規投稿
+        新規投稿
       <% end %>
     </li>
     <li class="header_text">
       <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-      Log out
+        Log out
       <% end %>
     </li>
   <% end %>

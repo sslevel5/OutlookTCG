@@ -20,7 +20,7 @@
 <% end %>
 </table>
 <% if current_customer == @customer %>
-<%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
+<%= link_to "編集する", public_customers_information_edit_path(id: @customer.id), class: "btn btn-success" %>
 <% end %>
 <h2>投稿一覧</h2>
 <div class="row">
