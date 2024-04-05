@@ -1,1 +1,26 @@
 <h2>投稿詳細</h2>
+      <div class="row">
+        <!-- 商品の画像 -->
+        <div class="col-md-6">
+          <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
+        </div>
+        <!-- 商品詳細 -->
+        <div class="col-md-6">
+          <table class="table">
+            <tr>
+              <th style="width: 30%;">商品名:</th>
+              <td style="width: 70%;"><%= @card.title %></td>
+            </tr>
+            <tr>
+              <th>商品紹介:</th>
+              <td><%= @card.body %></td>
+            </tr>
+            <tr>
+              <th>価格:</th>
+              <td>￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></td>
+            </tr>
+            <tr>
+              <th>商品紹介:</th>
+              <td><%= @card.body %></td>
+            </tr>
+          </table>

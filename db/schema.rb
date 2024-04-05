@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2024_04_02_223407) do
     t.text "body", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false
+    t.integer "rarity_id", null: false
+    t.integer "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

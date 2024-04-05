@@ -16,10 +16,10 @@ class Public::CardsController < ApplicationController
     @stores = Store.all
     if @card.save
      flash[:notice] = "商品を追加しました。"
-      redirect_to admin_card_path(@card.id)
+      redirect_to public_card_path(@card.id)
     else
      flash.now[:alert] = "商品の追加に失敗しました。"
-      render new_admin_card_path
+      render new_public_card_path
     end
   end
 
@@ -39,7 +39,7 @@ class Public::CardsController < ApplicationController
     @stores = Store.all
    if @card.update(item_params)
     flash[:notice] = "状態を変更しました。"
-     redirect_to admin_card_path(@card.id)
+     redirect_to public_card_path(@card.id)
    else
      flash.now[:alert] = "状態の変更に失敗しました。"
      render :edit
