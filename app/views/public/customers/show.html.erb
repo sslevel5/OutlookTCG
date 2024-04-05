@@ -1,7 +1,6 @@
-<h2>マイページ</h2>
+<h2><%= @customer.name %>のページ</h2>
 
 <h2 class="my-3">登録情報</h2>
-
 
 <%= image_tag @customer.get_profile_image, size: '100x100' %>
 <table>
@@ -13,14 +12,16 @@
      <th>自己紹介</th>
      <td><%= @customer.introduction %></td>
   </tr>
+<% if current_customer == @customer %>
   <tr>
      <th>メールアドレス</th>
      <td><%= @customer.email %></td>
   </tr>
+<% end %>
 </table>
-
+<% if current_customer == @customer %>
 <%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
-
+<% end %>
 <h2>投稿一覧</h2>
 <div class="row">
   <% @customer.cards.each do |card| %>

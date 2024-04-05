@@ -29,7 +29,11 @@
       </tr>
       <tr>
         <th>投稿者:</th>
-        <td><%= @card.customer.name %></td>
+        <td>
+          <%= link_to public_customer_path(@card.customer.id) do %>
+          <%= @card.customer.name %>
+          <% end %>
+          </td>
       </tr>
         <% if @card.customer == current_customer %>
           <td>

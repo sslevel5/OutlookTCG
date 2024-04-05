@@ -2,16 +2,16 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     @cards = Card.all
   end
 
   def edit
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to public_customers_path, notice: "登録情報が更新されました。"
     else
@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
