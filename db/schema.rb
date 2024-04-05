@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2024_04_05_152607) do
   create_table "card_comments", force: :cascade do |t|
     t.text "comment", null: false
     t.boolean "is_active", default: true, null: false
+    t.integer "card_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -113,6 +115,8 @@ ActiveRecord::Schema.define(version: 2024_04_05_152607) do
   end
 
   create_table "nices", force: :cascade do |t|
+    t.integer "card_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
