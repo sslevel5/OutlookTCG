@@ -1,1 +1,25 @@
 <h2>マイページ</h2>
+
+<h2 class="my-3">登録情報</h2>
+登録情報　<%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
+
+
+<table class="table table-bordered my-2">
+  <tr>
+     <th class="table-secondary w-25">ニックネーム</th>
+     <td class="telephone-number"><%= @customer.name %></td>
+  </tr>
+
+  <tr>
+     <th class="table-secondary w-25">自己紹介</th>
+     <td class="email"><%= @customer.introduction %></td>
+  </tr>
+
+
+  <tr>
+     <th class="table-secondary w-25">メールアドレス</th>
+     <td class="email"><%= @customer.email %></td>
+  </tr>
+
+
+</table>
