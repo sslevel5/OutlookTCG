@@ -9,6 +9,6 @@ class Public::HomesController < ApplicationController
   end
 
   def home
-    @cards = Card.order(created_at: :desc)
+    @cards = Card.order(created_at: :desc).where(is_active: true)
   end
 end

@@ -8,7 +8,7 @@ class Public::CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.all
+    @cards = Card.where(is_active: true)
   end
 
   def create
