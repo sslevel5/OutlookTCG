@@ -12,12 +12,5 @@ class Customer < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
-  private
 
-  def check_active_status
-    if saved_change_to_is_active? && !is_active
-    # 顧客が退会処理を行った場合の処理
-      self.update(is_active: false) # 退会ステータスを更新
-    end
-  end
 end
