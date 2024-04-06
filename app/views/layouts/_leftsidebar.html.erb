@@ -35,16 +35,11 @@
   <!-- 管理者がログインしている場合 -->
   <% if admin_signed_in? %>
     <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_homes_home_path,class: 'nav-link text-light' do %>
         ロゴ
       <% end %>
     </li>
-    </li>
-    <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
-        Home
-      <% end %>
-    </li>
+
     <li class="header_text">
       <%= link_to admin_cards_path,class: 'nav-link text-light' do %>
         投稿一覧

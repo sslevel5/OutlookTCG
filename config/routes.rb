@@ -35,7 +35,8 @@ Rails.application.routes.draw do
     resources :stores, only: [:index, :create, :edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :rooms
-    resources :homes, only: [:top, :home]
     resources :sessions, only: [:new, :create]
+    get 'homes/top', to: 'homes#top'
+    get 'homes/home', to: 'homes#home'
   end
 end
