@@ -1,0 +1,21 @@
+<h2>新着</h2>
+<div class="row">
+  <% @cards.each do |card| %>
+    <div class="text-center card-wrapper">
+      <%= link_to public_card_path(card) do %>
+        <div>
+          <%= image_tag url_for(card.image), height: 120 %>
+        </div>
+        <div>
+          <%= card.title %>
+        </div>
+        <div>
+          <%= card.price %>
+        </div>
+        <div>
+          
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
