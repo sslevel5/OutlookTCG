@@ -43,3 +43,17 @@
     </table>
   </div>
 </div>
+<div>
+  <p>コメント件数：<%= @card.card_comments.count %></p>
+  <% @card.card_comments.each do |card_comment| %>
+    <p><%= image_tag card_comment.customer.get_profile_image(100,100) %></p>
+    <%= card_comment.customer.name %>
+    <%= card_comment.created_at.strftime('%Y/%m/%d') %><%= card_comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@card, @card_comment], url: public_card_card_comments_path(@card) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
