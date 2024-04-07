@@ -3,16 +3,23 @@
   <%= form.button type: "submit", class: "btn btn-outline-light my-2 my-sm-0" do %>
     🔍
   <% end %>
-<div class="row">
-  <% @raritys.each do |rarity| %>
-    <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
-    <%= label_tag "rarity_#{rarity.id}", rarity.name %>
-  <% end %>
-</div>
-<div class="row">
-  <% @stores.each do |store| %>
-    <%= check_box_tag "store_id[]", store.id, Array(params[:store_id]).include?(store.id), id: "store_#{store.id}" %>
-    <%= label_tag "store_#{store.id}", store.name %>
-  <% end %>
-</div>
+
+    <label>レアリティ</label>
+  <div class="checkbox-group">
+    <% @raritys.each do |rarity| %>
+      <label class="checkbox-label">
+        <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
+        <%= rarity.name %>
+      </label>
+    <% end %>
+  </div>
+ <label>店舗名</label>
+  <div class="checkbox-group">
+    <% @stores.each do |store| %>
+      <label class="checkbox-label">
+        <%= check_box_tag "store_id[]", store.id, Array(params[:store_id]).include?(store.id), id: "store_#{store.id}" %>
+        <%= store.name %>
+      </label>
+    <% end %>
+  </div>
 <% end %>
