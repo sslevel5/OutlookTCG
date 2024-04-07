@@ -6,6 +6,7 @@ class Admin::CardsController < ApplicationController
 
   def show
    @card = Card.find(params[:id])
+   @card_comment = CardComment.new
   end
 
   def edit
@@ -20,7 +21,7 @@ class Admin::CardsController < ApplicationController
     @stores = Store.all
    if @card.update(card_params)
     flash[:notice] = "状態を変更しました。"
-     redirect_to public_card_path(@card.id)
+     redirect_to admin_card_path(@card.id)
    else
      flash.now[:alert] = "状態の変更に失敗しました。"
      render :edit

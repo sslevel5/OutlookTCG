@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   namespace :public, path: '' do
     resources :cards, except: [:destroy] do
-      resources :card_comments, only: [:create, :edit, :update]
+      resources :card_comments, only: [:create, :update]
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :rooms
@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :cards, only: [:index, :show, :edit, :update]
+    resources :cards, only: [:index, :show, :edit, :update] do
+      resources :card_comments, only: [:create, :update]
+    end
     resources :raritys, only: [:index, :create, :edit, :update, :show]
     resources :stores, only: [:index, :create, :edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]

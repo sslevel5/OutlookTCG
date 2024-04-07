@@ -8,7 +8,6 @@ class Public::CardCommentsController < ApplicationController
     redirect_to public_card_path(card)
   end
 
-
   def update
     @card_comment = CardComment.find(params[:id])
     if @card_comment.update(card_comment_params)

@@ -32,8 +32,8 @@ class Public::CardsController < ApplicationController
 
   def edit
    @card = Card.find(params[:id])
-    @raritys = Rarity.all
-    @stores = Store.all
+   @raritys = Rarity.all
+   @stores = Store.all
   end
 
   def update

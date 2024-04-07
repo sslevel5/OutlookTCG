@@ -5,7 +5,17 @@ class Admin::CardCommentsController < ApplicationController
     comment = current_customer.card_comments.new(card_comment_params)
     comment.card_id = card.id
     comment.save
-    redirect_to public_card_path(card)
+    redirect_to admin_card_path(card)
+  end
+
+  def update
+    @card_comment = CardComment.find(params[:id])
+    if @card_comment.update(card_comment_params)
+      flash[:notice] = "コメントの状態を変更しました。"
+    else
+      flash[:alert] = "コメントの状態の変更に失敗しました。"
+    end
+    redirect_to admin_card_path(@card_comment.card)
   end
 
   private
