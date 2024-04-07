@@ -1,5 +1,5 @@
-<div style="word-wrap: break-word; overflow-wrap: break-word;">
-<h1>検索ボックス</h1>
-<p>ジャンル一覧<br>aaaaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaa</p>
-<p>aaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaa</p>
-</div>
+        <!-- 検索ボックス -->
+      <form class="form-inline my-2 my-lg-0 ml-auto" action="<%= admin_signed_in? ? admin_cards_path : public_cards_path %>" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="検索" name="q">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
+      </form>

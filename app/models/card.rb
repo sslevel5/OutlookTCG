@@ -10,4 +10,8 @@ class Card < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+  scope :search, ->(query) {
+    where("title LIKE ?", "%#{query}%") if query.present?
+  }
+
 end
