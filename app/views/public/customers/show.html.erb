@@ -34,7 +34,10 @@
           <%= card.title %>
         </div>
         <div>
-          <%= card.price %>
+          ￥<%= number_with_delimiter((card.price).ceil.to_i, delimiter: ',') %>
+        </div>
+        <div>
+          <%= card.created_at.strftime('%Y/%m/%d %H:%M') %>
         </div>
       <% end %>
     </div>
