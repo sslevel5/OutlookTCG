@@ -3,6 +3,19 @@
     <!-- 商品の画像 -->
     <div class="col-md-6">
     <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
+      <% if @card.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to public_card_favorite_path(@card), method: :delete do %>
+        ♥<%= @card.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_card_favorite_path(@card), method: :post do %>
+        ♡<%= @card.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% end %>
     </div>
     <!-- 商品詳細 -->
     <div class="col-md-6">
@@ -49,6 +62,13 @@
   </div>
   <div class="row">
     <table>
+      <thead>
+        <tr>
+          <th>日時</th>
+          <th>コメント</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
       <tbody>
       <% @card.card_comments.each do |card_comment| %>
         <% if card_comment.is_active %>
