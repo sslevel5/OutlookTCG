@@ -2,15 +2,21 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
+    @raritys = Rarity.all
+    @stores = Store.all
     @customer = Customer.find(params[:id])
     @cards = Card.all
   end
 
   def edit
+    @raritys = Rarity.all
+    @stores = Store.all
     @customer = Customer.find(params[:id])
   end
 
   def update
+    @raritys = Rarity.all
+    @stores = Store.all
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to public_customer_path(@customer), notice: "登録情報が更新されました。"
@@ -23,6 +29,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @raritys = Rarity.all
+    @stores = Store.all
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session

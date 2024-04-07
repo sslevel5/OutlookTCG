@@ -13,6 +13,12 @@ class Public::SessionsController < Devise::SessionsController
      root_path
   end
 
+  def new
+    @raritys = Rarity.all
+    @stores = Store.all
+    super
+  end
+
   private
   def after_sign_out_path_for(resource)
     root_path

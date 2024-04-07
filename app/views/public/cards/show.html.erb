@@ -6,6 +6,7 @@
     <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
       <div class="col-md-6">
         <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
+        <% if @card.customer == current_customer %>
         <% if @card.favorited_by?(current_customer) %>
         <p>
           <%= link_to public_card_favorite_path(@card), method: :delete do %>
@@ -18,6 +19,7 @@
             ♡<%= @card.favorites.count %> いいね
           <% end %>
         </p>
+        <% end %>
         <% end %>
       </div>
       <!-- 商品詳細 -->
@@ -43,6 +45,7 @@
             <th>店舗名:</th>
             <td><%= @card.store.name %></td>
           </tr>
+          <% if @card.customer == current_customer %>
           <tr>
             <th>投稿者:</th>
             <td>
@@ -51,6 +54,7 @@
               <% end %>
             </td>
           </tr>
+          <% end %>
           <tr>
             <th>投稿日:</th>
             <td><%= @card.created_at.strftime('%Y/%m/%d %H:%M') %></td>
@@ -74,7 +78,9 @@
       <tr>
         <th>日時</th>
         <th>コメント</th>
+        <% if @card.customer == current_customer %>
         <th>投稿者</th>
+        <% end %>
         <th></th>
       </tr>
     </thead>
@@ -88,9 +94,11 @@
           <td>
             <%= card_comment.comment %>
           </td>
+          <% if @card.customer == current_customer %>
           <td>
             <%= card_comment.customer.name %>
           </td>
+          <% end %>
           <td>
             <% if card_comment.customer == current_customer %>
               <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
@@ -113,6 +121,7 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+<% if @card.customer == current_customer %>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
@@ -123,3 +132,4 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+<% end %>
