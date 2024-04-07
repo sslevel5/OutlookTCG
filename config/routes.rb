@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   namespace :public, path: '' do
     resources :cards, except: [:destroy] do
-      resources :card_comments, only: [:create]
+      resources :card_comments, only: [:create, :edit, :update]
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :rooms

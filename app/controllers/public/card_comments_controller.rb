@@ -8,6 +8,17 @@ class Public::CardCommentsController < ApplicationController
     redirect_to public_card_path(card)
   end
 
+
+  def update
+    @card_comment = CardComment.find(params[:id])
+    if @card_comment.update(card_comment_params)
+      flash[:notice] = "コメントの状態を変更しました。"
+    else
+      flash[:alert] = "コメントの状態の変更に失敗しました。"
+    end
+    redirect_to public_card_path(@card_comment.card)
+  end
+
   private
 
   def card_comment_params
