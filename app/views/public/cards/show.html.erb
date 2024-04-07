@@ -50,6 +50,7 @@
   <table>
     <tbody>
   <% @card.card_comments.each do |card_comment| %>
+    <% if card_comment.is_active %>
     <tr>
       <td>
     <%= card_comment.created_at.strftime('%Y/%m/%d') %>
@@ -60,19 +61,17 @@
       <td>
     <%= card_comment.customer.name %>
       </td>
+    <% if card_comment.customer == current_customer %>
       <td>
         <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
-          <label>
             <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
-          </label>
-          <div class="mx-2"></div> <!-- ボタン間のスペースを調整するための空のディビジョン -->
-          <label>
             <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
-          </label>
           <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
         <% end %>
+      <% end %>
       </td>
     </tr>
+    <% end %>
   <% end %>
     </tbody>
   </table>
