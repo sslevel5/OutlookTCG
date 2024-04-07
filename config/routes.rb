@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "customers/sessions#guest_sign_in"
+  end
+
   post '/customers/sign_in', to: 'public/sessions#create'
   get 'customers/information/:id/edit', to: 'public/customers#edit', as: 'edit_public_customer_information'
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'

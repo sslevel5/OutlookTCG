@@ -13,6 +13,15 @@ class Customer < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
+GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestuser"
+    end
+  end
+
   private
 
   def check_active_status
