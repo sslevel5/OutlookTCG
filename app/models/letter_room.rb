@@ -1,2 +1,0 @@
-class LetterRoom < ApplicationRecord
-end

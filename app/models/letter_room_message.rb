@@ -1,2 +1,0 @@
-class LetterRoomMessage < ApplicationRecord
-end

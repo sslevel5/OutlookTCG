@@ -1,0 +1,2 @@
+class TalkRoomMessage < ApplicationRecord
+end
