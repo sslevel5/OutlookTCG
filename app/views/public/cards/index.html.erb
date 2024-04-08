@@ -1,8 +1,8 @@
 <h2>投稿一覧</h2>
-        <%= form_with model: @card, url: public_cards_path, method: :get do |f| %>
-        <%= f.select :scope, options_for_select([["new", "latest"], ["old", "old"],["high_price", "high_price"]]) %>
-        <%= f.submit "Submit" %>
-        <% end %>
+<%= form_with url: public_cards_path, method: :get do |form| %>
+  <%= form.select :sort_by, options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"]], params[:sort_by]), prompt: "Sort by" %>
+  <%= form.submit "Sort" %>
+<% end %>
 <div class="row">
   <% @cards.each do |card| %>
     <div class="text-center card-wrapper">

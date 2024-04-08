@@ -10,7 +10,7 @@ class Public::CardsController < ApplicationController
  def index
   @raritys = Rarity.all
   @stores = Store.all
-  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true)
+  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).order(sort_order)
  end
 
  def create
@@ -58,5 +58,18 @@ class Public::CardsController < ApplicationController
 
  def card_params
   params.require(:card).permit(:rarity_id, :store_id, :title, :body, :price, :is_active, :image)
+ end
+
+ def sort_order
+   case params[:sort_by]
+   when 'latest'
+     :latest
+   when 'old'
+     :old
+   when 'high_price'
+     :high_price
+   else
+     :latest # デフォルトは最新順
+   end
  end
 end
