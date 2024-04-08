@@ -1,7 +1,9 @@
 <h2>投稿一覧</h2>
 <%= form_with url: public_cards_path, method: :get do |form| %>
-  <%= form.select :sort_by, options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"]], params[:sort_by]), prompt: "Sort by" %>
-  <%= form.submit "Sort" %>
+  <%= form.select :sort_by,
+      options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"], ["Low Price", "low_price"]], params[:sort_by]),
+      {prompt: "Sort by"}, {onchange: 'this.form.submit();'}
+  %>
 <% end %>
 <div class="row">
   <% @cards.each do |card| %>

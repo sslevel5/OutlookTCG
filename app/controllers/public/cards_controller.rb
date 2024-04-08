@@ -10,7 +10,7 @@ class Public::CardsController < ApplicationController
  def index
   @raritys = Rarity.all
   @stores = Store.all
-  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).order(sort_order)
+  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).send(sort_order)
  end
 
  def create
@@ -68,8 +68,11 @@ class Public::CardsController < ApplicationController
      :old
    when 'high_price'
      :high_price
+   when 'low_price'
+     :low_price
    else
-     :latest # デフォルトは最新順
+     :latest
    end
  end
+
 end
