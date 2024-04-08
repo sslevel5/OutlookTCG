@@ -1,5 +1,6 @@
 class Public::CardsController < ApplicationController
- before_action :authenticate_customer!, only: [:new, :create]
+ before_action :authenticate_customer!, only: [:new, :create, :edit, :update]
+ before_action :correct_customer, only: [:edit, :update]
 
  def new
   @card = Card.new
@@ -74,5 +75,11 @@ class Public::CardsController < ApplicationController
      :latest
    end
  end
+
+  def correct_customer
+    @card = Card.find(params[:id])
+    @customer = @card.customer
+    redirect_to(public_cards_path) unless @customer == current_customer
+  end
 
 end

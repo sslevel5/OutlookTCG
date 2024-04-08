@@ -45,7 +45,7 @@
             <th>店舗名:</th>
             <td><%= @card.store.name %></td>
           </tr>
-          <% if @card.customer %>
+          <% if current_customer %>
           <tr>
             <th>投稿者:</th>
             <td>
@@ -78,7 +78,7 @@
       <tr>
         <th>日時</th>
         <th>コメント</th>
-        <% if @card.customer %>
+        <% if current_customer %>
         <th>投稿者</th>
         <% end %>
         <th></th>
@@ -94,7 +94,7 @@
           <td>
             <%= card_comment.comment %>
           </td>
-          <% if @card.customer %>
+          <% if current_customer %>
           <td>
             <%= card_comment.customer.name %>
           </td>
@@ -121,7 +121,7 @@
   </div>
   <div class="col-md-2"></div>
 </div>
-<% if @card.customer  %>
+<% if current_customer %>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">

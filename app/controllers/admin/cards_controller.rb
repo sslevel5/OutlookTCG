@@ -1,4 +1,5 @@
 class Admin::CardsController < ApplicationController
+ before_action :authenticate_admin!
 
   def index
    @raritys = Rarity.all
