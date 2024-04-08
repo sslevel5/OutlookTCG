@@ -1,16 +1,20 @@
 class Admin::CardsController < ApplicationController
 
   def index
-    @cards = Card.all
+   @raritys = Rarity.all
+   @stores = Store.all
+   @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
   end
 
   def show
+   @raritys = Rarity.all
+   @stores = Store.all
    @card = Card.find(params[:id])
    @card_comment = CardComment.new
   end
 
   def edit
-   @card = Card.find(params[:id])
+    @card = Card.find(params[:id])
     @raritys = Rarity.all
     @stores = Store.all
   end

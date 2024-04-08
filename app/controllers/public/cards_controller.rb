@@ -10,7 +10,7 @@ class Public::CardsController < ApplicationController
  def index
   @raritys = Rarity.all
   @stores = Store.all
-  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
+  @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true)
  end
 
  def create

@@ -13,7 +13,7 @@ class Card < ApplicationRecord
   scope :search, ->(query) {
     where("title LIKE ?", "%#{query}%") if query.present?
   }
-  
+
   scope :by_rarity, ->(rarity_id) {
     where(rarity_id: rarity_id) if rarity_id.present?
   }
@@ -21,5 +21,10 @@ class Card < ApplicationRecord
   scope :by_store, ->(store_id) {
     where(store_id: store_id) if store_id.present?
   }
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :high_price, -> {order(price: :desc)}
+  scope :low_price, -> {order(price: :asc)}
 
 end
