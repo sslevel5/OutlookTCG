@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class Public::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
   before_action :authenticate_customer!
-
+  before_action :redirect_if_admin_logged_in, only: [:new, :create]
 
   def after_sign_in_path_for(resource)
      home_path
@@ -20,8 +18,9 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   private
-  def after_sign_out_path_for(resource)
-    root_path
+
+  def redirect_if_admin_logged_in
+    redirect_to home_path if admin_signed_in?
   end
 
   def configure_sign_in_params
