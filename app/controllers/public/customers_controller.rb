@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_customer, only: [:edit, :update, :unsubscribe, :withdraw]
+  before_action :set_customer, only: [:edit, :update]
 
   def show
     @raritys = Rarity.all
@@ -10,23 +10,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    # ログインユーザーと編集しようとしているユーザーが一致するか確認
-    unless current_customer == @customer
-      redirect_to public_customer_path(@customer), alert: "他のユーザーの情報を編集することはできません。"
-    end
     @raritys = Rarity.all
     @stores = Store.all
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    # ログインユーザーと編集しようとしているユーザーが一致するか確認
-    unless current_customer == @customer
-      redirect_to public_customer_path(@customer), alert: "他のユーザーの情報を編集することはできません。"
-      return
-    end
-
     @raritys = Rarity.all
     @stores = Store.all
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to public_customer_path(@customer), notice: "登録情報が更新されました。"
     else
@@ -35,15 +27,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @customer = current_customer
+    @raritys = Rarity.all
+    @stores = Store.all
   end
 
   def withdraw
-    # ログインユーザーと編集しようとしているユーザーが一致するか確認
-    unless current_customer == @customer
-      redirect_to public_customer_path(@customer), alert: "他のユーザーの情報を編集することはできません。"
-      return
-    end
-
+    @customer = current_customer
     @raritys = Rarity.all
     @stores = Store.all
     @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
@@ -55,11 +45,12 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :profile_image, :introduction, :email, :password, :password_confirmation)
+    params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation)
   end
 
   def set_customer
     @customer = Customer.find(params[:id])
+    redirect_to public_customer_path
   end
 
 end

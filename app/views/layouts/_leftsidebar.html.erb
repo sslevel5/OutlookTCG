@@ -2,13 +2,13 @@
   <!-- ログインしていない場合 -->
   <% unless admin_signed_in? || customer_signed_in? %>
     <li class="header_text">
-      <%= link_to root_path,class: 'nav-link text-light' do %>
+      <%= link_to home_path,class: 'nav-link text-light' do %>
         ロゴ
       <% end %>
     </li>
     <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
-        Home
+      <%= link_to root_path,class: 'nav-link text-light' do %>
+        Top
       <% end %>
     </li>
     <li class="header_text">
