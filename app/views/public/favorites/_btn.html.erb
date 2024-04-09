@@ -1,13 +1,13 @@
-<% if @card.favorited_by?(current_customer) %>
+<% if card.favorited_by?(current_customer) %>
   <p>
-    <%= link_to public_card_favorite_path(@card), method: :delete do %>
-      ♥<%= @card.favorites.count %> いいね
+    <%= link_to public_card_favorite_path(card), method: :delete, remote: true do %>
+      ♥<%= card.favorites.count %> いいね
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to public_card_favorite_path(@card), method: :post do %>
-      ♡<%= @card.favorites.count %> いいね
+    <%= link_to public_card_favorite_path(card), method: :post, remote: true do %>
+      ♡<%= card.favorites.count %> いいね
     <% end %>
   </p>
 <% end %>
