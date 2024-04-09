@@ -7,19 +7,19 @@
       <div class="col-md-6">
         <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
         <% if @card.customer == current_customer %>
-        <% if @card.favorited_by?(current_customer) %>
-        <p>
-          <%= link_to public_card_favorite_path(@card), method: :delete do %>
-            ♥<%= @card.favorites.count %> いいね
+          <% if @card.favorited_by?(current_customer) %>
+            <p>
+              <%= link_to public_card_favorite_path(@card), method: :delete do %>
+                ♥<%= @card.favorites.count %> いいね
+              <% end %>
+            </p>
+          <% else %>
+            <p>
+              <%= link_to public_card_favorite_path(@card), method: :post do %>
+                ♡<%= @card.favorites.count %> いいね
+              <% end %>
+            </p>
           <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to public_card_favorite_path(@card), method: :post do %>
-            ♡<%= @card.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% end %>
         <% end %>
       </div>
       <!-- 商品詳細 -->
@@ -46,14 +46,14 @@
             <td><%= @card.store.name %></td>
           </tr>
           <% if current_customer %>
-          <tr>
-            <th>投稿者:</th>
-            <td>
-              <%= link_to public_customer_path(@card.customer.id) do %>
-              <%= @card.customer.name %>
-              <% end %>
-            </td>
-          </tr>
+            <tr>
+              <th>投稿者:</th>
+              <td>
+                <%= link_to public_customer_path(@card.customer.id) do %>
+                  <%= @card.customer.name %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
           <tr>
             <th>投稿日:</th>
@@ -73,65 +73,10 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>日時</th>
-        <th>コメント</th>
-        <% if current_customer %>
-        <th>投稿者</th>
-        <% end %>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @card.card_comments.each do |card_comment| %>
-        <% if card_comment.is_active %>
-        <tr>
-          <td>
-            <%= card_comment.created_at.strftime('%Y/%m/%d') %>
-          </td>
-          <td>
-            <%= card_comment.comment %>
-          </td>
-          <% if current_customer %>
-          <td>
-            <%= card_comment.customer.name %>
-          </td>
-          <% end %>
-          <td>
-            <% if card_comment.customer == current_customer %>
-              <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
-              <td>
-              <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
-              </td>
-              <td>
-              <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
-              </td>
-              <td>
-              <td>
-              <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-              </td>
-            <% end %>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+    <%= render 'public/card_comments/index', card: @card %>
   </div>
   <div class="col-md-2"></div>
 </div>
 <% if current_customer %>
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <%= form_with model: [@card, @card_comment], url: public_card_card_comments_path(@card) do |f| %>
-    <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する", class: 'btn btn-outline-secondary btn-sm' %>
-    <% end %>
-  </div>
-  <div class="col-md-2"></div>
-</div>
+  <%= render 'public/card_comments/form', card: @card %>
 <% end %>
