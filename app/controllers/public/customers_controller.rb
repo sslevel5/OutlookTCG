@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_customer, only: [:edit, :update]
+  before_action :check_authorization, only: [:edit, :update]
 
   def show
     @raritys = Rarity.all
@@ -50,7 +51,11 @@ class Public::CustomersController < ApplicationController
 
   def set_customer
     @customer = Customer.find(params[:id])
-    redirect_to public_customer_path
   end
 
+  def check_authorization
+    unless @customer == current_customer
+      redirect_to public_customer_path(@customer)
+    end
+  end
 end
