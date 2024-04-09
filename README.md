@@ -34,6 +34,10 @@
 - JSライブラリ：jQuery
 - Bootstrap
 - IDE：Cloud9
+- 
+
+## 使用gem
+- device
 ​
 ## 使用素材
 
