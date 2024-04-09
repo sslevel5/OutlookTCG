@@ -4,7 +4,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :redirect_if_admin_logged_in, only: [:new, :create]
 
   def after_sign_up_path_for(resource)
-    public_customer_path
+    public_customer_path(resource)
   end
 
   def new
@@ -12,7 +12,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     @stores = Store.all
     super
   end
-  
+
   def create
     @raritys = Rarity.all
     @stores = Store.all
