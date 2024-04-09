@@ -1,7 +1,7 @@
 <div class="row">
   <% cards.each do |card| %>
     <div class="text-center card-wrapper">
-      <%= link_to admin_card_path(card) do %>
+      <%= link_to admin_card_path(card), style: "text-decoration: none; color: black;" do %>
         <div>
           <%= image_tag url_for(card.image), height: 120 %>
         </div>

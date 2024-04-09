@@ -1,6 +1,9 @@
 <h2>投稿詳細</h2>
 <div class="row">
+  <div class="col-md-2"></div>
   <!-- 商品の画像 -->
+  <div class="col-md-8">
+    <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
   <div class="col-md-6">
     <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
   </div>
@@ -35,34 +38,60 @@
           <% end %>
         </td>
       </tr>
-          <td>
-          <%= link_to "Edit", edit_admin_card_path(@card.id),class: "btn btn-sm btn-success Edit" %>
-          </td>
-    </table>
-</div>
-  <div class="row">
-    <table>
-      <tbody>
-      <% @card.card_comments.each do |card_comment| %>
           <tr>
-            <td>
-              <%= card_comment.created_at.strftime('%Y/%m/%d') %>
-            </td>
-            <td>
-              <%= card_comment.comment %>
-            </td>
-            <td>
-              <%= card_comment.customer.name %>
-            </td>
-            <td>
-                <%= form_with(model: [card_comment.card, card_comment], local: true, url: admin_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
-                  <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
-                  <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
-                  <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-                <% end %>
-            </td>
+            <th>投稿日:</th>
+            <td><%= @card.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
-      <% end %>
-      </tbody>
+        <td>
+        <%= link_to "編集", edit_admin_card_path(@card.id),class: "btn btn-sm btn-success Edit" %>
+        </td>
     </table>
-  </div>
+  <div class="col-md-2"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>日時</th>
+            <th>コメント</th>
+            <th>投稿者</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @card.card_comments.each do |card_comment| %>
+        <tr>
+        <td>
+        <%= card_comment.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+        <%= card_comment.comment %>
+        </td>
+        <td>
+        <%= card_comment.customer.name %>
+        </td>
+        <td>
+        <%= form_with(model: [card_comment.card, card_comment], local: true, url: admin_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
+        <td>
+        <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
+        </td>
+        <td>
+        <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
+        </td>
+        <td>
+        <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+        </td>
+        <% end %>
+        </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <div class="col-md-2"></div>
+</div>

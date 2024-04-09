@@ -109,7 +109,9 @@
               <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
               </td>
               <td>
+              <td>
               <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+              </td>
             <% end %>
             <% end %>
           </td>
