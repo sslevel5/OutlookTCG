@@ -6,7 +6,7 @@
     <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
       <div class="col-md-6">
         <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
-        <% if @card.customer == current_customer %>
+        <% if current_customer %>
           <% if @card.favorited_by?(current_customer) %>
             <p>
               <%= link_to public_card_favorite_path(@card), method: :delete do %>
