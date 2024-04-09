@@ -1,0 +1,20 @@
+<div class="row">
+  <% cards.each do |card| %>
+    <div class="text-center card-wrapper">
+      <%= link_to public_card_path(card), style: "text-decoration: none; color: black;" do %>
+        <div>
+          <%= image_tag url_for(card.image), height: 120 %>
+        </div>
+        <div>
+          <%= card.title %>
+        </div>
+        <div>
+          ￥<%= number_with_delimiter((card.price).ceil.to_i, delimiter: ',') %>
+        </div>
+        <div>
+          <%= card.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

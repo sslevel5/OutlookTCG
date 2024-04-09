@@ -1,0 +1,24 @@
+<div class="row">
+  <% cards.each do |card| %>
+    <div class="text-center card-wrapper">
+      <%= link_to admin_card_path(card) do %>
+        <div>
+          <%= image_tag url_for(card.image), height: 120 %>
+        </div>
+        <div>
+          <%= card.title %>
+        </div>
+        <div>
+          <%= card.price %>
+        </div>
+        <div>
+         <% if card.is_active %>
+            <span class='text-success'>有効</span>
+          <% else %>
+            <span class='text-secondary'>無効</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
