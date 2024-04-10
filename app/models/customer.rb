@@ -22,10 +22,7 @@ class Customer < ApplicationRecord
   has_many :recipienting_customers, through: :recipients, source: :sender
 
 
-  #　送信したときの処理
-  def send(customer_id)
-    senders.create(recipient_id: customer_id)
-  end
+
 
 GUEST_USER_EMAIL = "guest@example.com"
 
