@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       member do
         get :senders, :recipients
       end
-       resource :talk_rooms, only: [:create]
+       resource :talk_rooms, only: [:create, :show]
     end
     resources :rooms
     resources :sessions, only: [:new, :create, :destroy]

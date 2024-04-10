@@ -8,4 +8,8 @@ class TalkRoom < ApplicationRecord
     senders.create(recipient_id: customer_id)
   end
 
+  #　送信していればtrueを返す
+  def sending?(customer)
+    sending_customers.include?(customer)
+  end
 end

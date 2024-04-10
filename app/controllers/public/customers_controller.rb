@@ -43,11 +43,6 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def senders
-    customer = Customer.find(params[:id])
-    @customers = customer.sending_customers
-  end
-
   private
 
   def customer_params
@@ -59,9 +54,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def check_authorization
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    puts @customer.email == Customer::GUEST_USER_EMAIL
-    puts @customer.email
     puts Customer::GUEST_USER_EMAIL
     if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL )
       redirect_to public_customer_path(@customer)
