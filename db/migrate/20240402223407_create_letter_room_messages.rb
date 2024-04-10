@@ -4,7 +4,8 @@ class CreateLetterRoomMessages < ActiveRecord::Migration[6.1]
 
       t.text :message, null: false
       t.boolean :is_active, null: false, default: true
-
+      t.integer :customer_id, null: false
+      t.integer :talk_room_id, null: false
       t.timestamps
     end
   end

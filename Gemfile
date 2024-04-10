@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #以下追加
 gem 'devise'
+gem 'jquery-rails'
 
 
 #デプロイ用

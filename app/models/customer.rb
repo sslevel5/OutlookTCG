@@ -13,6 +13,17 @@ class Customer < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
+  # DM送受信の関係
+  has_many :senders, class_name: "TalkRoom", foreign_key: "sender_id", dependent: :destroy
+  has_many :recipients, class_name: "TalkRoom", foreign_key: "recipient_id", dependent: :destroy
+
+  # 一覧画面で使う
+  has_many :sending_customers, through: :senders, source: :recipient
+  has_many :recipienting_customers, through: :recipients, source: :sender
+
+
+
+
 GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
