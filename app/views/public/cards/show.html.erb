@@ -4,7 +4,7 @@
   <!-- 商品の画像 -->
   <div class="col-md-8">
     <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
-      <div class="col-md-6" id="favorite_btn_<%= @card.id %>" >
+      <div class="col-md-6">
         <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
         <% if current_customer %>
             <%= render 'public/favorites/btn', card: @card %>
@@ -61,7 +61,9 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <%= render 'public/card_comments/index', card: @card %>
+    <table class='table'  id="comment_index">
+      <%= render 'public/card_comments/index', card: @card %>
+    </table>
   </div>
   <div class="col-md-2"></div>
 </div>

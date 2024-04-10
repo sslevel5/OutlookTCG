@@ -33,6 +33,7 @@ class Public::CardsController < ApplicationController
   @stores = Store.all
   @card = Card.find(params[:id])
   @card_comment = CardComment.new
+  @card_comments = CardComment.all
  end
 
  def edit

@@ -1,11 +1,11 @@
 <% if card.favorited_by?(current_customer) %>
-  <p>
+  <p id="favorite_btn_<%= @card.id %>">
     <%= link_to public_card_favorite_path(card), method: :delete, remote: true do %>
       ♥<%= card.favorites.count %> いいね
     <% end %>
   </p>
 <% else %>
-  <p>
+  <p id="favorite_btn_<%= @card.id %>">
     <%= link_to public_card_favorite_path(card), method: :post, remote: true do %>
       ♡<%= card.favorites.count %> いいね
     <% end %>
