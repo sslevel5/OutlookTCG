@@ -1,0 +1,2 @@
+module Public::TalkRoomsHelper
+end

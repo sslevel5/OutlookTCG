@@ -133,7 +133,8 @@ ActiveRecord::Schema.define(version: 2024_04_08_162648) do
 
   create_table "talk_rooms", force: :cascade do |t|
     t.boolean "is_active", default: true, null: false
-    t.integer "customer_id", null: false
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
