@@ -5,25 +5,29 @@
 <%= image_tag @customer.get_profile_image, size: '100x100' %>
 <table>
   <tr>
-     <th>ニックネーム</th>
-     <td><%= @customer.name %></td>
+    <th>ニックネーム</th>
+    <td><%= @customer.name %></td>
   </tr>
   <tr>
-     <th>自己紹介</th>
-     <td><%= @customer.introduction %></td>
+    <th>自己紹介</th>
+    <td><%= @customer.introduction %></td>
   </tr>
-<% if current_customer == @customer %>
-  <tr>
-     <th>メールアドレス</th>
-     <td><%= @customer.email %></td>
-  </tr>
-  <tr>
-    <td>DM</td>
-  </tr>
-<% end %>
+  <% if current_customer == @customer %>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "メッセージルーム一覧", public_rooms_path %></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td><%= link_to "メッセージルームへ", public_room_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
+    </tr>
+  <% end %>
 </table>
 <% if current_customer == @customer %>
-<%= link_to "編集する", edit_public_customer_path(@customer), class: "btn btn-success" %>
+  <%= link_to "編集する", edit_public_customer_path(@customer), class: "btn btn-success" %>
 <% end %>
 <h2>投稿一覧</h2>
 <%= render 'public/cards/index', cards: @customer.cards %>

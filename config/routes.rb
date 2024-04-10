@@ -29,8 +29,8 @@ Rails.application.routes.draw do
       resources :card_comments, only: [:create, :update]
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-    resources :rooms, only: [:show, :create, :index] do
-      resources :messages, only: [:create], controller: 'room_messages'
+    resources :talk_rooms, only: [:index, :show, :create] do
+      resources :talk_room_messages, only: [:create]
     end
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
