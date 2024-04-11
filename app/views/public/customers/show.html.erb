@@ -18,11 +18,11 @@
       <td><%= @customer.email %></td>
     </tr>
     <tr>
-      <td><%= link_to "メッセージルーム一覧", public_rooms_path %></td>
+      <td><%= link_to "メッセージルーム一覧", public_talk_rooms_path %></td>
     </tr>
   <% else %>
     <tr>
-      <td><%= link_to "メッセージルームへ", public_room_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
+      <td><%= link_to "メッセージルームへ", public_talk_room_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
     </tr>
   <% end %>
 </table>
