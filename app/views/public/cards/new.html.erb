@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const imagePreview = document.getElementById('new-image');
 
   // ファイルの変更を監視してプレビューを表示する
-fileInput.addEventListener('change', function() {
+  fileInput.addEventListener('change', function() {
     console.log("ファイルが選択されました。"); // ファイルの選択イベントが発火したことを確認するためのログ
     const file = this.files[0];
     if (file) {
@@ -89,6 +89,6 @@ fileInput.addEventListener('change', function() {
     } else {
         imagePreview.innerHTML = '';
     }
-});
+  });
 });
 </script>

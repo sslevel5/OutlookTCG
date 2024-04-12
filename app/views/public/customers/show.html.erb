@@ -22,7 +22,7 @@
     </tr>
   <% else %>
     <tr>
-      <td><%= link_to "メッセージルームへ", public_talk_room_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
+      <td><%= link_to "メッセージルームへ", public_talk_rooms_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
     </tr>
   <% end %>
 </table>
