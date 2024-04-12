@@ -9,6 +9,8 @@
   <% end %>
 </div>
 
+<%= link_to "New Message", new_public_talk_room_talk_room_messages_path(@talk_room) %>
+
 <%= form_with(model: [@talk_room, TalkRoomMessage.new], local: true) do |form| %>
   <div>
     <%= form.text_area :message, placeholder: "メッセージを入力してください" %>
