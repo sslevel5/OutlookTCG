@@ -8,18 +8,19 @@ class Customer < ApplicationRecord
   has_many :cards
   has_many :card_comments
   has_many :favorites, dependent: :destroy
+  has_many :talk_rooms
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
   # DM送受信の関係
-  has_many :senders, class_name: "TalkRoom", foreign_key: "sender_id", dependent: :destroy
-  has_many :recipients, class_name: "TalkRoom", foreign_key: "recipient_id", dependent: :destroy
+  has_many :sent_talk_rooms, class_name: "TalkRoom", foreign_key: "sender_id", dependent: :destroy
+  has_many :received_talk_rooms, class_name: "TalkRoom", foreign_key: "recipient_id", dependent: :destroy
 
   # 一覧画面で使う
-  has_many :sending_customers, through: :senders, source: :recipient
-  has_many :recipienting_customers, through: :recipients, source: :sender
+  has_many :sending_customers, through: :sent_talk_rooms, source: :recipient
+  has_many :receiving_customers, through: :received_talk_rooms, source: :sender
 
 
 

@@ -7,6 +7,7 @@ class Public::CustomersController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     @customer = Customer.find(params[:id])
+    @talk_room_id = @customer.talk_room_id
     @cards = Card.all
   end
 
