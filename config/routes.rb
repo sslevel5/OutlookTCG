@@ -28,13 +28,11 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :card_comments, only: [:create, :update]
     end
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] do
-      member do
-        get :senders, :recipients
-      end
-       resource :talk_rooms, only: [:create]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :talk_rooms, only: [:index, :show, :new] do
+      post '/', to: 'talk_rooms#create'
+      resources :talk_room_messages, only: [:create]
     end
-    resources :rooms
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
   end
