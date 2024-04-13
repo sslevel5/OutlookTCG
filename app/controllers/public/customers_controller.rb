@@ -54,7 +54,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def check_authorization
-    puts Customer::GUEST_USER_EMAIL
     if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL )
       redirect_to public_customer_path(@customer)
     end
