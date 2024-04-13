@@ -32,7 +32,7 @@
 </table>
 <% if current_customer == @customer %>
   <% if @customer.email != Customer::GUEST_USER_EMAIL %>
-    <%= link_to "編集", edit_public_customer_path(@customer), class: "btn btn-success" %>
+    <%= link_to "編集", edit_public_customer_path(@customer), class: "btn btn-success", data: {"turbolinks"=>false} %>
   <% else %>
     <button type="button" class="btn btn-secondary">編集</button>
   <% end %>
