@@ -3,7 +3,8 @@
 <ul>
   <% @talk_rooms.each do |talk_room| %>
     <li>
-      <%= link_to talk_room.name(current_customer), talk_rooms_path(talk_room) %>
+      <% against_customer_id = talk_room.sending?(current_customer) ? talk_room.recipient_id : talk_room.sender_id %>
+      <%= link_to talk_room.name(current_customer), talk_rooms_path(talk_room.id, against_customer_id: against_customer_id) %>
     </li>
   <% end %>
 </ul>

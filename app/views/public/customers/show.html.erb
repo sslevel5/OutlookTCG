@@ -18,15 +18,16 @@
       <td><%= @customer.email %></td>
     </tr>
     <tr>
-      <td><%= link_to "メッセージルーム一覧", public_talk_rooms_path %></td>
+      <td><%= link_to "トークルーム一覧", public_talk_rooms_path %></td>
     </tr>
   <% else %>
     <tr>
       <% if current_customer.already_messaged_with?(@customer)%>
-        <td><%= link_to "メッセージルームへ",  talk_rooms_path(@customer.id) %></td>
+        <td><%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id) %></td>
       <% else %>
-        <td><%= link_to "メッセージを始める", new_talk_rooms_path(@customer.id) %></td>
+        <td><%= link_to "トークを始める", new_talk_rooms_path(@customer.id) %></td>
       <%end %>
+
     </tr>
   <% end %>
 </table>

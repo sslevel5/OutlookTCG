@@ -18,16 +18,16 @@ class Public::TalkRoomsController < ApplicationController
   def index
     @raritys = Rarity.all
     @stores = Store.all
+    @customer = current_customer
     @talk_rooms = TalkRoom.where("sender_id = ? OR recipient_id = ?", current_customer.id, current_customer.id)
   end
 
   def show
     @raritys = Rarity.all
     @stores = Store.all
-    against_customer = Customer.find(params[:against_customer_id])
-    @talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: against_customer.id)
-    @talk_room　||= TalkRoom.find_by(sender_id: against_customer.id, recipient_id: current_customer.id)
-
+    @customer = current_customer
+    @against_customer = Customer.find(params[:against_customer_id])
+    @talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: @against_customer.id) || TalkRoom.find_by(sender_id: @against_customer.id, recipient_id: current_customer.id)
   end
 
   def senders

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'customers/information/:id/edit', to: 'public/customers#edit', as: 'edit_public_customer_information'
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
-  get 'talk_rooms/:against_customer_id', to: 'public/talk_rooms#show', as: 'talk_rooms'
+  get 'talk_rooms/:id', to: 'public/talk_rooms#show', as: 'talk_rooms'
   get 'talk_rooms/:against_customer_id/new', to: 'public/talk_rooms#new', as: 'new_talk_rooms'
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
 
@@ -31,7 +31,6 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :talk_rooms, only: [:index,:create] do
-     
       resources :talk_room_messages, only: [:create]
     end
     resources :sessions, only: [:new, :create, :destroy]
