@@ -10,7 +10,7 @@ class TalkRoom < ApplicationRecord
   end
 
   # 送信したときの処理
-  def send(sender_id, recipient_id)
+  def self.sendhoge(sender_id,recipient_id)
     # sender_id, recipient_id を指定して TalkRoom を作成
     TalkRoom.create(sender_id: sender_id, recipient_id: recipient_id)
   end

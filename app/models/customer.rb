@@ -33,6 +33,10 @@ GUEST_USER_EMAIL = "guest@example.com"
       customer.name = "guestuser"
     end
   end
+  
+  def already_messaged_with?(customer)
+    TalkRoom.find_by(sender_id: self.id, recipient_id: customer.id) ||  TalkRoom.find_by(sender_id: customer.id, recipient_id: self.id)
+  end
 
   private
 

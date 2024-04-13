@@ -49,7 +49,7 @@
           </tr>
           <% if @card.customer == current_customer %>
             <td>
-              <%= link_to "編集", edit_public_card_path(@card.id),class: "btn btn-sm btn-success Edit" %>
+              <%= link_to "編集", edit_public_card_path(@card.id),class: "btn btn-sm btn-success Edit",data: {"turbolinks"=>false} %>
             </td>
           <% end %>
         </table>
