@@ -1,4 +1,7 @@
-<h1><%= @against_customer.name %> とのDM</h1>
+<%= link_to "トークルーム一覧", public_talk_rooms_path %>
+
+<h2><%= @against_customer.name %> とのDM</h2>
+
 
 <div id="messages">
   <% @talk_room.talk_room_messages.each do |message| %>
@@ -9,11 +12,11 @@
   <% end %>
 </div>
 
-<%= link_to "New Message", root_path(@talk_room) %>
 
-<%= form_with( local: true) do |form| %>
+
+<%= form_with(url: public_talk_room_talk_room_messages_path(@talk_room), local: true) do |form| %>
   <div>
-    <%= form.text_area :message, placeholder: "メッセージを入力してください" %>
+    <%= form.text_area 'talk_room_message[message]', placeholder: "メッセージを入力してください" %>
   </div>
   <div>
     <%= form.submit "送信" %>
