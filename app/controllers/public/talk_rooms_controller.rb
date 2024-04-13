@@ -3,9 +3,8 @@ class Public::TalkRoomsController < ApplicationController
 
   def new
     # 新しいメッセージを作成するためのフォームを表示するためのアクション
-
     @talk_room = TalkRoom.sendhoge(current_customer.id, params[:against_customer_id] )
-    redirect_to talk_rooms_path(params[:against_customer_id]) 
+    redirect_to talk_rooms_path(params[:against_customer_id])
   end
 
   def create
@@ -26,9 +25,9 @@ class Public::TalkRoomsController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     against_customer = Customer.find(params[:against_customer_id])
-    @talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: against_customer.id) 
+    @talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: against_customer.id)
     @talk_room　||= TalkRoom.find_by(sender_id: against_customer.id, recipient_id: current_customer.id)
-    
+
   end
 
   def senders

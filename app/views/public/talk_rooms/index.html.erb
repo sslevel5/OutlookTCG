@@ -3,7 +3,7 @@
 <ul>
   <% @talk_rooms.each do |talk_room| %>
     <li>
-      <%= link_to "#{talk_room.sender.name} とのDM", public_talk_room_path(talk_room) %>
+      <%= link_to talk_room.name(current_customer), talk_rooms_path(talk_room) %>
     </li>
   <% end %>
 </ul>
