@@ -60,6 +60,35 @@
         </tr>
       </table>
       <% end %>
+      <div id="new-image"></div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const fileInput = document.getElementById('file-upload');
+  const imagePreview = document.getElementById('new-image');
+
+  // ファイルの変更を監視してプレビューを表示する
+  fileInput.addEventListener('change', function() {
+    console.log("ファイルが選択されました。"); // ファイルの選択イベントが発火したことを確認するためのログ
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            console.log("ファイルが読み込まれました。", event.target.result); // 読み込まれたファイルのデータをログに出力
+            const imageUrl = event.target.result;
+            const imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            imageElement.classList.add('img-thumbnail');
+            imagePreview.innerHTML = '';
+            imagePreview.appendChild(imageElement);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        imagePreview.innerHTML = '';
+    }
+  });
+});
+</script>

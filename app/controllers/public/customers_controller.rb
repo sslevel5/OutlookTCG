@@ -7,7 +7,6 @@ class Public::CustomersController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     @customer = Customer.find(params[:id])
-    @talk_room_id = @customer.talk_room_id
     @cards = Card.all
   end
 
@@ -55,7 +54,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def check_authorization
-    puts Customer::GUEST_USER_EMAIL
     if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL )
       redirect_to public_customer_path(@customer)
     end

@@ -18,16 +18,24 @@
       <td><%= @customer.email %></td>
     </tr>
     <tr>
-      <td><%= link_to "メッセージルーム一覧", public_talk_rooms_path %></td>
+      <td><%= link_to "トークルーム一覧", public_talk_rooms_path %></td>
     </tr>
   <% else %>
     <tr>
-      <td><%= link_to "メッセージルームへ", public_talk_room_path(sender_id: current_customer.id, recipient_id: @customer.id), method: :post %></td>
+      <% if current_customer.already_messaged_with?(@customer)%>
+        <td><%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id) %></td>
+      <% else %>
+        <td><%= link_to "トークを始める", new_talk_rooms_path(@customer.id) %></td>
+      <%end %>
     </tr>
   <% end %>
 </table>
 <% if current_customer == @customer %>
-  <%= link_to "編集する", edit_public_customer_path(@customer), class: "btn btn-success" %>
+  <% if @customer.email != Customer::GUEST_USER_EMAIL %>
+    <%= link_to "編集", edit_public_customer_path(@customer), class: "btn btn-success", data: {"turbolinks"=>false} %>
+  <% else %>
+    <button type="button" class="btn btn-secondary">編集</button>
+  <% end %>
 <% end %>
 <h2>投稿一覧</h2>
 <%= render 'public/cards/index', cards: @customer.cards %>
