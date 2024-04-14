@@ -4,6 +4,7 @@
 
 <div id="messages">
   <% @talk_room.talk_room_messages.each do |message| %>
+  <% if message.is_active %>
     <div class="row">
     <div class="col-1">
       <strong><%= message.customer.name %>:</strong>
@@ -26,6 +27,7 @@
       <% end %>
     </div>
     </div>
+    <% end %>
   <% end %>
 </div>
 
