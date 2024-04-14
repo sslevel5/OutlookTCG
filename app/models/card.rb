@@ -6,6 +6,13 @@ class Card < ApplicationRecord
   has_many :card_comments
   has_many :favorites, dependent: :destroy
 
+  validates :rarity, presence: { message: "を選択してください" }
+  validates :store, presence: { message: "を選択してください" }
+  validates :price, presence: true
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :image, presence: true
+  validates :body, presence: true, length: { maximum: 70 }
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

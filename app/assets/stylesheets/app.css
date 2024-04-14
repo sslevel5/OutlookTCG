@@ -19,7 +19,7 @@
   border-radius: 5px; /* 必要に応じて角丸を調整 */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 必要に応じて影を追加 */
 }
-  
+
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
@@ -27,4 +27,9 @@
 
 .checkbox-label {
   margin-right: 20px; /* チェックボックスの間隔を調整 */
+}
+
+/* bootstrap使用時のformエラー時のレイアウト崩れ回避 */
+.field_with_errors{
+  display: contents;
 }
