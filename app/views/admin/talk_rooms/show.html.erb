@@ -2,9 +2,32 @@
 
 <h2><%= @talk_room.sender.name %> と<%= @talk_room.recipient.name %>のDM</h2>
 
+    <div class="row">
+    <div class="col-1">
+      <strong>発言者:</strong>
+    </div>
+    <div class=col-4>
+      メッセージ
+    </div>
+    <div class="col-2">
+      日時
+    </div>
+    <div class="col-3">
+          <p>
+
+          </p>
+          <p>
+
+          </p>
+          <p>
+
+          </p>
+    </div>
+    </div>
+
 <div id="messages">
   <% @talk_room.talk_room_messages.each do |message| %>
-    <div class="row">
+    <div class="row, style="min-height: 50px"">
     <div class="col-1">
       <strong><%= message.customer.name %>:</strong>
     </div>
