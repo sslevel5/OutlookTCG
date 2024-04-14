@@ -17,14 +17,16 @@
     </div>
     <div class="col-5">
       <div class="row">
+        <% if message.customer == current_customer %>
       <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true) do |form| %>
           <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
 
           <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
 
           <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-        </div>
+              <% end %>
       <% end %>
+        </div>
     </div>
     </div>
     <% end %>
