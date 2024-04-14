@@ -4,21 +4,27 @@
 
 <div id="messages">
   <% @talk_room.talk_room_messages.each do |message| %>
-    <div>
+    <div class="row">
+    <div class="col-1">
       <strong><%= message.customer.name %>:</strong>
+    </div>
+    <div class=col-4>
       <%= message.message %>
+    </div>
+    <div class="col-2">
       <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
-      <%= form_with(model: message, url: public_talk_room_talk_room_messages_path(@talk_room), local: true) do |form| %>
-        <p>
+    </div>
+    <div class="col-5">
+      <div class="row">
+      <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true) do |form| %>
           <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
-        </p>
-        <p>
+
           <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
-        </p>
-        <p>
+
           <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-        </p>
+        </div>
       <% end %>
+    </div>
     </div>
   <% end %>
 </div>

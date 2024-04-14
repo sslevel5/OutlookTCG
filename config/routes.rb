@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :talk_rooms, only: [:index,:create] do
-      resources :talk_room_messages, only: [:create]
+      resources :talk_room_messages, only: [:create, :update]
     end
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]

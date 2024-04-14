@@ -16,10 +16,16 @@ class Public::TalkRoomMessagesController < ApplicationController
     end
   end
 
+  def update
+    @message = TalkRoomMessage.find(params[:id])
+    @message.update(message_params)
+    redirect_to talk_rooms_path(@message.talk_room_id, against_customer_id: @message.talk_room.opposite_customer(current_customer).id)
+  end
+
   private
 
   def message_params
-    params.require(:talk_room_message).permit(:message)
+    params.require(:talk_room_message).permit(:message, :is_active)
   end
 
 end
