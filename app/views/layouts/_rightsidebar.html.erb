@@ -1,25 +1,27 @@
-<%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 ml-auto") do |form| %>
-  <%= form.text_field :q, class: "form-control mr-sm-2", placeholder: "Search", aria: { label: "検索" } %>
-  <%= form.button type: "submit", class: "btn btn-outline-light my-2 my-sm-0" do %>
-    🔍
-  <% end %>
+<% if controller_name != 'sessions' && controller_name != 'registrations' && !admin_signed_in? %>
+  <%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 ml-auto") do |form| %>
+    <%= form.text_field :q, class: "form-control mr-sm-2", placeholder: "Search", aria: { label: "検索" } %>
+    <%= form.button type: "submit", class: "btn btn-outline-light my-2 my-sm-0" do %>
+      🔍
+    <% end %>
 
     <label>レアリティ</label>
-  <div class="checkbox-group">
-    <% @raritys.each do |rarity| %>
-      <label class="checkbox-label">
-        <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
-        <%= rarity.name %>
-      </label>
-    <% end %>
-  </div>
- <label>店舗名</label>
-  <div class="checkbox-group">
-    <% @stores.each do |store| %>
-      <label class="checkbox-label">
-        <%= check_box_tag "store_id[]", store.id, Array(params[:store_id]).include?(store.id), id: "store_#{store.id}" %>
-        <%= store.name %>
-      </label>
-    <% end %>
-  </div>
+    <div class="checkbox-group">
+      <% @raritys.each do |rarity| %>
+        <label class="checkbox-label">
+          <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
+          <%= rarity.name %>
+        </label>
+      <% end %>
+    </div>
+    <label>店舗名</label>
+    <div class="checkbox-group">
+      <% @stores.each do |store| %>
+        <label class="checkbox-label">
+          <%= check_box_tag "store_id[]", store.id, Array(params[:store_id]).include?(store.id), id: "store_#{store.id}" %>
+          <%= store.name %>
+        </label>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
