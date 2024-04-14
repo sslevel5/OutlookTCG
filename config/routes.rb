@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :raritys, only: [:index, :create, :edit, :update, :show]
     resources :stores, only: [:index, :create, :edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :talk_rooms, only: [:index,:create] do
+    resources :talk_rooms, only: [:index,:create, :show] do
       resources :talk_room_messages, only: [:update]
     end
     resources :sessions, only: [:new, :create]
