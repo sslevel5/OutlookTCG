@@ -1,11 +1,13 @@
-<%= link_to "←トークルーム一覧", public_talk_rooms_path %>
+<%= link_to "トークルーム一覧", admin_talk_rooms_path %>
 
-<h2><%= @against_customer.name %> とのDM</h2>
+<h2><%= @talk_room.sender.name %> と<%= @talk_room.recipient.name %>のDM</h2>
+
+
+
 
 <div class="container">
   <div id="messages">
     <% @talk_room.talk_room_messages.each do |message| %>
-      <% if message.is_active %>
         <div class="media mb-3">
           <div class="media-body">
             <div class="bg-light p-3 rounded">
@@ -16,8 +18,7 @@
               <div>
                 <%= message.message %>
               </div>
-              <% if message.customer == current_customer %>
-                <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
+                <%= form_with(model: message, url: admin_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
                   <div class="mt-3">
                     <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
                   </div>
@@ -28,20 +29,8 @@
                     <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
                   </div>
                 <% end %>
-              <% end %>
             </div>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
-
-  <%= form_with(model: [@talk_room, @talk_room.talk_room_messages.build], url: public_talk_room_talk_room_messages_path(@talk_room), local: true, html: { class: "mb-3" }) do |form| %>
-    <div class="input-group">
-      <%= form.text_area :message, placeholder: "メッセージを入力してください", class: "form-control" %>
-      <div class="input-group-append">
-        <%= form.submit "送信", class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
-</div>

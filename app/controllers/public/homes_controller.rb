@@ -15,4 +15,5 @@ class Public::HomesController < ApplicationController
     @stores = Store.all
     @cards = Card.order(created_at: :desc).where(is_active: true)
   end
+  
 end

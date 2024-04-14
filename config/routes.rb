@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :talk_rooms, only: [:index,:create] do
-      resources :talk_room_messages, only: [:create]
+      resources :talk_room_messages, only: [:create, :update]
     end
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
@@ -44,7 +44,9 @@ Rails.application.routes.draw do
     resources :raritys, only: [:index, :create, :edit, :update, :show]
     resources :stores, only: [:index, :create, :edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :rooms
+    resources :talk_rooms, only: [:index,:create, :show] do
+      resources :talk_room_messages, only: [:update]
+    end
     resources :sessions, only: [:new, :create]
     get 'homes/top', to: 'homes#top'
     get 'homes/home', to: 'homes#home'

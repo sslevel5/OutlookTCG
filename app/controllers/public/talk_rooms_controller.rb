@@ -4,7 +4,7 @@ class Public::TalkRoomsController < ApplicationController
   def new
     # 新しいメッセージを作成するためのフォームを表示するためのアクション
     @talk_room = TalkRoom.sendhoge(current_customer.id, params[:against_customer_id] )
-    redirect_to talk_rooms_path(params[:against_customer_id])
+    redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: params[:against_customer_id])
   end
 
   def create

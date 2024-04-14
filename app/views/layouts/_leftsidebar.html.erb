@@ -1,102 +1,152 @@
-<ul class="navbar-nav ml-auto">
-  <!-- ログインしていない場合 -->
-  <% unless admin_signed_in? || customer_signed_in? %>
-    <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
-        ロゴ
+<ul class="navbar-nav ml-auto text-right">
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <% if admin_signed_in? %>
+        <%= link_to admin_homes_home_path, class: 'nav-link' do %>
+          ロゴ
+        <% end %>
+      <% elsif customer_signed_in? %>
+        <%= link_to home_path, class: 'nav-link' do %>
+          ロゴ
+        <% end %>
+      <% else %>
+        <%= link_to home_path, class: 'nav-link' do %>
+          ロゴ
+        <% end %>
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to root_path,class: 'nav-link text-light' do %>
+  </ul>
+
+  <ul class="navbar-nav">
+  <% unless admin_signed_in? || customer_signed_in? %>
+    <li class="nav-item">
+      <%= link_to root_path, class: 'nav-link' do %>
         Top
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to new_customer_registration_path, class: 'nav-link' do %>
         新規登録
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to new_customer_session_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to new_customer_session_path, class: 'nav-link' do %>
         ログイン
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to public_cards_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to public_cards_path, class: 'nav-link' do %>
         投稿一覧
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to about_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to about_path, class: 'nav-link' do %>
         About
       <% end %>
     </li>
   <% end %>
-  <!-- 管理者がログインしている場合 -->
-  <% if admin_signed_in? %>
-    <li class="header_text">
-      <%= link_to admin_homes_home_path,class: 'nav-link text-light' do %>
-        ロゴ
-      <% end %>
-    </li>
 
-    <li class="header_text">
-      <%= link_to admin_cards_path,class: 'nav-link text-light' do %>
+  <% if admin_signed_in? %>
+    <li class="nav-item">
+      <%= link_to admin_cards_path, class: 'nav-link' do %>
         投稿一覧
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to admin_customers_path, class: 'nav-link' do %>
         ユーザー一覧
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to admin_raritys_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to admin_raritys_path, class: 'nav-link' do %>
         レアリティ一覧
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to admin_stores_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to admin_stores_path, class: 'nav-link' do %>
         店舗一覧
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-        Log out
+    <li class="nav-item">
+      <%= link_to admin_talk_rooms_path, class: 'nav-link' do %>
+        トーク一覧
       <% end %>
     </li>
   <% end %>
-  <!-- 顧客がログインしている場合 -->
+
   <% if customer_signed_in? %>
-    <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
-        ロゴ
-      <% end %>
-    </li>
-    <li class="header_text">
-      <%= link_to home_path,class: 'nav-link text-light' do %>
+    <li class="nav-item">
+      <%= link_to home_path, class: 'nav-link' do %>
         Home
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to public_customer_path(current_customer),class: 'nav-link text-light' do %>
-        MyPage
-      <% end %>
-    </li>
-    <li class="header_text">
-      <%= link_to public_cards_path,class: 'nav-link text-light' do %>
-        投稿一覧
-      <% end %>
-    </li>
-    <li class="header_text">
-      <%= link_to new_public_card_path,class: 'nav-link text-light',data: {"turbolinks"=>false}  do %>
+    <li class="nav-item">
+      <%= link_to new_public_card_path, class: 'nav-link', data: { "turbolinks" => false } do %>
         新規投稿
       <% end %>
     </li>
-    <li class="header_text">
-      <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-        Log out
+    <li class="nav-item">
+      <%= link_to public_cards_path, class: 'nav-link' do %>
+        投稿一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to public_customer_path(current_customer), class: 'nav-link' do %>
+        MyPage
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to public_talk_rooms_path, class: 'nav-link' do %>
+        トーク一覧
       <% end %>
     </li>
   <% end %>
 </ul>
+
+  <ul>
+  <!-- ログアウトリンクを追加 -->
+    <% if admin_signed_in? %>
+      <!-- 管理者ログイン時のログアウト -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+            Log out
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  
+    <% if customer_signed_in? %>
+      <!-- 顧客ログイン時のログアウト -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
+            Log out
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </ul>
+</ul>
+
+
+<style>
+  .navbar-nav .nav-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar-nav .nav-item:hover {
+    background-color: #343a40; /* マウスオーバー時の背景色 */
+  }
+
+  .navbar-nav .nav-link {
+    color: #ffffff; /* テキストの色 */
+    transition: color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #007bff; /* マウスオーバー時のテキスト色 */
+  }
+</style>

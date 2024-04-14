@@ -2,10 +2,10 @@
 <div class="row">
   <div class="col-md-2"></div>
   <!-- 商品の画像 -->
-  <div class="col-md-8">
+  <div class="col-md-8 text-center">
     <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
       <div class="col-md-6">
-        <%= image_tag @card.image, size: "400x400", class: "img-fluid" %>
+        <%= image_tag @card.image, size: "400x400", class: "img-fluid", style: "max-height: 400px; width: auto;" %>
         <% if current_customer %>
             <%= render 'public/favorites/btn', card: @card %>
         <% end %>

@@ -7,17 +7,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     public_customer_path(resource)
   end
 
-  def new
-    @raritys = Rarity.all
-    @stores = Store.all
-    super
-  end
-
-  def create
-    @raritys = Rarity.all
-    @stores = Store.all
-    super
-  end
 
   private
 
