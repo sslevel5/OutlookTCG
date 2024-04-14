@@ -1,12 +1,13 @@
 <% @talk_rooms.each do |talk_room| %>
-  <div>
-    <!-- 送信者の名前を表示 -->
-    Sender: <%= talk_room.sender.name %>
-    <!-- 受信者の名前を表示 -->
-    Recipient: <%= talk_room.recipient.name %>
-    <!-- リンクを設定 -->
-    <% against_customer_id = talk_room.sending?(talk_room.sender) ? talk_room.recipient_id : talk_room.sender_id %>
-    <%= link_to "トークルームを表示", admin_talk_room_path(id: talk_room.id, against_customer_id: against_customer_id), class: "btn btn-primary" %>
-
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- 送信者の名前を表示 -->
+      <p class="card-text">Sender: <%= talk_room.sender.name %></p>
+      <!-- 受信者の名前を表示 -->
+      <p class="card-text">Recipient: <%= talk_room.recipient.name %></p>
+      <!-- リンクを設定 -->
+      <% against_customer_id = talk_room.sending?(talk_room.sender) ? talk_room.recipient_id : talk_room.sender_id %>
+      <%= link_to "トークルームを表示", admin_talk_room_path(id: talk_room.id, against_customer_id: against_customer_id), class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

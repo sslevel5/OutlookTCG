@@ -2,55 +2,35 @@
 
 <h2><%= @talk_room.sender.name %> と<%= @talk_room.recipient.name %>のDM</h2>
 
-    <div class="row">
-    <div class="col-1">
-      <strong>発言者:</strong>
-    </div>
-    <div class=col-4>
-      メッセージ
-    </div>
-    <div class="col-2">
-      日時
-    </div>
-    <div class="col-3">
-          <p>
 
-          </p>
-          <p>
 
-          </p>
-          <p>
 
-          </p>
-    </div>
-    </div>
-
-<div id="messages">
-  <% @talk_room.talk_room_messages.each do |message| %>
-    <div class="row, style="min-height: 50px"">
-    <div class="col-1">
-      <strong><%= message.customer.name %>:</strong>
-    </div>
-    <div class=col-4>
-      <%= message.message %>
-    </div>
-    <div class="col-2">
-      <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
-    </div>
-    <div class="col-3">
-      <%= form_with(model: message, url: admin_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
-          <p>
-          <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
-          </p>
-          <p>
-          <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
-          </p>
-          <p>
-          <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-          </p>
-          <% end %>
-    </div>
-    </div>
-  <% end %>
-</div>
-
+<div class="container">
+  <div id="messages">
+    <% @talk_room.talk_room_messages.each do |message| %>
+        <div class="media mb-3">
+          <div class="media-body">
+            <div class="bg-light p-3 rounded">
+              <div class="d-flex align-items-center">
+                <strong><%= message.customer.name %></strong>
+                <span class="ml-2 text-muted small"><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+              </div>
+              <div>
+                <%= message.message %>
+              </div>
+                <%= form_with(model: message, url: admin_talk_room_talk_room_message_path(talk_room_id: @talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
+                  <div class="mt-3">
+                    <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
+                  </div>
+                  <div class="mt-3">
+                    <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
+                  </div>
+                  <div class="mt-3">
+                    <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
