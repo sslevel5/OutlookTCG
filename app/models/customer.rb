@@ -22,7 +22,7 @@ class Customer < ApplicationRecord
   has_many :sending_customers, through: :sent_talk_rooms, source: :recipient
   has_many :receiving_customers, through: :received_talk_rooms, source: :sender
 
-  validates :name, :email,:encrypted_password, :introduction, :profile_image, presence: true
+  validates :name, :email,:encrypted_password, presence: true
 
 
 GUEST_USER_EMAIL = "guest@example.com"
