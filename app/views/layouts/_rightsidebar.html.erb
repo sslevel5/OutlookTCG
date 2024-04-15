@@ -1,4 +1,4 @@
-<% if controller_name != 'sessions' && controller_name != 'registrations' && !admin_signed_in? %>
+<% if controller_name != 'sessions' && controller_name != 'registrations' %>
 <div class="row">
   <%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 ml-auto") do |form| %>
   <div class="col-8">

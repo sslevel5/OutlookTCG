@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-1">
   <div class="col-4">
 <h2>投稿一覧</h2>
   </div>
@@ -9,7 +9,7 @@
     <%= form.hidden_field :q, value: params[:q] %>
     <%= form.select :sort_by,
         options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"], ["Low Price", "low_price"]], params[:sort_by]),
-        { prompt: "Select sorting option" },
+        { prompt: "選択してください" },
         { class: "form-control", onchange: 'this.form.submit();' } %>
   </div>
 <% end %>
