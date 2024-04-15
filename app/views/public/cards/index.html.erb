@@ -1,8 +1,18 @@
+<div class="row mt-1">
+  <div class="col-4">
 <h2>投稿一覧</h2>
+  </div>
+  <div class="col-6"></div>
+  <div class="col-2">
 <%= form_with url: public_cards_path, method: :get do |form| %>
-  <%= form.select :sort_by,
-      options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"], ["Low Price", "low_price"]], params[:sort_by]),
-      {prompt: "Sort by"}, {onchange: 'this.form.submit();'}
-  %>
+  <div class="form-group">
+    <%= form.hidden_field :q, value: params[:q] %>
+    <%= form.select :sort_by,
+        options_for_select([["Latest", "latest"], ["Oldest", "old"], ["High Price", "high_price"], ["Low Price", "low_price"]], params[:sort_by]),
+        { prompt: "選択してください" },
+        { class: "form-control", onchange: 'this.form.submit();' } %>
+  </div>
 <% end %>
+</div>
+</div>
 <%= render 'public/cards/index', cards: @cards %>

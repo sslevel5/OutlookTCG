@@ -1,20 +1,16 @@
 <div class="row">
   <% cards.each do |card| %>
-    <div class="text-center card-wrapper">
-      <%= link_to public_card_path(card), style: "text-decoration: none; color: black;" do %>
-        <div>
-          <%= image_tag url_for(card.image), height: 120 %>
-        </div>
-        <div>
-          <%= card.title %>
-        </div>
-        <div>
-          ￥<%= number_with_delimiter((card.price).ceil.to_i, delimiter: ',') %>
-        </div>
-        <div>
-          <%= card.created_at.strftime('%Y/%m/%d %H:%M') %>
-        </div>
-      <% end %>
+    <div class="col-md-2 mb-2">
+      <div class="card d-flex flex-column justify-content-center align-items-center">
+        <%= link_to public_card_path(card), style: "text-decoration: none; color: black;" do %>
+          <%= image_tag url_for(card.image), class: "card-img-top img-fluid", style: "width: 100%; height: 100px; object-fit:contain;", alt: card.title %>
+          <div class="card-body text-center">
+            <h6 class="card-title"><%= card.title %></h6>
+            <p class="card-text">￥<%= number_with_delimiter((card.price).ceil.to_i, delimiter: ',') %></p>
+            <p class="card-text"><small class="text-muted"><%= card.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

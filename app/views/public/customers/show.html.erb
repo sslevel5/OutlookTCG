@@ -1,41 +1,54 @@
-<h2><%= @customer.name %>のページ</h2>
-
-<h2 class="my-3">登録情報</h2>
-
-<%= image_tag @customer.get_profile_image, size: '100x100' %>
-<table>
-  <tr>
-    <th>ニックネーム</th>
-    <td><%= @customer.name %></td>
-  </tr>
-  <tr>
-    <th>自己紹介</th>
-    <td><%= @customer.introduction %></td>
-  </tr>
-  <% if current_customer == @customer %>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @customer.email %></td>
-    </tr>
-    <tr>
-      <td><%= link_to "トークルーム一覧", public_talk_rooms_path %></td>
-    </tr>
-  <% else %>
-    <tr>
-      <% if current_customer.already_messaged_with?(@customer)%>
-        <td><%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id) %></td>
-      <% else %>
-        <td><%= link_to "トークを始める", new_talk_rooms_path(@customer.id) %></td>
-      <%end %>
-    </tr>
-  <% end %>
-</table>
-<% if current_customer == @customer %>
-  <% if @customer.email != Customer::GUEST_USER_EMAIL %>
-    <%= link_to "編集", edit_public_customer_path(@customer), class: "btn btn-success", data: {"turbolinks"=>false} %>
-  <% else %>
-    <button type="button" class="btn btn-secondary">編集</button>
-  <% end %>
-<% end %>
-<h2>投稿一覧</h2>
-<%= render 'public/cards/index', cards: @customer.cards %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center mb-0"><%= @customer.name %>のページ</h2>
+        </div>
+        <div class="card-body">
+          <%= image_tag @customer.get_profile_image, size: '100x100', class: "rounded-circle mx-auto d-block mb-3" %>
+          <div class="profile-details">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">ニックネーム</h5>
+                <p class="card-text"><%= @customer.name %></p>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">自己紹介</h5>
+                <p class="card-text"><%= @customer.introduction %></p>
+              </div>
+            </div>
+            <% if current_customer == @customer %>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">メールアドレス</h5>
+                  <p class="card-text"><%= @customer.email %></p>
+                </div>
+              </div>
+              <div class="text-center mt-3">
+                <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-primary" %>
+                <% if @customer.email != Customer::GUEST_USER_EMAIL %>
+                  <%= link_to "編集", edit_public_customer_path(@customer), class: "btn btn-success ml-2" %>
+                <% else %>
+                  <button type="button" class="btn btn-secondary ml-2">編集</button>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="text-center mt-3">
+                <% if current_customer.already_messaged_with?(@customer)%>
+                  <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <h2>投稿一覧</h2>
+        <%= render 'public/cards/index', cards: @customer.cards %>
