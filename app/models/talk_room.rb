@@ -30,5 +30,11 @@ class TalkRoom < ApplicationRecord
       "Unknown"
     end
   end
-  
+
+  def last_message_with_sender
+    last_message = talk_room_messages.where(is_active: true).order(created_at: :desc).first
+    sender = last_message&.customer
+    { message: last_message, sender: sender }
+  end
+
 end

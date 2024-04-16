@@ -11,12 +11,6 @@ class Public::SessionsController < Devise::SessionsController
      root_path
   end
 
-  def new
-    @raritys = Rarity.all
-    @stores = Store.all
-    super
-  end
-
   private
 
   def redirect_if_admin_logged_in

@@ -11,6 +11,7 @@ ja:
         email: メールアドレス
         password: パスワード
         encrypted_password: 確認用パスワード
+        password_confirmation: パスワード(確認用)
       card:
         title: カード名
         body: カード概要

@@ -1,22 +1,14 @@
 <div class="container">
   <div class="row justify-content-center mt-5 mb-5">
     <div class="col-sm-9 col-md-7 col-lg-5 px-0">
-      <h3>レアリティ編集</h3>
-      <% if @rarity.errors.any? %>
-        <div class="alert alert-danger">
-          <%= @rarity.errors.count %>件のエラーが発生しました
-          <ul class="mb-0">
-            <% @rarity.errors.full_messages.each do |message| %>
-              <li><%= message.gsub("rarity", "レアリティ") %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
+      <h3 class="text-center mb-4">レアリティ編集</h3>
       <%= form_with url: admin_rarity_path, method: :patch, model: @rarity do |g| %>
 
       <div class="form-group">
       <%= g.text_field :name, class: 'form-control', placeholder: 'レアリティ' %>
+        <% if @rarity.errors.include?(:name) %>
+            <p style="color: red;"><%= @rarity.errors.full_messages_for(:name).first %></p>
+        <% end %>
       </div>
       <%= g.submit '保存', class: "btn btn-success btn-block" %>
       <% end %>
