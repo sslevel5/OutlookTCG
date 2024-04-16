@@ -2,8 +2,12 @@
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <%= form_with model: [@card, @card_comment], url: public_card_card_comments_path(@card), local: false do |f| %>
-    <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに", id: "comment_text" %>
-    <%= f.submit "送信する", class: 'btn btn-outline-secondary btn-sm' %>
+      <div class="input-group">
+        <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに", id: "comment_text" %>
+        <div class="input-group-append">
+          <%= f.submit "送信する", class: 'btn btn-outline-secondary btn-sm' %>
+        </div>
+      </div>
     <% end %>
   </div>
   <div class="col-md-2"></div>
