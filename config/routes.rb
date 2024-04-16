@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :customer do
     post "customers/guest_sign_in", to: "customers/sessions#guest_sign_in"
+    get '/customers', to: 'public/registrations#new'
   end
 
   post '/customers/sign_in', to: 'public/sessions#create'
