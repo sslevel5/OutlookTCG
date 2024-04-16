@@ -1,4 +1,4 @@
-<div class="navbar-nav ml-auto text-right">
+<div class="navbar-nav ml-auto text-center">
 
   <div class="navbar-nav">
     <div class="nav-item">
@@ -20,7 +20,7 @@
 
   <div class="mt-5"></div>
 
-  <div class="navbar-nav">
+  <div class="navbar-nav text-right">
   <% unless admin_signed_in? || customer_signed_in? %>
     <div class="nav-item">
       <%= link_to root_path, class: 'nav-link' do %>
@@ -112,7 +112,7 @@
   <!-- ログアウトリンクを追加 -->
     <% if admin_signed_in? %>
       <!-- 管理者ログイン時のログアウト -->
-      <div class="navbar-nav">
+      <div class="navbar-nav text-right">
         <div class="nav-item">
           <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
             <i class="fa-solid fa-right-from-bracket"></i> ログアウト
@@ -123,7 +123,7 @@
 
     <% if customer_signed_in? %>
       <!-- 顧客ログイン時のログアウト -->
-      <div class="navbar-nav">
+      <div class="navbar-nav text-right"">
         <div class="nav-item">
           <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
             <i class="fa-solid fa-right-from-bracket"></i> ログアウト
