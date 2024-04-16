@@ -1,24 +1,20 @@
 <div class="row">
   <% cards.each do |card| %>
-    <div class="text-center card-wrapper">
-      <%= link_to admin_card_path(card), style: "text-decoration: none; color: black;" do %>
-        <div>
-          <%= image_tag url_for(card.image), height: 120 %>
-        </div>
-        <div>
-          <%= card.title %>
-        </div>
-        <div>
-          <%= card.price %>
-        </div>
-        <div>
-         <% if card.is_active %>
-            <span class='text-success'>有効</span>
-          <% else %>
-            <span class='text-secondary'>無効</span>
-          <% end %>
-        </div>
-      <% end %>
+    <div class="col-md-3 mb-3">
+      <div class="card text-center">
+        <%= link_to admin_card_path(card), style: "text-decoration: none; color: black;" do %>
+          <%= image_tag url_for(card.image), class: "card-img-top img-fluid", style: "height: 120px; object-fit: contain;" %>
+          <div class="card-body">
+            <h6 class="card-title"><%= card.title %></h6>
+            <p class="card-text">￥<%= number_with_delimiter((card.price).ceil.to_i, delimiter: ',') %></p>
+            <% if card.is_active %>
+              <span class="text-success">有効</span>
+            <% else %>
+              <span class="text-secondary">無効</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

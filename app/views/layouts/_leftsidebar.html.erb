@@ -24,27 +24,27 @@
   <% unless admin_signed_in? || customer_signed_in? %>
     <div class="nav-item">
       <%= link_to root_path, class: 'nav-link' do %>
-        トップ
+        <i class="fa-regular fa-note-sticky"></i> トップ
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to new_customer_registration_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-user-plus"></i>新規登録
+        <i class="fa-solid fa-user-plus"></i> 新規登録
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to new_customer_session_path, class: 'nav-link' do %>
-        ログイン
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to public_cards_path, class: 'nav-link' do %>
-        投稿一覧
+        <i class="fa-regular fa-clone"></i> 投稿一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to about_path, class: 'nav-link' do %>
-        About
+        <i class="fa-solid fa-at"></i> About
       <% end %>
     </div>
   <% end %>
@@ -52,27 +52,27 @@
   <% if admin_signed_in? %>
     <div class="nav-item">
       <%= link_to admin_cards_path, class: 'nav-link' do %>
-        投稿 一覧
+        <i class="fa-regular fa-clone"></i> 投稿 一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to admin_customers_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-users"></i>ユーザー 一覧
+        <i class="fa-solid fa-users"></i> ユーザー 一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to admin_raritys_path, class: 'nav-link' do %>
-        レアリティ 一覧
+        <i class="fa-regular fa-star"></i> レアリティ 一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to admin_stores_path, class: 'nav-link' do %>
-        店舗 一覧
+        <i class="fa-solid fa-shop"></i> 店舗 一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to admin_talk_rooms_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-envelope"></i>トーク 一覧
+        <i class="fa-regular fa-envelope"></i> トーク 一覧
       <% end %>
     </div>
   <% end %>
@@ -80,27 +80,27 @@
   <% if customer_signed_in? %>
     <div class="nav-item">
       <%= link_to home_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-house"></i>ホーム
+        <i class="fa-solid fa-house"></i> ホーム
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to new_public_card_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-        <i class="fa-solid fa-up-right-from-square"></i>新規投稿
+        <i class="fa-solid fa-up-right-from-square"></i> 新規投稿
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to public_cards_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-clone"></i>投稿 一覧
+        <i class="fa-regular fa-clone"></i> 投稿 一覧
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to public_customer_path(current_customer), class: 'nav-link' do %>
-        <i class="fa-regular fa-user"></i>プロフィール
+        <i class="fa-regular fa-user"></i> プロフィール
       <% end %>
     </div>
     <div class="nav-item">
       <%= link_to public_talk_rooms_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-envelope"></i>トーク 一覧
+        <i class="fa-regular fa-envelope"></i> トーク 一覧
       <% end %>
     </div>
   <% end %>
@@ -115,7 +115,7 @@
       <div class="navbar-nav">
         <div class="nav-item">
           <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
-            <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+            <i class="fa-solid fa-right-from-bracket"></i> ログアウト
           <% end %>
         </div>
       </div>
@@ -126,7 +126,7 @@
       <div class="navbar-nav">
         <div class="nav-item">
           <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
-            <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+            <i class="fa-solid fa-right-from-bracket"></i> ログアウト
           <% end %>
         </div>
       </div>
@@ -153,5 +153,9 @@
 
   .navbar-nav .nav-link:hover {
     color: #007bff; /* マウスオーバー時のテキスト色 */
+  }
+
+  .nav-link{
+    font-size: 14px;
   }
 </style>
