@@ -27,7 +27,8 @@ class Public::TalkRoomsController < ApplicationController
     @stores = Store.all
     @customer = current_customer
     @against_customer = Customer.find(params[:against_customer_id])
-    @talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: @against_customer.id) || TalkRoom.find_by(sender_id: @against_customer.id, recipient_id: current_customer.id)
+    #talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: @against_customer.id) || TalkRoom.find_by(sender_id: @against_customer.id, recipient_id: current_customer.id)
+    @talk_room = TalkRoom.find(params[:id])
   end
 
   def senders
