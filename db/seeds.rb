@@ -139,3 +139,15 @@ Card.find_or_create_by!(
   # カードに画像を添付する
   card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜UR.png')), filename: 'すごい竜UR.png')
 end
+
+Card.find_or_create_by!(
+  title: "破壊的な斧",
+  body: "環境カード",
+  price: 200,
+  rarity_id: Rarity.find_by(name: "C").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '破壊的な斧.png')), filename: '破壊的な斧.png')
+end
