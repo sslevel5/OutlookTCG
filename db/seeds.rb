@@ -6,10 +6,10 @@
 #   movies = Movie.find_or_create_by!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.find_or_create_by!(name: 'Luke', movie: movies.first)
 
-Admin.find_or_find_or_create_by!_by!(
-   email: 'tcg@tcg',
-   password: 'tcgtcg'
-)
+Admin.find_or_create_by!(email: 'tcg@tcg') do |admin|
+  admin.password = 'tcgtcg'
+  admin.password_confirmation = 'tcgtcg'
+end
 
 # レアリティ
 Rarity.find_or_create_by!(name: "C")
@@ -32,45 +32,53 @@ Store.find_or_create_by!(name: "老舗カード")
 
 Customer.find_or_create_by!(
   email: "aaa@aaa",
-  password: "aaaaaa",
-  name: "User 1",
-)
+  name: "User 1"
+) do |customer|
+  customer.password = "aaaaaa"
+  customer.password_confirmation = "aaaaaa"
+end
 
 Customer.find_or_create_by!(
   email: "bbb@bbb",
-  password: "bbbbbb",
-  name: "User 2",
-)
+  name: "User 2"
+) do |customer|
+  customer.password = "bbbbbb"
+  customer.password_confirmation = "bbbbbb"
+end
 
 Customer.find_or_create_by!(
   email: "ccc@ccc",
-  password: "cccccc",
-  name: "User 3",
-)
+  name: "User 3"
+) do |customer|
+  customer.password = "cccccc"
+  customer.password_confirmation = "cccccc"
+end
 
 Customer.find_or_create_by!(
   email: "ddd@ddd",
-  password: "dddddd",
-  name: "User 4",
-)
-
-Customer.find_or_create_by!(
-  email: "eee@eee",
-  password: "eeeeee",
-  name: "User 5",
-)
+  name: "User 4"
+) do |customer|
+  customer.password = "dddddd"
+  customer.password_confirmation = "dddddd"
+end
 
 Customer.find_or_create_by!(
   email: "fff@fff",
-  password: "ffffff",
-  name: "User 6",
-)
+  name: "User 5"
+) do |customer|
+  customer.password = "ffffff"
+  customer.password_confirmation = "ffffff"
+end
 
 Customer.find_or_create_by!(
-  email: "ggg@ggg",
-  password: "gggggg",
-  name: "User 7",
-)
+  email: "eee@eee",
+  name: "User 6"
+) do |customer|
+  customer.password = "eeeeee"
+  customer.password_confirmation = "eeeeee"
+end
+
+
 
 Card.find_or_create_by!(
   title: "つるぎ",
@@ -118,4 +126,16 @@ Card.find_or_create_by!(
 ) do |card|
   # カードに画像を添付する
   card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 4000,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜UR.png')), filename: 'すごい竜UR.png')
 end
