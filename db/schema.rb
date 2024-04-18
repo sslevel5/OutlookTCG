@@ -82,6 +82,9 @@ ActiveRecord::Schema.define(version: 2024_04_12_111923) do
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "title", null: false
+    t.text "message", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
