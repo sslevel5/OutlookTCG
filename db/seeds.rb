@@ -1,73 +1,225 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the bin/rails db:seed command (or find_or_create_by!d alongside the database with db:setup).
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.find_or_create_by!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.find_or_create_by!(name: 'Luke', movie: movies.first)
 
-Admin.create!(
-   email: 'tcg@tcg',
-   password: 'tcgtcg'
-)
+Admin.find_or_create_by!(email: 'tcg@tcg') do |admin|
+  admin.password = 'tcgtcg'
+  admin.password_confirmation = 'tcgtcg'
+end
 
 # レアリティ
-Rarity.create(name: "C")
-Rarity.create(name: "UC")
-Rarity.create(name: "R")
-Rarity.create(name: "AR")
-Rarity.create(name: "RR")
-Rarity.create(name: "RRR")
-Rarity.create(name: "SR")
-Rarity.create(name: "SAR")
-Rarity.create(name: "HR")
-Rarity.create(name: "UR")
+Rarity.find_or_create_by!(name: "C")
+Rarity.find_or_create_by!(name: "UC")
+Rarity.find_or_create_by!(name: "R")
+Rarity.find_or_create_by!(name: "AR")
+Rarity.find_or_create_by!(name: "RR")
+Rarity.find_or_create_by!(name: "RRR")
+Rarity.find_or_create_by!(name: "SR")
+Rarity.find_or_create_by!(name: "SAR")
+Rarity.find_or_create_by!(name: "HR")
+Rarity.find_or_create_by!(name: "UR")
 
 # 店舗名
-Store.create(name: "ポンジョー")
-Store.create(name: "晴れてるね")
-Store.create(name: "カードいっぱい")
-Store.create(name: "ドラゴンテール")
-Store.create(name: "老舗カード")
+Store.find_or_create_by!(name: "ポンジョー")
+Store.find_or_create_by!(name: "晴れてるね")
+Store.find_or_create_by!(name: "カードいっぱい")
+Store.find_or_create_by!(name: "ドラゴンテール")
+Store.find_or_create_by!(name: "老舗カード")
 
-Customer.create(
+Customer.find_or_create_by!(
   email: "aaa@aaa",
-  password: "aaaaaa",
-  name: "User 1",
-)
+  name: "User 1"
+) do |customer|
+  customer.password = "aaaaaa"
+  customer.password_confirmation = "aaaaaa"
+end
 
-Customer.create(
+Customer.find_or_create_by!(
   email: "bbb@bbb",
-  password: "bbbbbb",
-  name: "User 2",
-)
+  name: "User 2"
+) do |customer|
+  customer.password = "bbbbbb"
+  customer.password_confirmation = "bbbbbb"
+end
 
-Customer.create(
+Customer.find_or_create_by!(
   email: "ccc@ccc",
-  password: "cccccc",
-  name: "User 3",
-)
+  name: "User 3"
+) do |customer|
+  customer.password = "cccccc"
+  customer.password_confirmation = "cccccc"
+end
 
-Customer.create(
+Customer.find_or_create_by!(
   email: "ddd@ddd",
-  password: "dddddd",
-  name: "User 4",
-)
+  name: "User 4"
+) do |customer|
+  customer.password = "dddddd"
+  customer.password_confirmation = "dddddd"
+end
 
-Customer.create(
-  email: "eee@eee",
-  password: "eeeeee",
-  name: "User 5",
-)
-
-Customer.create(
+Customer.find_or_create_by!(
   email: "fff@fff",
-  password: "ffffff",
-  name: "User 6",
-)
+  name: "User 5"
+) do |customer|
+  customer.password = "ffffff"
+  customer.password_confirmation = "ffffff"
+end
 
-Customer.create(
-  email: "ggg@ggg",
-  password: "gggggg",
-  name: "User 7",
-)
+Customer.find_or_create_by!(
+  email: "eee@eee",
+  name: "User 6"
+) do |customer|
+  customer.password = "eeeeee"
+  customer.password_confirmation = "eeeeee"
+end
+
+
+
+Card.find_or_create_by!(
+  title: "つるぎ",
+  body: "デッキに1枚は欲しい",
+  price: 100,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'つるぎ.png')), filename: 'つるぎ.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 500,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 700,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "老舗カード").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 400,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 4000,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜UR.png')), filename: 'すごい竜UR.png')
+end
+
+Card.find_or_create_by!(
+  title: "破壊的な斧",
+  body: "環境カード",
+  price: 200,
+  rarity_id: Rarity.find_by(name: "C").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '破壊的な斧.png')), filename: '破壊的な斧.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "やすくない！？",
+  price: 100,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "デッキに1枚は欲しい",
+  price: 170,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "ccc@ccc").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "PSA10!",
+  price: 27000,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "晴れてるね").id,
+  customer_id: Customer.find_by(email: "ccc@ccc").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜ローダー.png')), filename: 'すごい竜ローダー.png')
+end
+
+Card.find_or_create_by!(
+  title: "古の竜",
+  body: "デッキに1枚は欲しい",
+  price: 100,
+  rarity_id: Rarity.find_by(name: "RR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '古の竜.png')), filename: '古の竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "デッキに1枚は欲しい",
+  price: 170,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "ddd@ddd").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "破壊的な斧",
+  body: "環境カード",
+  price: 400,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "fff@fff").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '破壊的な斧.png')), filename: '破壊的な斧.png')
+end
