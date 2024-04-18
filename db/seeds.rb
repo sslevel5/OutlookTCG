@@ -213,7 +213,7 @@ Card.find_or_create_by!(
 end
 
 Card.find_or_create_by!(
-  title: "すごい竜",
+  title: "破壊的な斧",
   body: "環境カード",
   price: 400,
   rarity_id: Rarity.find_by(name: "R").id,
