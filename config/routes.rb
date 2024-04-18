@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     end
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
+    resources :contacts, only: [:new, :index, :show, :create] do
+      post 'confirm', on: :collection
+      get 'sent', on: :collection
+    end
   end
 
   namespace :admin do
