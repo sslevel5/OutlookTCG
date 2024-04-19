@@ -1,0 +1,6 @@
+<%= form_with(model: @contact, url: confirm_send_contacts_path, method: :post) do |form| %>
+  <p><strong>件名:</strong> <%= @contact.title %></p>
+  <p><strong>メッセージ:</strong> <%= @contact.message %></p>
+
+  <%= form.submit "送信する" %>
+<% end %>

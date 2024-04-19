@@ -12,15 +12,18 @@ class Public::ContactsController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     @contact = Contact.new(contact_params)
-    render :confim
   end
 
   def create
     @raritys = Rarity.all
     @stores = Store.all
     @contact = Contact.new(contact_params)
-    @contact.save
-    redirect_to home_path
+    @contact = Contact.new(contact_params)
+    if @contact.save
+      redirect_to confirm_contacts_path(contact: @contact)
+    else
+      render :new
+    end
   end
 
   def index
@@ -35,16 +38,21 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
 
-  def sent
-    @raritys = Rarity.all
-    @stores = Store.all
+  def confirm_send
+    @contact = Contact.new(contact_params)
+    if @contact.save
+      # ここで管理者にメール送信等の処理を行う
+      redirect_to completed_contacts_path
+    else
+      render :confirm
+    end
   end
 
 
   private
 
   def contact_params
-    params.require(:contact).permit(:customer_id, :title, :message, :is_active)
+    params.require(:contact).permit(:title, :message, :is_active)
   end
 
   # def correct_customer
