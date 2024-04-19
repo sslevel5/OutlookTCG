@@ -19,9 +19,9 @@ class Public::ContactsController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     @contact = Contact.new(contact_params)
-    @contact.customer_id = current_user.id
-    if @contact.save
-      redirect_to root_path
+    @contact.customer_id = current_customer.id
+    if @contact.valid?
+      render public_contact_confirm_send_path
     else
       render :new
     end
@@ -40,20 +40,15 @@ class Public::ContactsController < ApplicationController
   end
 
   def confirm_send
-    @contact = Contact.new(contact_params)
-    if @contact.save
-      # ここで管理者にメール送信等の処理を行う
-      redirect_to completed_contacts_path
-    else
-      render :confirm
-    end
+    @raritys = Rarity.all
+    @stores = Store.all
   end
 
 
   private
 
   def contact_params
-    params.require(:contact).permit(:customer_id, :title, :message, :is_active)
+    params.require(:contact).permit(:title, :message)
   end
 
   # def correct_customer
