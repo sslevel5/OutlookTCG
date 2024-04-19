@@ -1,0 +1,7 @@
+<h3>お問い合わせ一覧</h3>
+      <%= link_to new_public_contact_path, class: 'nav-link' do %>
+        <i class="fa-regular fa-envelope"></i> お問い合わせ
+      <% end %>
+<% @contacts.each do |contact| %>
+  <p><%= contact.title %></p>
+<% end %>

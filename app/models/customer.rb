@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :card_comments
   has_many :favorites, dependent: :destroy
   has_many :talk_rooms
+  has_many :customers
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'

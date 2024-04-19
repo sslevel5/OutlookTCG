@@ -1,0 +1,14 @@
+<%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
+  <!-- お問い合わせ内容の確認を表示 -->
+  <h2>お問い合わせ内容の確認</h2>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :message %>
+  <p><strong>タイトル:</strong> <%= @contact.title %></p>
+  <p><strong>メッセージ:</strong> <%= @contact.message %></p>
+
+  <!-- 修正リンク -->
+  <%= link_to '修正する', new_public_contact_path %>
+
+  <!-- 送信ボタン -->
+  <%= form.submit '送信する' %>
+<% end %>
