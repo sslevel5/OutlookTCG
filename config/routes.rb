@@ -37,8 +37,9 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
     resources :contacts, only: [:new, :index, :show, :create] do
-      post 'confirm', on: :collection
-      get 'confirm_send', on: :collection
+    post 'confirm', on: :collection
+    post 'back', on: :collection
+    post 'confirm_send', on: :collection
     end
   end
 

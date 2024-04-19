@@ -12,15 +12,16 @@ class Public::ContactsController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
     @contact = Contact.new(contact_params)
+    render :confirm
   end
 
   def create
     @raritys = Rarity.all
     @stores = Store.all
     @contact = Contact.new(contact_params)
-    @contact = Contact.new(contact_params)
+    @contact.customer_id = current_user.id
     if @contact.save
-      redirect_to confirm_contacts_path(contact: @contact)
+      redirect_to root_path
     else
       render :new
     end
@@ -52,7 +53,7 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:title, :message, :is_active)
+    params.require(:contact).permit(:customer_id, :title, :message, :is_active)
   end
 
   # def correct_customer

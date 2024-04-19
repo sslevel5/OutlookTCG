@@ -1,9 +1,31 @@
-<%= form_with(model: @contact, url: public_confirm_contact_path, method: :post) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
+<%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-  <%= form.label :message %>
-  <%= form.text_area :message %>
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= form.submit "送信" %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+  </div>
+
+  <!-- 隠しフィールド -->
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :message %>
+
+  <div class="actions">
+    <%= form.submit "確認する" %>
+  </div>
 <% end %>
