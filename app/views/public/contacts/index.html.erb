@@ -3,5 +3,7 @@
         <i class="fa-regular fa-envelope"></i> お問い合わせ
       <% end %>
 <% @contacts.each do |contact| %>
-  <p><%= contact.title %></p>
+  <%= link_to public_contact_path(contact) do %>
+    <p><%= contact.title %></p>
+  <% end %>
 <% end %>
