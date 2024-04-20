@@ -1,27 +1,31 @@
-<%= form_with(model: @contact, url: confirm_public_contacts_path(@contact), method: :post) do |form| %>
+<%= form_with(model: @contact, url: confirm_public_contacts_path(@contact), method: :post, class: 'needs-validation', novalidate: true) do |form| %>
   <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">エラーが発生しました！</h4>
+      <p>以下の問題を解決してください：</p>
       <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
+    <div class="invalid-feedback">
+      タイトルを入力してください。
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
+  <div class="mb-3">
+    <%= form.label :message, class: 'form-label' %>
+    <%= form.text_area :message, class: 'form-control', required: true, rows: 5 %>
+    <div class="invalid-feedback">
+      メッセージを入力してください。
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit "確認する" %>
-  </div>
+  <%= form.submit "確認", class: 'btn btn-primary' %>
 <% end %>

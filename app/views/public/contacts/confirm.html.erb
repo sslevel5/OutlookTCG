@@ -1,14 +1,28 @@
 <%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
-  <!-- お問い合わせ内容の確認を表示 -->
-  <h2>お問い合わせ内容の確認</h2>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :message %>
-  <p><strong>タイトル:</strong> <%= @contact.title %></p>
-  <p><strong>メッセージ:</strong> <%= @contact.message %></p>
+  <div class="container">
+    <!-- お問い合わせ内容の確認を表示 -->
+    <div class="card border-primary shadow">
+      <div class="card-header bg-primary text-white">
+        <h2 class="card-title mb-0">お問い合わせ内容の確認</h2>
+      </div>
+      <div class="card-body">
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :message %>
+        <div class="mb-3">
+          <label class="form-label"><strong>タイトル:</strong></label>
+          <p class="form-control-static"><%= @contact.title %></p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>メッセージ:</strong></label>
+          <p class="form-control-static"><%= @contact.message %></p>
+        </div>
+      </div>
+    </div>
 
-  <!-- 修正リンク -->
-  <%= link_to '修正する', new_public_contact_path %>
+    <!-- 修正リンク -->
+    <%= link_to '修正する', new_public_contact_path, class: 'btn btn-outline-primary mt-3 me-2' %>
 
-  <!-- 送信ボタン -->
-  <%= form.submit '送信する' %>
+    <!-- 送信ボタン -->
+    <%= form.submit '送信する', class: 'btn btn-primary mt-3' %>
+  </div>
 <% end %>
