@@ -1,35 +1,58 @@
-<%= form_with(model: @contact, url: admin_contact_path(@contact), method: :patch) do |form| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title mb-0">お問い合わせ対応</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: @contact, url: admin_contact_path(@contact), method: :patch, class: 'needs-validation', novalidate: true) do |form| %>
+            <% if @contact.errors.any? %>
+              <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">エラーが発生しました！</h4>
+                <p>以下の問題を解決してください：</p>
+                <ul>
+                  <% @contact.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <div class="mb-3">
+              <%= form.label :title, class: 'form-label' %>
+              <%= form.text_field :title, class: 'form-control', required: true %>
+              <div class="invalid-feedback">
+                タイトルを入力してください。
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :message, class: 'form-label' %>
+              <%= form.text_area :message, class: 'form-control', required: true, rows: 5 %>
+              <div class="invalid-feedback">
+                メッセージを入力してください。
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label d-block">対応状況:</label>
+              <div class="form-check form-check-inline">
+                <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'is_active_true' %>
+                <%= form.label :is_active_true, '未対応', class: 'form-check-label', for: 'is_active_true' %>
+              </div>
+              <div class="form-check form-check-inline">
+                <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'is_active_false' %>
+                <%= form.label :is_active_false, '対応済', class: 'form-check-label', for: 'is_active_false' %>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <%= form.submit "保存する", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
-  </div>
-
-  <div>
-
-      <%= form.radio_button :is_active, true, { checked: @contact.is_active, class: 'form-check-input' } %> 未対応
-
-      <%= form.radio_button :is_active, false, { checked: !@contact.is_active, class: 'form-check-input' } %> 対応済
-    </label>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "保存する" %>
-  </div>
-<% end %>
+</div>
