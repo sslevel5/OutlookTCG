@@ -1,4 +1,4 @@
-<%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
+<%= form_with(model: @contact, url: confirm_public_contacts_path(@contact), method: :post) do |form| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>

@@ -21,10 +21,17 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.valid?
+      @contact.save
       redirect_to confirm_send_public_contacts_path
     else
       render :new
     end
+  end
+
+  def confirm_send
+    @raritys = Rarity.all
+    @stores = Store.all
+    @contact = Contact.last
   end
 
   def index
@@ -38,13 +45,6 @@ class Public::ContactsController < ApplicationController
     @stores = Store.all
     @contact = Contact.find(params[:id])
   end
-
-  def confirm_send
-    @raritys = Rarity.all
-    @stores = Store.all
-    
-  end
-
 
   private
 
