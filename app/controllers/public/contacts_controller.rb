@@ -21,7 +21,7 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.valid?
-      render public_contact_confirm_send_path
+      redirect_to confirm_send_public_contacts_path
     else
       render :new
     end
@@ -42,6 +42,7 @@ class Public::ContactsController < ApplicationController
   def confirm_send
     @raritys = Rarity.all
     @stores = Store.all
+    
   end
 
 
