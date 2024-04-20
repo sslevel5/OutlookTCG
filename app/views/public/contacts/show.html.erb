@@ -6,6 +6,12 @@
   <div>内容</div>
   <div><%= @contact.message %></div>
   <div>対応状況</div>
-  <div><%= @contact.is_active %></div>
+  <div>
+    <% if @contact.is_active %>
+      <span class="text-success">未対応</span>
+    <% else %>
+      <span class="text-secondary">対応済</span>
+    <% end %>
+  </div>
 
 </div>

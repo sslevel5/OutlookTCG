@@ -4,6 +4,6 @@
       <% end %>
 <% @contacts.each do |contact| %>
   <%= link_to admin_contact_path(contact) do %>
-    <p><%= contact.title %></p>
+    <p><%= contact.customer.name %>:<%= contact.title %></p>
   <% end %>
 <% end %>
