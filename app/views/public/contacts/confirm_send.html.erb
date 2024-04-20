@@ -1,5 +1,22 @@
-<h2>お問い合わせ完了</h2>
-<p>お問い合わせありがとうございます。担当者より連絡させていただきます。</p>
-
-<p><strong>タイトル:</strong> <%= @contact.title %></p>
-<p><strong>メッセージ:</strong> <%= @contact.message %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <div class="card border-success shadow">
+        <div class="card-header bg-success text-white">
+          <h2 class="card-title mb-0">お問い合わせ完了</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">お問い合わせありがとうございます。担当者より連絡させていただきます。</p>
+          <div class="mb-3">
+            <label class="form-label"><strong>タイトル:</strong></label>
+            <p class="form-control-static"><%= @contact.title %></p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><strong>メッセージ:</strong></label>
+            <p class="form-control-static"><%= @contact.message %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

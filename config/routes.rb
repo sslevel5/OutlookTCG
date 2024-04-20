@@ -58,5 +58,6 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create]
     get 'homes/top', to: 'homes#top'
     get 'homes/home', to: 'homes#home'
+    resources :contacts, only: [:index, :show, :edit, :update]
   end
 end
