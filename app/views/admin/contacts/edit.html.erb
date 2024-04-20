@@ -1,0 +1,35 @@
+<%= form_with(model: @contact, url: admin_contact_path(@contact), method: :patch) do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+  </div>
+
+  <div>
+
+      <%= form.radio_button :is_active, true, { checked: @contact.is_active, class: 'form-check-input' } %> 有効
+
+      <%= form.radio_button :is_active, false, { checked: !@contact.is_active, class: 'form-check-input' } %> 無効
+    </label>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存する" %>
+  </div>
+<% end %>

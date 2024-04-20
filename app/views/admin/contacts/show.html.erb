@@ -1,0 +1,22 @@
+<h2>お問い合わせ詳細</h2>
+<div>
+
+  <div>件名</div>
+  <div><%= @contact.title %></div>
+  <div>内容</div>
+  <div><%= @contact.message %></div>
+  <div>対応状況</div>
+  <div>
+    <% if @contact.is_active %>
+      <span class="text-success">有効</span>
+    <% else %>
+      <span class="text-secondary">無効</span>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to edit_admin_contact_path(@contact) do %>
+      対応
+    <% end %>
+  </div>
+
+</div>
