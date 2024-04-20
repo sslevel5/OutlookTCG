@@ -37,7 +37,8 @@ class Public::ContactsController < ApplicationController
   def index
     @raritys = Rarity.all
     @stores = Store.all
-    @contacts = Contact.all
+    @customer = current_customer
+    @contacts = current_customer.contacts
   end
 
   def show
