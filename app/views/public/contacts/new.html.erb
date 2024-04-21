@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-6">
-      <div class="card border-secondary shadow">
-        <div class="card-header bg-secondary text-white">
+      <div class="card shadow">
+        <div class="card-header text-white" style="background-color: #A9A9A9;">
           <h2 class="card-title mb-0">お問い合わせ対応</h2>
         </div>
         <div class="card-body">
@@ -20,7 +20,7 @@
             <% end %>
 
             <div class="mb-3">
-              <%= form.label :title, class: 'form-label' %>
+              <label class="form-label"><strong>【件名】</strong></label>
               <%= form.text_field :title, class: 'form-control', required: true %>
               <div class="invalid-feedback">
                 タイトルを入力してください。
@@ -28,7 +28,7 @@
             </div>
 
             <div class="mb-3">
-              <%= form.label :message, class: 'form-label' %>
+              <label class="form-label"><strong>【内容】</strong></label>
               <%= form.text_area :message, class: 'form-control', required: true, rows: 5 %>
               <div class="invalid-feedback">
                 メッセージを入力してください。
