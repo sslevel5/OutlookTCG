@@ -1,3 +1,11 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .image-resize {
   max-width: 100%;
   height: auto;
@@ -41,4 +49,14 @@
 .notice-text {
   background-color: #bcdfff;
   color: #0067C0;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+#back img {
+  width: 50px;
 }
