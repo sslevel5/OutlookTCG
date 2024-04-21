@@ -1,8 +1,8 @@
 <%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
-  <div class="container">
+  <div class="container mt-5">
     <!-- お問い合わせ内容の確認を表示 -->
-    <div class="card border-primary shadow">
-      <div class="card-header bg-primary text-white">
+    <div class="card border-secondary shadow">
+      <div class="card-header bg-secondary text-white">
         <h2 class="card-title mb-0">お問い合わせ内容の確認</h2>
       </div>
       <div class="card-body">
@@ -20,9 +20,9 @@
     </div>
 
     <!-- 修正リンク -->
-    <%= link_to '修正する', new_public_contact_path, class: 'btn btn-outline-primary mt-3 me-2' %>
+    <%= link_to '修正する', new_public_contact_path, class: 'btn btn-outline-secondary mt-3 me-2' %>
 
     <!-- 送信ボタン -->
-    <%= form.submit '送信する', class: 'btn btn-primary mt-3' %>
+    <%= form.submit '送信する', class: 'btn btn-secondary mt-3' %>
   </div>
 <% end %>
