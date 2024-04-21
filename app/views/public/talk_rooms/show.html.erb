@@ -3,10 +3,10 @@
     <div class="col-lg-8">
       <div class="row justify-content-between">
         <div class="col-5">
-        <h3><%= @against_customer.name %> とのDM</h3>
+          <h3><%= @against_customer.name %> とのDM</h3>
         </div>
         <div class="col-2 text-right">
-        <%= link_to "戻る", public_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' %>
+          <%= link_to "戻る", public_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' %>
         </div>
       </div>
 
@@ -14,7 +14,7 @@
         <% @talk_room.talk_room_messages.each do |message| %>
           <% if message.is_active %>
             <div class="media mb-3">
-              <div class="media-body">
+              <div class="media-body" >
                 <div class="bg-light p-3 rounded">
                   <div class="d-flex align-items-center">
                     <strong><%= message.customer.name %></strong>
@@ -44,20 +44,20 @@
         <div class="mb-5">
           <p>　</p>
         </div>
-
       </div>
-    <div class="row">
-    <div class="col-5 offset-3 fixed-bottom">
-      <%= form_with(model: [@talk_room, @talk_room.talk_room_messages.build], url: public_talk_room_talk_room_messages_path(@talk_room), local: true, html: { class: "mb-3" }) do |form| %>
-        <div class="input-group">
-          <%= form.text_area :message, placeholder: "メッセージを入力してください", class: "form-control" %>
-          <div class="input-group-append">
-            <%= form.submit "送信", class: "btn btn-primary" %>
-          </div>
+
+      <div class="row">
+        <div class="col-5 offset-3 fixed-bottom">
+          <%= form_with(model: [@talk_room, @talk_room.talk_room_messages.build], url: public_talk_room_talk_room_messages_path(@talk_room), local: true, html: { class: "mb-3" }) do |form| %>
+            <div class="input-group">
+              <%= form.text_area :message, placeholder: "メッセージを入力してください", class: "form-control" %>
+              <div class="input-group-append">
+                <%= form.submit "送信", class: "btn btn-outline-secondary" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
