@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card border-primary shadow">
-        <div class="card-header bg-primary text-white">
-          <h2 class="card-title mb-0">お問い合わせ詳細</h2>
+    <div class="col-lg-6">
+      <div class="card shadow">
+        <div class="card-header text-white" style="background-color: #A9A9A9;">
+          <h5 class="card-title mb-0">お問い合わせ詳細</h2>
         </div>
         <div class="card-body">
           <div class="mb-3">
@@ -15,7 +15,7 @@
             <p class="form-control-static"><%= @contact.message %></p>
           </div>
           <div class="mb-3">
-            <label class="form-label"><strong>対応状況:</strong></label>
+            <label class="form-label"><strong>【対応状況】</strong></label>
             <% if @contact.is_active %>
               <span class="badge bg-success">未対応</span>
             <% else %>
