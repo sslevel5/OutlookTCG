@@ -11,14 +11,8 @@
       </div>
 
       <div id="messages">
-        <% @talk_room.talk_room_messages.each do |message| %>
-          <% if message.is_active %>
-            <%= render partial: 'comment', locals: { message: message } %>
-          <% end %>
-        <% end %>
-        <div class="mb-5">
-          <p>　</p>
-        </div>
+          <%= render partial: 'comment', locals: { talk_room: @talk_room } %>
+
       </div>
 
       <div class="row">

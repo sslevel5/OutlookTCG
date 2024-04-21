@@ -1,0 +1,5 @@
+$("#messages").html("<%= j(render 'public/talk_rooms/comment', talk_room: @talk_room) %>");
+$('#comment_message').val("");
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+window.scroll(0, bottom);

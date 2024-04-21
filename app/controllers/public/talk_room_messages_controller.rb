@@ -9,7 +9,7 @@ class Public::TalkRoomMessagesController < ApplicationController
     @message.customer = current_customer
     against_customer_id = @talk_room.sending?(current_customer) ? @talk_room.recipient_id : @talk_room.sender_id
     @message.save
-    redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
+    #redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
   end
 
   def update
