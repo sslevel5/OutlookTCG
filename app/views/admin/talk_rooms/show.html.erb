@@ -1,11 +1,19 @@
-<%= link_to "トークルーム一覧", admin_talk_rooms_path %>
-
-<h2><%= @talk_room.sender.name %> と<%= @talk_room.recipient.name %>のDM</h2>
-
-
-
-
 <div class="container">
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-8">
+
+
+
+      <div class="row justify-content-between">
+        <div class="col-10">
+        <h3><%= @talk_room.sender.name %> と<%= @talk_room.recipient.name %>のDM</h3>
+        </div>
+        <div class="col-2 text-right">
+        <%= link_to "戻る", admin_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' %>
+        </div>
+      </div>
+
+
   <div id="messages">
     <% @talk_room.talk_room_messages.each do |message| %>
         <div class="media mb-3">
@@ -34,3 +42,6 @@
         </div>
     <% end %>
   </div>
+  </div>
+</div>
+</div>
