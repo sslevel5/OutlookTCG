@@ -1,19 +1,21 @@
 <div class="m-1">
-<h2>トークルーム一覧</h2>
-<div class="row mt-1">
-<% @talk_rooms.each do |talk_room| %>
-  <div class="col-4">
-    <div class="card mb-3">
-      <div class="card-header text-white" style="background-color: #A9A9A9;">
-        <h5 class="card-title mb-0">Talk Room</h5>
+  <h2>トークルーム一覧</h2>
+  <div class="row mt-1">
+  <% @talk_rooms.each do |talk_room| %>
+    <div class="col-2 ">
+      <div class="card mb-3">
+        <div class="card-header text-white" style="background-color: #A9A9A9;">
+          <h5 class="card-title mb-0">Talk Room</h5>
+        </div>
+          <% against_customer_id = talk_room.sending?(talk_room.sender) ? talk_room.recipient_id : talk_room.sender_id %>
+          <%= link_to admin_talk_room_path(id: talk_room.id, against_customer_id: against_customer_id), onmouseover: "this.style.textDecoration='none';", style: "color: black;" do %>
+        <div class="card-body">
+          <p class="card-text"><%= talk_room.sender.name %>と<%= talk_room.recipient.name %></p>
+        </div>
       </div>
-      <div class="card-body">
-        <p class="card-text"><%= talk_room.sender.name %>と<%= talk_room.recipient.name %></p>
-        <% against_customer_id = talk_room.sending?(talk_room.sender) ? talk_room.recipient_id : talk_room.sender_id %>
-        <%= link_to "View Talk Room", admin_talk_room_path(id: talk_room.id, against_customer_id: against_customer_id), class: "btn btn-outline-primary" %>
-      </div>
+            <% end %>
     </div>
+  <% end %>
   </div>
-<% end %>
 </div>
-</div>
+
