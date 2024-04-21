@@ -11,8 +11,6 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<link rel="stylesheet" href="/assets/app.css">-->
     <%= stylesheet_link_tag 'app' %>
-    <%= javascript_include_tag 'jquery.min' %>
-    <%= javascript_include_tag 'script' %>
   </head>
 
 <div class="container-fluid">
@@ -28,11 +26,6 @@
     <!-- Content -->
     <div class="col-lg-9 offset-lg-1" style="background-color: #DCDCDC; min-height: 100vh;">
       <%= yield %>
-          <span id="back">
-      <a href="#">
-        <img src="img/arrow.png" alt="">
-      </a>
-    </span>
     </div>
   </div>
   <!-- Footer for Small Screens -->
