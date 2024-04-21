@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-4 mb-4 text-center">トーク一覧</h2>
+  <h3 class="mt-4 mb-4 text-center">トーク一覧</h3>
   <div class="list-group">
 <% @talk_rooms.each do |talk_room| %>
   <% last_message_info = talk_room.last_message_with_sender %>
@@ -16,7 +16,7 @@
       </div>
       <div class="col-auto">
         <% against_customer_id = talk_room.sending?(current_customer) ? talk_room.recipient_id : talk_room.sender_id %>
-        <%= link_to "View Talk", talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: "btn btn-outline-primary" %>
+        <%= link_to "View Talk", talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: "btn btn-outline-primary", data: { "turbolinks" => false } %>
       </div>
     </div>
   <% end %>

@@ -1,0 +1,8 @@
+<%= form_with(model: [@talk_room, @talk_room.talk_room_messages.build], url: public_talk_room_talk_room_messages_path(@talk_room), local: true, id: 'new_comment_form', html: { class: "mb-3" }) do |form| %>
+  <div class="input-group">
+    <%= form.text_area :message, id: 'comment_message', placeholder: "メッセージを入力してください", class: "form-control" %>
+    <div class="input-group-append">
+      <%= form.submit "送信", class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
