@@ -1,33 +1,45 @@
-        <% talk_room.talk_room_messages.each do |message| %>
-          <% if message.is_active %>
-<div class="media mb-3">
-  <div class="media-body">
-    <div class="bg-light p-3 rounded">
-      <div class="d-flex align-items-center">
-        <strong><%= message.customer.name %></strong>
-        <span class="ml-2 text-muted small"><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-      </div>
-      <div>
-        <%= message.message %>
-      </div>
-      <% if message.customer == current_customer %>
-        <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
-          <div class="mt-3">
-            <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
+<% talk_room.talk_room_messages.each do |message| %>
+  <% if message.is_active %>
+    <div class="media mb-3">
+      <div class="media-body">
+        <div class="container bg-light p-3 rounded">
+          <div class="row">
+            <div class="text-center">
+              <div class="col-auto">
+                <%= image_tag message.customer.get_profile_image, size: '50x50', class: "rounded-circle mb-3" %>
+              </div>
+              <div class="col-auto">
+                <strong><%= message.customer.name %></strong>
+              </div>
+            </div>
+            <div>
+              <%= message.message %>
+            </div>
           </div>
-          <div class="mt-3">
-            <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
+          <div class="row justify-content-left m-1">
+            <div class="mr-5">
+              <span class="text-muted small"><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+            </div>
+            <% if message.customer == current_customer %>
+              <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
+                <div class="col-md-4">
+                  <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
+                </div>
+                <div class="col-md-4">
+                  <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
+                </div>
+                <div class="col-md-4">
+                  <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-          <div class="mt-3">
-            <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-          <% end %>
-        <% end %>
-        <div class="mb-5">
-          <p>　</p>
         </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="mb-5">
+  <p>　</p>
+</div>

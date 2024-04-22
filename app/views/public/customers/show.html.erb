@@ -23,7 +23,7 @@
                   <% end %>
                 </div>
               <% else %>
-                <div>
+                <div class="float-right">
                   <% if current_customer.already_messaged_with?(@customer) %>
                     <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary" %>
                   <% else %>
