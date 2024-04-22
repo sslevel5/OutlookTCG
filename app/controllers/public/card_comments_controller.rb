@@ -1,4 +1,5 @@
 class Public::CardCommentsController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     card = Card.find(params[:card_id])

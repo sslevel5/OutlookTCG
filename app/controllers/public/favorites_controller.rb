@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
-
+  before_action :authenticate_customer!
+  
   def create
     @card = Card.find(params[:card_id])
     favorite = current_customer.favorites.new(card_id: @card.id)

@@ -1,4 +1,5 @@
 class Admin::CardCommentsController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
     card = Card.find(params[:card_id])

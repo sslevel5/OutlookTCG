@@ -1,5 +1,6 @@
 class Public::TalkRoomsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :correct_customer
 
   def new
     # 新しいメッセージを作成するためのフォームを表示するためのアクション
@@ -37,4 +38,19 @@ class Public::TalkRoomsController < ApplicationController
     customer = Customer.find(params[:id])
     @customers = customer.sending_customers
   end
+
+  private
+
+  def talk_room_params
+    params.require(:talk_room).permit(:message)
+  end
+
+  def correct_customer
+    if params[:id]
+      @talk_room = TalkRoom.find(params[:id])
+      @customer = current_customer
+      redirect_to(public_talk_rooms_path) unless @talk_room.sender == @customer || @talk_room.recipient == @customer
+    end
+  end
+
 end

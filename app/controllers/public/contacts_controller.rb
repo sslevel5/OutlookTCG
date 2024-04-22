@@ -1,6 +1,6 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_customer!
-  # before_action :correct_customer
+  before_action :correct_customer
 
   def new
     @raritys = Rarity.all
@@ -53,10 +53,12 @@ class Public::ContactsController < ApplicationController
     params.require(:contact).permit(:title, :message)
   end
 
-  # def correct_customer
-  #   @contact = Contact.find(params[:id])
-  #   @customer = @contact.customer
-  #   redirect_to(home_path) unless @customer == current_customer
-  # end
+  def correct_customer
+    if params[:id]
+      @contact = Contact.find(params[:id])
+      @customer = @contact.customer
+      redirect_to(public_contacts_path) unless @customer == current_customer
+    end
+  end
 
 end
