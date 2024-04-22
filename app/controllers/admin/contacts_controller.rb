@@ -20,6 +20,8 @@ class Admin::ContactsController < ApplicationController
   end
 
   def update
+    @raritys = Rarity.all
+    @stores = Store.all
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
      flash[:notice] = "状態を変更しました。"

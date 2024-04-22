@@ -1,7 +1,7 @@
 <div class="row">
   <% cards.each do |card| %>
     <div class="col-md-2 mb-2">
-      <div class="card text-center">
+      <div class="card text-center shadow">
         <%= link_to admin_card_path(card), style: "text-decoration: none; color: black;" do %>
           <%= image_tag url_for(card.image), class: "card-img-top img-fluid", style: "height: 120px; object-fit: contain;" %>
           <div class="card-body">

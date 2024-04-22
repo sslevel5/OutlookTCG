@@ -23,6 +23,9 @@ ja:
         name: レアリティ
       store:
         name: 店舗名
+      contact:
+        title: 件名
+        message: 内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

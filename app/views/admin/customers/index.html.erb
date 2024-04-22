@@ -1,36 +1,37 @@
-<!-- 管理者側の会員一覧ページ -->
-<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+<div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h3 class="text-center">会員一覧</h3>
-      <table class="table table-hover">
-
-        <thead>
-          <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @customers.each do |customer| %>
-          <tr>
-            <td><%= customer.id %></td>
-            <td><%= link_to customer.name, admin_customer_path(customer.id) %></td>
-            <td><%= customer.email %></td>
-            <td>
-              <% if customer.is_active %>
-                <span class="text-success">有効</span>
-              <% else %>
-                <span class="text-secondary">退会</span>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-lg-10">
+      <h3 class="text-center mb-4">会員一覧</h3>
+      <div class="row">
+        <% @customers.each do |customer| %>
+          <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-lg rounded-3">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-4 text-center"><%= customer.name %></h5>
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-3">
+                    <span class="text-muted fw-bold">会員ID:</span>
+                    <span><%= customer.id %></span>
+                  </li>
+                  <li class="mb-3">
+                    <span class="text-muted fw-bold">メールアドレス:</span><br>
+                    <span><%= customer.email %></span>
+                  </li>
+                  <li class="mb-3">
+                    <span class="text-muted fw-bold">ステータス:</span>
+                    <% if customer.is_active %>
+                      <span class="text-success">有効</span>
+                    <% else %>
+                      <span class="text-secondary">退会</span>
+                    <% end %>
+                  </li>
+                </ul>
+                <%= link_to "詳細を見る", admin_customer_path(customer.id), class: "btn btn-outline-secondary btn-sm d-block mx-auto" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
