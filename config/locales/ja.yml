@@ -9,6 +9,7 @@ ja:
       customer:
         name: ニックネーム
         email: メールアドレス
+        introduction: 自己紹介
         password: パスワード
         encrypted_password: 確認用パスワード
         password_confirmation: パスワード(確認用)

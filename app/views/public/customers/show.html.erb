@@ -2,36 +2,43 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="text-white p-4 rounded" style="background-color: #A9A9A9;">
-        <h3 class="text-center mb-4"><%= @customer.name %></h3>
-        <%= image_tag @customer.get_profile_image, size: '100x100', class: "rounded-circle mx-auto d-block mb-3" %>
-        <div class="profile-details">
-          <div class="mb-4">
-            <h5 class="text-center"><%= @customer.name %></h5>
+
+        <div class="row">
+          <div class="col-3">
+            <%= image_tag @customer.get_profile_image, size: '100x100', class: "rounded-circle mx-auto d-block mb-3" %>
+            <h3 class="text-center mb-4"><%= @customer.name %></h3>
           </div>
-          <div class="mb-4">
-            <h5 class="text-center">自己紹介</h5>
-            <p class="text-center"><%= @customer.introduction %></p>
+          <div class="col-9">
+            <div class="row">
+              <div class="col-12">
+              <% if current_customer == @customer %>
+                <div class="float-right">
+                  <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-outline-secondary" %>
+                  <% if @customer.email != Customer::GUEST_USER_EMAIL %>
+                    <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2" do %>
+                      <i class="fa-solid fa-gear"></i>
+                    <% end %>
+                  <% else %>
+                    <button type="button" class="btn btn-secondary ml-2"><i class="fa-solid fa-gear"></i></button>
+                  <% end %>
+                </div>
+              <% else %>
+                <div>
+                  <% if current_customer.already_messaged_with?(@customer) %>
+                    <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary" %>
+                  <% else %>
+                    <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-secondary" %>
+                  <% end %>
+                </div>
+              <% end %>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <h5>自己紹介</h5>
+              <p><%= @customer.introduction %></p>
+            </div>
           </div>
-          <% if current_customer == @customer %>
-            <div class="text-center">
-              <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-outline-secondary" %>
-              <% if @customer.email != Customer::GUEST_USER_EMAIL %>
-                <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2" do %>
-                  <i class="fa-solid fa-gear"></i>
-                <% end %>
-              <% else %>
-                <button type="button" class="btn btn-secondary ml-2"><i class="fa-solid fa-gear"></i></button>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="text-center">
-              <% if current_customer.already_messaged_with?(@customer)%>
-                <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary" %>
-              <% else %>
-                <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-secondary" %>
-              <% end %>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>
