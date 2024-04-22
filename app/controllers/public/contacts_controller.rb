@@ -55,9 +55,18 @@ class Public::ContactsController < ApplicationController
 
   def correct_customer
     if params[:id]
-      @contact = Contact.find(params[:id])
-      @customer = @contact.customer
-      redirect_to(public_contacts_path) unless @customer == current_customer 
+      # @contact = Contact.find(params[:id])
+      @contact = Contact.find_by(id: params[:id])
+      if @contact == nil
+        @raritys = Rarity.all
+      @stores = Store.all
+        # @customer = nil
+        render 'layouts/notfind'
+        return
+      else
+        @customer = @contact.customer
+      end
+      redirect_to(public_contacts_path) unless @customer == current_customer
     end
   end
 
