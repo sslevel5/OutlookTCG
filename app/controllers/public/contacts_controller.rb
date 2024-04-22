@@ -57,7 +57,7 @@ class Public::ContactsController < ApplicationController
     if params[:id]
       @contact = Contact.find(params[:id])
       @customer = @contact.customer
-      redirect_to(public_contacts_path) unless @customer == current_customer
+      redirect_to(public_contacts_path) unless @customer == current_customer 
     end
   end
 
