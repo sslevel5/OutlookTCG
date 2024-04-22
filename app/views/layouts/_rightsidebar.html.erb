@@ -17,7 +17,7 @@
       <% @raritys.each do |rarity| %>
         <label class="checkbox-label">
           <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
-          <%= rarity.name %>
+          <span class="checkbox-label-genre"><%= rarity.name %></span>
         </label>
       <% end %>
     </div>
