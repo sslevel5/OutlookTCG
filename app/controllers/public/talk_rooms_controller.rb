@@ -47,8 +47,16 @@ class Public::TalkRoomsController < ApplicationController
 
   def correct_customer
     if params[:id]
-      @talk_room = TalkRoom.find(params[:id])
-      @customer = current_customer
+      @talk_room = TalkRoom.find_by(id: params[:id])
+      if @talk_room == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        # @customer = nil
+        render 'layouts/notfind'
+        return
+      else
+        @customer = current_customer
+      end
       redirect_to(public_talk_rooms_path) unless @talk_room.sender == @customer || @talk_room.recipient == @customer
     end
   end

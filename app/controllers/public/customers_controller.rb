@@ -58,4 +58,5 @@ class Public::CustomersController < ApplicationController
       redirect_to public_customer_path(@customer)
     end
   end
+
 end
