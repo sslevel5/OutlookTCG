@@ -23,7 +23,7 @@ class Customer < ApplicationRecord
   has_many :sending_customers, through: :sent_talk_rooms, source: :recipient
   has_many :receiving_customers, through: :received_talk_rooms, source: :sender
 
-  validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { maximum: 10 }
   validates :introduction, length: { maximum: 160 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: URI::MailTo::EMAIL_REGEXP },

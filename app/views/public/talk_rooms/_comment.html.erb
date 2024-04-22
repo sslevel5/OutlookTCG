@@ -4,7 +4,7 @@
       <div class="media-body">
         <div class="container bg-light p-3 rounded">
           <div class="row">
-            <div class="text-center">
+            <div class="text-center mr-5 ml-3">
               <div class="col-auto">
                 <%= image_tag message.customer.get_profile_image, size: '50x50', class: "rounded-circle mb-3" %>
               </div>
@@ -12,7 +12,7 @@
                 <strong><%= message.customer.name %></strong>
               </div>
             </div>
-            <div>
+            <div class="col-9">
               <%= message.message %>
             </div>
           </div>

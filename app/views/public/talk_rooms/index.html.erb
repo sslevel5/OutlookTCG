@@ -3,7 +3,7 @@
   <div class="list-group">
     <% @talk_rooms.each do |talk_room| %>
       <% against_customer_id = talk_room.sending?(current_customer) ? talk_room.recipient_id : talk_room.sender_id %>
-      <%= link_to talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: 'btn btn-outline-secondary mb-1' do %>
+      <%= link_to talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: 'btn btn-outline-secondary mb-1', data: { "turbolinks" => false }  do %>
         <% last_message_info = talk_room.last_message_with_sender %>
         <% unless last_message_info[:message].nil? %>
           <div class="m-1 list-group-item list-group-item-action d-flex justify-content-between align-items-center">
