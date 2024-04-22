@@ -1,35 +1,24 @@
-<div class="container">
-  <div class="row justify-content-center mt-5 mb-5">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-0">
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-9 col-md-7 col-lg-5">
       <h3 class="text-center mb-4">店舗一覧・追加</h3>
 
       <%= form_with url: admin_stores_path, model: @store, class: "mb-4" do |g| %>
         <div class="form-group">
           <%= g.text_field :name, class: 'form-control', placeholder: '店舗名' %>
           <% if @store.errors.include?(:name) %>
-              <p style="color: red;"><%= @store.errors.full_messages_for(:name).first %></p>
+              <p class="text-danger"><%= @store.errors.full_messages_for(:name).first %></p>
           <% end %>
         </div>
-        <%= g.submit '新規登録', class: "btn btn-success btn-block" %>
+        <%= g.submit '新規登録', class: "btn btn-outline-secondary btn-block" %>
       <% end %>
 
-      <div>
-        <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th>店舗</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @stores.each do |ge| %>
-              <tr>
-                <td><%= ge.name %></td>
-                <td><%= link_to '編集する', edit_admin_store_path(ge), class: "btn btn-outline-primary btn-sm" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="list-group">
+        <% @stores.each do |ge| %>
+          <%= link_to edit_admin_store_path(ge), class: "list-group-item list-group-item-action" do %>
+            <%= ge.name %>
+          <% end %>
+        <% end %>
       </div>
 
     </div>

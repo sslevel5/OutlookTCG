@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center mt-5 mb-5">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-0">
+    <div class="col-sm-9 col-md-7 col-lg-5">
       <h3>店舗編集</h3>
       <%= form_with url: admin_store_path, method: :patch, model: @store do |g| %>
 
@@ -10,7 +10,7 @@
             <p style="color: red;"><%= @store.errors.full_messages_for(:name).first %></p>
         <% end %>
       </div>
-      <%= g.submit '保存', class: "btn btn-success btn-block" %>
+      <%= g.submit '保存', class: "btn btn-outline-secondary btn-block" %>
       <% end %>
     </div>
   </div>

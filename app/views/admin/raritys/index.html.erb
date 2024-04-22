@@ -1,34 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center mt-5 mb-5">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-0">
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-9 col-md-7 col-lg-5">
       <h3 class="text-center mb-4">レアリティ一覧・追加</h3>
       <%= form_with url: admin_raritys_path, model: @rarity, class: "mb-4" do |g| %>
         <div class="form-group">
           <%= g.text_field :name, class: 'form-control', placeholder: 'レアリティ' %>
           <% if @rarity.errors.include?(:name) %>
-            <p style="color: red;"><%= @rarity.errors.full_messages_for(:name).first %></p>
+            <p class="text-danger"><%= @rarity.errors.full_messages_for(:name).first %></p>
           <% end %>
         </div>
-        <%= g.submit '新規登録', class: "btn btn-success btn-block" %>
+        <%= g.submit '新規登録', class: "btn btn-outline-secondary btn-block" %>
       <% end %>
 
-      <div class="table-responsive"> <!-- Added class for responsiveness -->
-        <table class='table table-hover table-striped'> <!-- Added table-striped for zebra striping -->
-          <thead class="thead-dark"> <!-- Added dark header -->
-            <tr>
-              <th scope="col">レアリティ</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @raritys.each do |ge| %>
-              <tr>
-                <td><%= ge.name %></td>
-                <td><%= link_to '編集する', edit_admin_rarity_path(ge), class: "btn btn-outline-primary btn-sm" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="list-group">
+        <% @raritys.each do |ge| %>
+          <%= link_to edit_admin_rarity_path(ge), class: "list-group-item list-group-item-action" do %>
+            <%= ge.name %>
+          <% end %>
+        <% end %>
       </div>
 
     </div>
