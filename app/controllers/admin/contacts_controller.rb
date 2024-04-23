@@ -1,5 +1,6 @@
 class Admin::ContactsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :nul_contact, only: [:edit, :update, :show]
 
   def index
     @raritys = Rarity.all
@@ -39,4 +40,14 @@ class Admin::ContactsController < ApplicationController
     params.require(:contact).permit(:title, :message, :is_active)
   end
 
+  def nul_contact
+    if params[:id]
+      @contact = Contact.find_by(id: params[:id])
+      if @contact == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
+    end
+  end
 end

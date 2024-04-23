@@ -1,5 +1,6 @@
 class Admin::CardsController < ApplicationController
  before_action :authenticate_admin!
+ before_action :nul_card, only: [:edit, :update, :show]
 
   def index
    @raritys = Rarity.all
@@ -37,6 +38,17 @@ class Admin::CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:rarity_id, :store_id, :title, :body, :price, :is_active, :image)
+  end
+
+  def nul_card
+    if params[:id]
+      @card = Card.find_by(id: params[:id])
+      if @card == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
+    end
   end
 
 end

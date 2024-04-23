@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
-  
+  before_action :nul_customer, only: [:edit, :update, :show]
+
   def index
    @raritys = Rarity.all
    @stores = Store.all
@@ -35,4 +36,16 @@ class Admin::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation)
   end
+
+   def nul_customer
+    if params[:id]
+      @customer = Customer.find_by(id: params[:id])
+      if @customer == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
+    end
+   end
+
 end

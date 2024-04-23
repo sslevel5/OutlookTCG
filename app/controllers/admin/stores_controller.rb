@@ -1,5 +1,6 @@
 class Admin::StoresController < ApplicationController
 before_action :authenticate_admin!
+before_action :nul_store, only: [:edit, :update]
 
   def index
    @raritys = Rarity.all
@@ -52,4 +53,16 @@ private
   def store_params
     params.require(:store).permit(:name)
   end
+
+  def nul_store
+    if params[:id]
+      @store = Store.find_by(id: params[:id])
+      if @store == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
+    end
+  end
+
 end
