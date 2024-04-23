@@ -26,10 +26,10 @@ class Admin::CardsController < ApplicationController
     @raritys = Rarity.all
     @stores = Store.all
    if @card.update(card_params)
-    flash[:notice] = "状態を変更しました。"
+    flash[:notice] = "変更しました。"
      redirect_to admin_card_path(@card.id)
    else
-     flash.now[:alert] = "状態の変更に失敗しました。"
+     flash.now[:alert] = "変更に失敗しました。"
      render :edit
    end
   end

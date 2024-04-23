@@ -19,10 +19,10 @@ before_action :nul_rarity, only: [:edit, :update]
     @rarity = Rarity.new(rarity_params)
     @raritys = Rarity.all
     if @rarity.save
-      flash[:notice] = "ジャンルを追加しました。"
+      flash[:notice] = "レアリティを追加しました。"
       redirect_to admin_raritys_path
     else
-      flash.now[:alert] = "ジャンルの追加に失敗しました。"
+      flash.now[:alert] = "レアリティの追加に失敗しました。"
       render :index
     end
   end
@@ -39,10 +39,10 @@ before_action :nul_rarity, only: [:edit, :update]
    @stores = Store.all
     @rarity = Rarity.find(params[:id])
     if @rarity.update(rarity_params)
-      flash[:notice] = "ジャンルを変更しました。"
+      flash[:notice] = "レアリティを変更しました。"
       redirect_to admin_raritys_path
     else
-      flash.now[:alert] = "ジャンルの変更に失敗しました。"
+      flash.now[:alert] = "レアリティの変更に失敗しました。"
       render :edit
     end
   end

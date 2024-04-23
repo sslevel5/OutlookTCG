@@ -19,10 +19,10 @@ before_action :nul_store, only: [:edit, :update]
     @store = Store.new(store_params)
     @stores = Store.all
     if @store.save
-      flash[:notice] = "ジャンルを追加しました。"
+      flash[:notice] = "店舗名を追加しました。"
       redirect_to admin_stores_path
     else
-      flash.now[:alert] = "ジャンルの追加に失敗しました。"
+      flash.now[:alert] = "店舗名の追加に失敗しました。"
       render :index
     end
   end
@@ -39,10 +39,10 @@ before_action :nul_store, only: [:edit, :update]
    @stores = Store.all
     @store = Store.find(params[:id])
     if @store.update(store_params)
-      flash[:notice] = "ジャンルを変更しました。"
+      flash[:notice] = "店舗名を変更しました。"
       redirect_to admin_stores_path
     else
-      flash.now[:alert] = "ジャンルの変更に失敗しました。"
+      flash.now[:alert] = "店舗名の変更に失敗しました。"
       render :edit
     end
   end
