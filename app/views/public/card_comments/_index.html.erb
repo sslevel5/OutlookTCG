@@ -1,8 +1,8 @@
     <table class='table'>
       <thead>
         <tr>
-          <th>日時</th>
-          <th>コメント</th>
+          <th style="width: 10%;">日時</th>
+          <th style="width: 50%; overflow-wrap: anywhere;">コメント</th>
           <% if current_customer %>
             <th>投稿者</th>
           <% end %>
@@ -16,7 +16,7 @@
               <td>
                 <%= card_comment.created_at.strftime('%Y/%m/%d') %>
               </td>
-              <td>
+              <td style="width: 50%;">
                 <%= card_comment.comment %>
               </td>
               <% if current_customer %>

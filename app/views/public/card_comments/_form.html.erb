@@ -9,6 +9,20 @@
         </div>
       </div>
     <% end %>
+    <div id="char_count">0/50</div>
   </div>
   <div class="col-md-2"></div>
 </div>
+
+<script>
+  // テキストエリアの入力を監視して文字数をカウントする関数
+  document.addEventListener('DOMContentLoaded', function () {
+    const commentText = document.getElementById('comment_text');
+    const charCount = document.getElementById('char_count');
+
+    commentText.addEventListener('input', function () {
+      const count = commentText.value.length;
+      charCount.textContent = count + '/50';
+    });
+  });
+</script>
