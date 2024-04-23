@@ -1,6 +1,7 @@
 class Public::CardsController < ApplicationController
  before_action :authenticate_customer!, only: [:new, :create, :edit, :update]
  before_action :correct_customer, only: [:edit, :update]
+ before_action :nul_card, only: [:edit, :update, :show]
 
  def new
   @card = Card.new
@@ -81,6 +82,17 @@ class Public::CardsController < ApplicationController
     @card = Card.find(params[:id])
     @customer = @card.customer
     redirect_to(public_cards_path) unless @customer == current_customer
+  end
+
+  def nul_card
+    if params[:id]
+      @card = Card.find_by(id: params[:id])
+      if @card == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
+    end
   end
 
 end
