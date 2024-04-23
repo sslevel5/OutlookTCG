@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_customer, only: [:edit, :update]
+  before_action :correct_customer
   before_action :check_authorization, only: [:edit, :update]
 
   def show
@@ -49,13 +49,21 @@ class Public::CustomersController < ApplicationController
     params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation)
   end
 
-  def set_customer
-    @customer = Customer.find(params[:id])
-  end
-
   def check_authorization
+    @customer = Customer.find(params[:id])
     if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL )
       redirect_to public_customer_path(@customer)
+    end
+  end
+
+  def correct_customer
+    if params[:id]
+      @customer = Customer.find_by(id: params[:id])
+      if @customer == nil
+        @raritys = Rarity.all
+        @stores = Store.all
+        render 'layouts/notfind'
+      end
     end
   end
 

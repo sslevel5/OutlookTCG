@@ -59,7 +59,7 @@ class Public::ContactsController < ApplicationController
       @contact = Contact.find_by(id: params[:id])
       if @contact == nil
         @raritys = Rarity.all
-      @stores = Store.all
+        @stores = Store.all
         # @customer = nil
         render 'layouts/notfind'
         return
