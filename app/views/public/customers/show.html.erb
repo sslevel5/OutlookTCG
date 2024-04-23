@@ -15,7 +15,7 @@
                 <div class="float-right">
                   <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-outline-secondary" %>
                   <% if @customer.email != Customer::GUEST_USER_EMAIL %>
-                    <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2" do %>
+                    <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2", data: { "turbolinks" => false } do %>
                       <i class="fa-solid fa-gear"></i>
                     <% end %>
                   <% else %>
