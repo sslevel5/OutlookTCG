@@ -19,7 +19,7 @@ class Public::TalkRoomMessagesController < ApplicationController
     against_customer_id = @talk_room.recipient_id
     @against_customer = Customer.find(against_customer_id)
     @message.update(message_params)
-#    redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: against_customer_id)
+#   redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: against_customer_id)
     redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
 
   end

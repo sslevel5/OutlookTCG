@@ -6,6 +6,8 @@ ja:
         transfer: "銀行振込"
   activerecord:
     attributes:
+      admin:
+        email: メールアドレス
       customer:
         name: ニックネーム
         email: メールアドレス

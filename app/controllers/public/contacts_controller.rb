@@ -22,8 +22,10 @@ class Public::ContactsController < ApplicationController
     @contact.customer_id = current_customer.id
     if @contact.valid?
       @contact.save
+      flash[:notice] = "送信しました。"
       redirect_to confirm_send_public_contacts_path
     else
+      flash.now[:alert] = "送信に失敗しました。"
       render :new
     end
   end

@@ -21,8 +21,10 @@ class Public::CustomersController < ApplicationController
     @stores = Store.all
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to public_customer_path(@customer), notice: "登録情報が更新されました。"
+      flash[:notice] = "登録情報が更新されました。"
+      redirect_to public_customer_path(@customer)
     else
+      flash[:alert] = "登録情報が更新に失敗しました。"
       render :edit
     end
   end

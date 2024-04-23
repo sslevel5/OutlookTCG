@@ -64,3 +64,21 @@
 #back img {
   width: 50px;
 }
+
+.flash-message {
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px 24px;
+}
+
+.flash-message.notice {
+  background-color: #B0C4DE;
+  color: #00008B;
+  border: solid 1px #00008B;
+}
+
+.flash-message.alert {
+  background-color: #FFE4E1;
+  color: #DB7093;
+  border: solid 1px #DB7093;
+}

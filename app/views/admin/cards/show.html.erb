@@ -3,97 +3,98 @@
   <!-- 商品の画像 -->
   <div class="col-md-8">
     <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
-  <div class="col-md-6">
-    <%= image_tag @card.image, size: "400x400", class: "img-fluid", style: "max-height: 400px; width: auto;" %>
-  </div>
-  <!-- 商品詳細 -->
-  <div class="col-md-6">
-    <table class="table">
-      <tr>
+      <div class="col-md-6">
+        <%= image_tag @card.image, size: "400x400", class: "img-fluid", style: "max-height: 400px; width: auto;" %>
+      </div>
+      <!-- 商品詳細 -->
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
             <th style="width: 30%; border-top: none;">カード名:</th>
             <td style="width: 70%; border-top: none;"><%= @card.title %></td>
-      </tr>
-      <tr>
-        <th>カード紹介:</th>
-        <td><%= @card.body %></td>
-      </tr>
-      <tr>
-        <th>価格:</th>
-        <td>￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></td>
-      </tr>
-      <tr>
-        <th>レアリティ:</th>
-        <td><%= @card.rarity.name %></td>
-      </tr>
-      <tr>
-        <th>店舗名:</th>
-        <td><%= @card.store.name %></td>
-      </tr>
-      <tr>
-        <th>投稿者:</th>
-        <td>
-          <%= link_to admin_customer_path(@card.customer.id) do %>
-          <%= @card.customer.name %>
-          <% end %>
-        </td>
-      </tr>
+          </tr>
+          <tr>
+            <th>カード紹介:</th>
+            <td><%= @card.body %></td>
+          </tr>
+          <tr>
+            <th>価格:</th>
+            <td>￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></td>
+          </tr>
+          <tr>
+            <th>レアリティ:</th>
+            <td><%= @card.rarity.name %></td>
+          </tr>
+          <tr>
+            <th>店舗名:</th>
+            <td><%= @card.store.name %></td>
+          </tr>
+          <tr>
+            <th>投稿者:</th>
+            <td>
+              <%= link_to admin_customer_path(@card.customer.id) do %>
+                <%= @card.customer.name %>
+              <% end %>
+            </td>
+          </tr>
           <tr>
             <th>投稿日:</th>
             <td><%= @card.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
           <tr>
-        <th></th>
-        <td>
-        <%= link_to "編集", edit_admin_card_path(@card.id),class: "btn btn-outline-secondary",data: {"turbolinks"=>false} %>
-        </td>
-        </tr>
-    </table>
+            <th></th>
+            <td>
+              <%= link_to "編集", edit_admin_card_path(@card.id), class: "btn btn-outline-secondary", data: { "turbolinks" => false } %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <div class="col-md-2"></div>
 </div>
-</div>
-</div>
-</div>
+
 <div class="row">
   <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <table class='table'>
-        <thead>
-          <tr>
-            <th>日時</th>
-            <th>コメント</th>
-            <th>投稿者</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+  <div class="col-md-8">
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>日時</th>
+          <th>コメント</th>
+          <th>投稿者</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         <% @card.card_comments.each do |card_comment| %>
         <tr>
-        <td>
-        <%= card_comment.created_at.strftime('%Y/%m/%d') %>
-        </td>
-        <td>
-        <%= card_comment.comment %>
-        </td>
-        <td>
-        <%= card_comment.customer.name %>
-        </td>
-        <td>
-        <%= form_with(model: [card_comment.card, card_comment], local: true, url: admin_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
-        <td>
-        <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
-        </td>
-        <td>
-        <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
-        </td>
-        <td>
-        <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
-        </td>
-        <% end %>
-        </td>
+          <td>
+            <%= card_comment.created_at.strftime('%Y/%m/%d') %>
+          </td>
+          <td>
+            <%= card_comment.comment %>
+          </td>
+          <td>
+            <%= card_comment.customer.name %>
+          </td>
+          <td>
+            <%= form_with(model: [card_comment.card, card_comment], local: true, url: admin_card_card_comment_path(card_comment.card, card_comment), method: :patch) do |form| %>
+            <td>
+              <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 有効
+            </td>
+            <td>
+              <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 無効
+            </td>
+            <td>
+              <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+            </td>
+            <% end %>
+          </td>
         </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
   <div class="col-md-2"></div>
 </div>
