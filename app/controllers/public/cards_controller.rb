@@ -10,6 +10,7 @@ class Public::CardsController < ApplicationController
  end
 
  def index
+  @card = Card.new #モーダル用
   @raritys = Rarity.all
   @stores = Store.all
   @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).send(sort_order)
@@ -30,6 +31,7 @@ class Public::CardsController < ApplicationController
  end
 
  def show
+  @card = Card.new #モーダル用
   @raritys = Rarity.all
   @stores = Store.all
   @card = Card.find(params[:id])
