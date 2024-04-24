@@ -25,9 +25,9 @@
               <% else %>
                 <div class="float-right">
                   <% if current_customer.already_messaged_with?(@customer) %>
-                    <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary" %>
+                    <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } %>
                   <% else %>
-                    <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-secondary" %>
+                    <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } %>
                   <% end %>
                 </div>
               <% end %>
