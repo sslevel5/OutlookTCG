@@ -26,7 +26,10 @@
     <!-- Content -->
     <div class="col-lg-9 offset-lg-1" style="background-color: #DCDCDC; min-height: 100vh;">
       <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
+        <div class="flash-message <%= message_type %>">
+          <%= message %>
+          <button class="close-btn">&times;</button>
+        </div>
       <% end %>
       <%= yield %>
     </div>
@@ -38,4 +41,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const closeButtons = document.querySelectorAll('.close-btn');
+
+    closeButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        this.parentNode.style.display = 'none';
+      });
+    });
+  });
+</script>
+
 </html>

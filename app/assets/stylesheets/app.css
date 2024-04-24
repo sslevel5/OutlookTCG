@@ -66,9 +66,11 @@
 }
 
 .flash-message {
+  position: relative;
   text-align: center;
   border-radius: 5px;
   padding: 16px 24px;
+  margin-bottom: 20px;
 }
 
 .flash-message.notice {
@@ -81,4 +83,19 @@
   background-color: #FFE4E1;
   color: #DB7093;
   border: solid 1px #DB7093;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: #555;
 }
