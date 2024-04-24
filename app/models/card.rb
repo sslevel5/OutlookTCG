@@ -6,7 +6,7 @@ class Card < ApplicationRecord
   has_many :card_comments
   has_many :favorites, dependent: :destroy
 
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 20 }
   validates :body, presence: true, length: { maximum: 70 }
   validates :price, presence: true
   validates :rarity, presence: { message: "を選択してください" }

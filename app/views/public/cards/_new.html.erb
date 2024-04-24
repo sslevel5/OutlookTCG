@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector('.form');
   const submitButton = document.querySelector('input[type="submit"]');
-
+  
   // フォームの入力を監視する
   form.addEventListener('input', function() {
     const title = document.querySelector('#card_title').value.trim();
@@ -105,9 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const image = document.querySelector('#file-upload').value.trim();
     const rarity = document.querySelector('#card_rarity_id').value.trim();
     const store = document.querySelector('#card_store_id').value.trim();
-
+    
     // 全ての必須フィールドが入力されているかどうかをチェックする
-    if (title !== '' && body !== '' && price !== '' && image !== '' && rarity !== '' && store !== '') {
+    // また、文字数の制限も満たしているかどうかをチェックする
+    if (title !== '' && title.length <= 19 &&
+        body !== '' && body.length <= 69 &&
+        price !== '' && image !== '' && rarity !== '' && store !== '') {
       submitButton.disabled = false; // 入力が完了していればボタンを有効にする
     } else {
       submitButton.disabled = true; // 入力が不完全ならばボタンを無効にする
