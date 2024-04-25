@@ -1,15 +1,6 @@
 <!--モーダル用-->
-<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="text-center">新規投稿</h3>
-          <% if @card.errors.any? %>
-            <div class="alert alert-danger">
-              <strong><%= @card.errors.count %>件のエラーが発生しました</strong>
-            </div>
-          <% end %>
+
           <%= form_with url: public_cards_path, method: :post, model: @card, html: { class: "form" } do |f| %>
             <div class="form-group">
               <%= f.text_field :title, class: 'form-control', placeholder: 'カード名' %>
@@ -61,7 +52,7 @@
                   <i class="fa-solid fa-image"></i> 画像
                 </label>
                 <%= f.file_field :image, id: "file-upload", accept: "image/*", style: "display: none;" %>
-                <%= f.submit "投稿", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+                <%= f.submit "投稿", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;", disabled: true %>
                 <% if @card.errors.include?(:image) %>
                   <p style="color: red;">添付してください</p>
                 <% end %>
@@ -70,10 +61,8 @@
           <% end %>
           <div id="new-image"></div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -98,6 +87,33 @@ document.addEventListener("DOMContentLoaded", function() {
         reader.readAsDataURL(file);
     } else {
         imagePreview.innerHTML = '';
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector('.form');
+  const submitButton = document.querySelector('input[type="submit"]');
+  
+  // フォームの入力を監視する
+  form.addEventListener('input', function() {
+    const title = document.querySelector('#card_title').value.trim();
+    const body = document.querySelector('#card_body').value.trim();
+    const price = document.querySelector('#card_price').value.trim();
+    const image = document.querySelector('#file-upload').value.trim();
+    const rarity = document.querySelector('#card_rarity_id').value.trim();
+    const store = document.querySelector('#card_store_id').value.trim();
+    
+    // 全ての必須フィールドが入力されているかどうかをチェックする
+    // また、文字数の制限も満たしているかどうかをチェックする
+    if (title !== '' && title.length <= 19 &&
+        body !== '' && body.length <= 69 &&
+        price !== '' && image !== '' && rarity !== '' && store !== '') {
+      submitButton.disabled = false; // 入力が完了していればボタンを有効にする
+    } else {
+      submitButton.disabled = true; // 入力が不完全ならばボタンを無効にする
     }
   });
 });

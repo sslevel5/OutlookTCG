@@ -99,3 +99,7 @@
 .close-btn:hover {
   color: #555;
 }
+
+.fixed-button {
+  z-index: 1000; /* 他の要素よりも手前に表示 */
+}
