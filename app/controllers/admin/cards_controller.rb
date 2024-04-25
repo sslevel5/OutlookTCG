@@ -4,7 +4,7 @@ class Admin::CardsController < ApplicationController
 
   def index
 
-   @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
+   @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).send(sort_order)
   end
 
   def show
