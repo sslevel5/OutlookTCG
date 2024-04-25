@@ -45,4 +45,19 @@ class Admin::CardsController < ApplicationController
     end
   end
 
+ def sort_order
+   case params[:sort_by]
+   when 'latest'
+     :latest
+   when 'old'
+     :old
+   when 'high_price'
+     :high_price
+   when 'low_price'
+     :low_price
+   else
+     :latest
+   end
+ end
+
 end
