@@ -2,7 +2,7 @@
   <div class="input-group">
     <%= form.text_area :message, id: 'comment_message', placeholder: "メッセージを入力してください", class: "form-control", data: { max_length: 200 } %>
     <div class="input-group-append">
-      <%= form.submit "送信", class: "btn btn-outline-secondary" %>
+      <%= form.submit "送信", class: "btn btn-outline-secondary", id: 'comment_submit_button' %>
     </div>
   </div>
   <div id="message_count" class="text-muted small">0 / 200 文字</div>
@@ -12,11 +12,17 @@
   document.addEventListener('DOMContentLoaded', function() {
     const messageTextarea = document.getElementById('comment_message');
     const messageCountDisplay = document.getElementById('message_count');
+    const submitButton = document.getElementById('comment_submit_button');
 
     messageTextarea.addEventListener('input', function() {
       const messageLength = this.value.length;
       const maxLength = parseInt(this.getAttribute('data-max-length'));
       messageCountDisplay.textContent = messageLength + ' / ' + maxLength + ' 文字';
+    });
+
+    submitButton.addEventListener('click', function() {
+      // 送信ボタンがクリックされたときに文字数カウントをリセット
+      messageCountDisplay.textContent = '0 / 200 文字';
     });
   });
 </script>

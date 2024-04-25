@@ -5,7 +5,7 @@
       <div class="input-group">
         <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに", id: "comment_text" %>
         <div class="input-group-append">
-          <%= f.submit "送信する", class: 'btn btn-outline-secondary btn-sm' %>
+          <%= f.submit "送信する", class: 'btn btn-outline-secondary btn-sm', id: 'form_submit_button' %>
         </div>
       </div>
     <% end %>
@@ -15,14 +15,19 @@
 </div>
 
 <script>
-  // テキストエリアの入力を監視して文字数をカウントする関数
   document.addEventListener('DOMContentLoaded', function () {
     const commentText = document.getElementById('comment_text');
     const charCount = document.getElementById('char_count');
+    const submitButton = document.getElementById('form_submit_button');
 
     commentText.addEventListener('input', function () {
       const count = commentText.value.length;
       charCount.textContent = count + '/50';
+    });
+
+    submitButton.addEventListener('click', function() {
+      // 送信ボタンがクリックされたときに文字数カウントをリセット
+      charCount.textContent = '0/50';
     });
   });
 </script>
