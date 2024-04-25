@@ -107,6 +107,20 @@
 }
 
 .resized-image {
-  width: 400px; /* 幅を200ピクセルに設定 */
+  width: 200px; /* 幅を200ピクセルに設定 */
   /* 高さは自動的に計算され、アスペクト比が維持されます */
+}
+
+.resized-back-image {
+  width: 100px;
+  opacity: 0.2;
+  position: relative; /* 必要に応じて追加 */
+  top: 20%; /* 画像の上に中央に配置 */
+}
+
+.overlay-text {
+  z-index: 1; /* 画像よりも前面に表示 */
+  display: grid;
+  position: absolute;
+  top: 20%;
 }

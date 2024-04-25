@@ -19,8 +19,15 @@
                 <%= f.label :remember_me, class: "form-check-label" %>
               </div>
             <% end %>
-            <div class="form-group">
-              <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+            <div class="row form-group">
+              <div class="col">
+                <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+              </div>
+              <div class="col">
+                <%= link_to "ゲストログイン（閲覧用）",
+                customers_guest_sign_in_path, method: :post, type: "button",
+                class: "btn btn-secondary" %>
+              </div>
             </div>
           <% end %>
           <%= render "public/shared/links" %>

@@ -133,7 +133,7 @@
 
     <% if customer_signed_in? %>
       <!-- 顧客ログイン時のログアウト -->
-      <div class="navbar-nav text-right"">
+      <div class="navbar-nav text-right">
         <div class="nav-item">
           <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
             <i class="fa-solid fa-right-from-bracket"></i> ログアウト
@@ -141,8 +141,18 @@
         </div>
       </div>
     <% end %>
+
+    <% unless admin_signed_in? || customer_signed_in? %>
+      <div class="navbar-nav text-right">
+        <%= link_to new_admin_session_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-user-gear"></i>管理者
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
 </div>
+
 
 
 
