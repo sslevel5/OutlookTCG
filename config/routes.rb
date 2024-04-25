@@ -59,4 +59,7 @@ Rails.application.routes.draw do
     get 'homes/home', to: 'homes#home'
     resources :contacts, only: [:index, :show, :edit, :update]
   end
+
+  match "*path", to: "application#render_404", via: :all
+
 end
