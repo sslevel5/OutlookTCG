@@ -1,0 +1,33 @@
+<div class="row mt-5">
+  <div class="col-4"></div>
+  <div class="col-4 text-center">
+    <h2>Outlook TCG</h2>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <%= link_to new_customer_registration_path, type: "button", class: "btn btn-outline-primary btn-lg btn-block" do %>
+        SignUp
+      <% end %>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <%= link_to new_customer_session_path, type: "button", class: "btn btn-outline-success btn-lg btn-block" do %>
+        Log in
+      <% end %>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <%= link_to new_admin_session_path, type: "button", class: "btn btn-outline-warning btn-lg btn-block" do %>
+        管理者ログイン
+      <% end %>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <%= link_to "ゲストログイン（閲覧用）",
+        customers_guest_sign_in_path, method: :post, type: "button",
+        class: "btn btn-outline-secondary btn-lg btn-block" %>
+    </div>
+  </div>
+  <div class="col-4"></div>
+</div>
+
+念のため残す
