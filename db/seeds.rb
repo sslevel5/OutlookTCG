@@ -78,6 +78,14 @@ Customer.find_or_create_by!(
   customer.password_confirmation = "eeeeee"
 end
 
+Customer.find_or_create_by!(
+  email: "ggg@ggg",
+  name: "User 7"
+) do |customer|
+  customer.password = "gggggg"
+  customer.password_confirmation = "gggggg"
+end
+
 Card.find_or_create_by!(
   title: "鉄壁の縦",
   body: "1枚は欲しいな",
@@ -298,4 +306,31 @@ Card.find_or_create_by!(
 ) do |card|
   # カードに画像を添付する
   card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '火のパワー.png')), filename: '火のパワー.png')
+end
+
+card2=
+  Card.find_or_create_by!(
+    title: "白のデッキ",
+    body: "tire1に勝てる！",
+    price: 11100,
+    rarity_id: Rarity.find_by(name: "RR").id,
+    store_id: Store.find_by(name: "カードいっぱい").id,
+    customer_id: Customer.find_by(email: "ggg@ggg").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '白のデッキ.png')), filename: '白のデッキ.png')
+  end
+card2.created_at=3.day.ago
+card2.save
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "自分用メモ",
+  price: 111,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "ggg@ggg").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
 end
