@@ -4,7 +4,7 @@
   </div>
   <div class="col-6"></div>
   <div class="col-2">
-<%= form_with url: public_cards_path, method: :get do |form| %>
+<%= form_with url: admin_cards_path, method: :get do |form| %>
   <div class="form-group">
     <%= form.hidden_field :q, value: params[:q] %>
     <%= form.hidden_field :rarity_id, value: params[:rarity_id] %>
