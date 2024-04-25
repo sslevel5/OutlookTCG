@@ -3,21 +3,18 @@ class Public::ContactsController < ApplicationController
   before_action :correct_customer
 
   def new
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.new
   end
 
   def confirm
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.new(contact_params)
     render :confirm
   end
 
   def create
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.valid?
@@ -31,21 +28,18 @@ class Public::ContactsController < ApplicationController
   end
 
   def confirm_send
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.last
   end
 
   def index
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @customer = current_customer
     @contacts = current_customer.contacts
   end
 
   def show
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.find(params[:id])
   end
 
@@ -60,8 +54,7 @@ class Public::ContactsController < ApplicationController
       # @contact = Contact.find(params[:id])
       @contact = Contact.find_by(id: params[:id])
       if @contact == nil
-        @raritys = Rarity.all
-        @stores = Store.all
+
         # @customer = nil
         render 'layouts/notfind'
         return

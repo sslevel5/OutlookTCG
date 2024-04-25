@@ -4,21 +4,18 @@ class Public::CustomersController < ApplicationController
   before_action :check_authorization, only: [:edit, :update]
 
   def show
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @customer = Customer.find(params[:id])
     @cards = Card.all
   end
 
   def edit
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @customer = Customer.find(params[:id])
   end
 
   def update
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "登録情報が更新されました。"
@@ -31,14 +28,12 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
-    @raritys = Rarity.all
-    @stores = Store.all
+
   end
 
   def withdraw
     @customer = current_customer
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -62,8 +57,7 @@ class Public::CustomersController < ApplicationController
     if params[:id]
       @customer = Customer.find_by(id: params[:id])
       if @customer == nil
-        @raritys = Rarity.all
-        @stores = Store.all
+
         render 'layouts/notfind'
       end
     end

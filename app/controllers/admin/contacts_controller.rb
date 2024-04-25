@@ -3,26 +3,22 @@ class Admin::ContactsController < ApplicationController
   before_action :nul_contact, only: [:edit, :update, :show]
 
   def index
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contacts = Contact.all
   end
 
   def show
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.find(params[:id])
   end
 
   def edit
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.find(params[:id])
   end
 
   def update
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
      flash[:notice] = "状態を変更しました。"
@@ -44,8 +40,7 @@ class Admin::ContactsController < ApplicationController
     if params[:id]
       @contact = Contact.find_by(id: params[:id])
       if @contact == nil
-        @raritys = Rarity.all
-        @stores = Store.all
+
         render 'layouts/notfind'
       end
     end

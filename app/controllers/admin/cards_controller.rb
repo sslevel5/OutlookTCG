@@ -3,28 +3,24 @@ class Admin::CardsController < ApplicationController
  before_action :nul_card, only: [:edit, :update, :show]
 
   def index
-   @raritys = Rarity.all
-   @stores = Store.all
+
    @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
   end
 
   def show
-   @raritys = Rarity.all
-   @stores = Store.all
+
    @card = Card.find(params[:id])
    @card_comment = CardComment.new
   end
 
   def edit
     @card = Card.find(params[:id])
-    @raritys = Rarity.all
-    @stores = Store.all
+
   end
 
   def update
    @card = Card.find(params[:id])
-    @raritys = Rarity.all
-    @stores = Store.all
+
    if @card.update(card_params)
     flash[:notice] = "変更しました。"
      redirect_to admin_card_path(@card.id)
@@ -44,8 +40,6 @@ class Admin::CardsController < ApplicationController
     if params[:id]
       @card = Card.find_by(id: params[:id])
       if @card == nil
-        @raritys = Rarity.all
-        @stores = Store.all
         render 'layouts/notfind'
       end
     end

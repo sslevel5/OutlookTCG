@@ -3,26 +3,22 @@ class Admin::CustomersController < ApplicationController
   before_action :nul_customer, only: [:edit, :update, :show]
 
   def index
-   @raritys = Rarity.all
-   @stores = Store.all
+
     @customers = Customer.all
   end
 
   def show
-   @raritys = Rarity.all
-   @stores = Store.all
+
     @customer = Customer.find(params[:id])
   end
 
   def edit
-   @raritys = Rarity.all
-   @stores = Store.all
+
     @customer = Customer.find(params[:id])
   end
 
   def update
-   @raritys = Rarity.all
-   @stores = Store.all
+
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "顧客情報が正常に更新されました"
@@ -43,8 +39,7 @@ class Admin::CustomersController < ApplicationController
     if params[:id]
       @customer = Customer.find_by(id: params[:id])
       if @customer == nil
-        @raritys = Rarity.all
-        @stores = Store.all
+
         render 'layouts/notfind'
       end
     end

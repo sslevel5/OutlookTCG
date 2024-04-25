@@ -3,19 +3,16 @@ before_action :authenticate_admin!
 before_action :nul_store, only: [:edit, :update]
 
   def index
-   @raritys = Rarity.all
     @stores = Store.all
     @store = Store.new
   end
 
   def show
-   @raritys = Rarity.all
    @stores = Store.all
     redirect_to edit_admin_store_path(params[:id])
   end
 
   def create
-   @raritys = Rarity.all
     @store = Store.new(store_params)
     @stores = Store.all
     if @store.save
@@ -28,14 +25,12 @@ before_action :nul_store, only: [:edit, :update]
   end
 
   def edit
-   @raritys = Rarity.all
    @stores = Store.all
     @store = Store.find(params[:id])
   end
 
 
   def update
-   @raritys = Rarity.all
    @stores = Store.all
     @store = Store.find(params[:id])
     if @store.update(store_params)
@@ -58,8 +53,6 @@ private
     if params[:id]
       @store = Store.find_by(id: params[:id])
       if @store == nil
-        @raritys = Rarity.all
-        @stores = Store.all
         render 'layouts/notfind'
       end
     end

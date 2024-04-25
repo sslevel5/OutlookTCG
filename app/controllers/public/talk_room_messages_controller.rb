@@ -2,8 +2,7 @@ class Public::TalkRoomMessagesController < ApplicationController
   before_action :authenticate_customer!
 
   def create
-    @raritys = Rarity.all
-    @stores = Store.all
+
     @talk_room = TalkRoom.find(params[:talk_room_id])
     @message = @talk_room.talk_room_messages.build(message_params)
     @message.customer = current_customer

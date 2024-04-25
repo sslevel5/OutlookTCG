@@ -5,21 +5,18 @@ class Public::CardsController < ApplicationController
 
  def new
   @card = Card.new
-  @raritys = Rarity.all
-  @stores = Store.all
+
  end
 
  def index
   @card = Card.new #モーダル用
-  @raritys = Rarity.all
-  @stores = Store.all
+
   @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).send(sort_order)
  end
 
  def create
   @card = Card.new(card_params)
-  @raritys = Rarity.all
-  @stores = Store.all
+
   @card.customer_id = current_customer.id
   if @card.save
    flash[:notice] = "投稿しました。"
@@ -32,8 +29,7 @@ class Public::CardsController < ApplicationController
 
  def show
   @card = Card.new #モーダル用
-  @raritys = Rarity.all
-  @stores = Store.all
+
   @card = Card.find(params[:id])
   @card_comment = CardComment.new
   @card_comments = CardComment.all
@@ -41,14 +37,12 @@ class Public::CardsController < ApplicationController
 
  def edit
   @card = Card.find(params[:id])
-  @raritys = Rarity.all
-  @stores = Store.all
+
  end
 
  def update
   @card = Card.find(params[:id])
-  @raritys = Rarity.all
-  @stores = Store.all
+
   if @card.update(card_params)
    flash[:notice] = "変更しました。"
    redirect_to public_card_path(@card.id)
@@ -90,8 +84,7 @@ class Public::CardsController < ApplicationController
     if params[:id]
       @card = Card.find_by(id: params[:id])
       if @card == nil
-        @raritys = Rarity.all
-        @stores = Store.all
+
         render 'layouts/notfind'
       end
     end
