@@ -8,6 +8,7 @@ class Public::HomesController < ApplicationController
   def about
     @raritys = Rarity.all
     @stores = Store.all
+    @cards = Card.order(created_at: :desc).where(is_active: true).limit(12)
   end
 
   def home

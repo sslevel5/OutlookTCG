@@ -1,8 +1,8 @@
 <div class="container mt-4">
   <div class="row  text-center">
     <div class="col-9 offset-lg-2">
-      <h1>Welcome to Outlook TCG</h1>
-      <p>このサイトは、TCGショップ実店舗の商品情報を共有するコミュニティサイト「Outlook TCG」です。</p>
+      <h1 class="top_about">Welcome to Outlook TCG</h1>
+      <p>このサイトは、TCGショップ実店舗の商品情報を共有するコミュニティサイト<span class="top_about">「Outlook TCG」</span>です。</p>
 
       <div class="row text-center mt-2">
         <div class="col-1"></div>
@@ -39,3 +39,10 @@
     </div>
   </div>
 </div>
+
+<div class="row m-1">
+  <div class="col-md-12">
+    <h2>新着</h2>
+  </div>
+</div>
+<%= render 'public/cards/index', cards: @cards %>
