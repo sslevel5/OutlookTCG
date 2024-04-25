@@ -1,9 +1,11 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .image-resize {
@@ -102,4 +104,9 @@
 
 .fixed-button {
   z-index: 1000; /* 他の要素よりも手前に表示 */
+}
+
+.resized-image {
+  width: 400px; /* 幅を200ピクセルに設定 */
+  /* 高さは自動的に計算され、アスペクト比が維持されます */
 }
