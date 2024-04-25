@@ -25,8 +25,19 @@
 - カードゲームのプレイヤー同士でコミュニケーションをするとき
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+
+- ER図
+![ER](https://github.com/sslevel5/outlook_tcg/assets/9004618/216b68fe-0e7c-4942-ac3b-a44554abef08)
 ​
+
+- 画面遷移図
+
+  【顧客側】
+![PF-user](https://github.com/sslevel5/outlook_tcg/assets/9004618/beb4ac24-ee54-4093-b75f-e6ade4ec129e)
+
+　　【管理者側】
+![PF-admin](https://github.com/sslevel5/outlook_tcg/assets/9004618/c0cc0684-6db9-4abc-a402-3d00b3d7bd5c)
+
 ## 開発環境
 - OS：Windows10
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -34,10 +45,12 @@
 - JSライブラリ：jQuery
 - Bootstrap
 - IDE：Cloud9
-- 
 
 ## 使用gem
 - device
+- jquery-rails
+- enum_help
+
 ​
 ## 使用素材
 
@@ -45,4 +58,3 @@
 
 以下、フリーイラストサイト
 - <a href="https://illustcenter.com/category/leisure/hobby/" target="_blank">イラストセンター</a>：https://illustcenter.com/category/leisure/hobby/
-- <a href="https://www.ac-illust.com/" target="_blank">illustAC</a>：https://www.ac-illust.com/
