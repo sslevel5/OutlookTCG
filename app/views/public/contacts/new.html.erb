@@ -11,8 +11,7 @@
           </div>
         <% end %>
         <div class="card-body">
-          <%= form_with(model: @contact, url: confirm_public_contacts_path(@contact), method: :post, class: 'needs-validation' ) do |form| %>
-
+          <%= form_with(model: @contact, url: confirm_public_contacts_path, method: :post, class: 'needs-validation' ) do |form| %>
             <div class="mb-3">
               <label class="form-label"><strong>【件名】</strong></label>
               <%= form.text_field :title, class: 'form-control' %>
