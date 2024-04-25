@@ -84,11 +84,6 @@
 
   <% if customer_signed_in? %>
     <div class="nav-item">
-      <%= link_to home_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-        <i class="fa-solid fa-house"></i> ホーム
-      <% end %>
-    </div>
-    <div class="nav-item">
       <%= link_to new_public_card_path, class: 'nav-link', data: { "turbolinks" => false } do %>
         <i class="fa-solid fa-up-right-from-square"></i> 新規投稿
       <% end %>
