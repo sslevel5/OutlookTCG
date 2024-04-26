@@ -1,3 +1,13 @@
+class ErrorAvoid
+  def initialize
+    @url = "attachments/"
+  end
+
+  def matches?(request)
+    @url.include?(request.url)
+  end
+end
+
 Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/home', to: 'public/homes#home', as: 'home'
@@ -59,4 +69,8 @@ Rails.application.routes.draw do
     get 'homes/home', to: 'homes#home'
     resources :contacts, only: [:index, :show, :edit, :update]
   end
+
+  get '*path', to: 'application#render_404',
+    constraints: ErrorAvoid.new
+
 end
