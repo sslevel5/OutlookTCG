@@ -29,7 +29,6 @@ class Public::CardsController < ApplicationController
 
  def show
   @card = Card.new #モーダル用
-
   @card = Card.find(params[:id])
   @card_comment = CardComment.new
   @card_comments = CardComment.all

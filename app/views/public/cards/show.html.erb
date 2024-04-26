@@ -36,7 +36,7 @@
             <tr>
               <th>投稿者:</th>
               <td>
-                <%= link_to public_customer_path(@card.customer.id) do %>
+                <%= link_to public_customer_path(@card.customer.id) ,class: "text-dark" do %>
                   <%= @card.customer.name %>
                 <% end %>
               </td>

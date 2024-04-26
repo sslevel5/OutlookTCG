@@ -21,7 +21,7 @@
               </td>
               <% if current_customer %>
                 <td>
-                  <%= card_comment.customer.name %>
+                  <%= link_to card_comment.customer.name, public_customer_path(card_comment.customer.id),class: "text-dark" %>
                 </td>
               <% end %>
               <td>
