@@ -12,7 +12,9 @@
             <div class="row">
               <div class="col-12">
               <% if current_customer == @customer %>
-                <div class="float-right">
+                <div class="float-right" id="botton_menu">
+                  <button type="button" class="btn btn-outline-secondary ml-1 active" id="post_cards">投稿一覧</button>
+                   <button type="button" class="btn btn-outline-secondary ml-1" id="favorite_cards">いいね</button>
                   <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-outline-secondary" %>
                   <% if @customer.email != Customer::GUEST_USER_EMAIL %>
                     <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2", data: { "turbolinks" => false } do %>
@@ -45,13 +47,28 @@
   </div>
 </div>
 
+<div id="cards_contents">
+  <div class="row m-1 tab" id="post_cards">
+    <h2>投稿一覧</h2>
+  </div>
+  <%= render 'public/cards/index', cards: @customer.cards %>
 
-<div class="row m-1">
-  <h2>投稿一覧</h2>
-</div>
-<%= render 'public/cards/index', cards: @customer.cards %>
 
-<div class="row m-1">
-  <h2>いいね一覧</h2>
+
+  <div class="row m-1 tab" id="favorite_cards">
+    <h2>いいね一覧</h2>
+  </div>
+  <%= render 'public/cards/index', cards: @favorite_cards %>
 </div>
-<%= render 'public/cards/index', cards: @favorite_cards %>
+
+<style>
+  $('#cards_contents .tab[id != "post_cards"]').hide();
+
+$('#botton_menu botton').on('click', function(event) {
+  $("#cards_contents .tab").hide();
+  $("#botton_menu .active").removeClass("active");
+  $(this).addClass("active");
+  $($(this).attr("href")).show();
+  event.preventDefault();
+});
+</style>
