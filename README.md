@@ -26,16 +26,19 @@
 ​
 ## 設計書
 
-- ER図
+### ER図
+
 ![ER](https://github.com/sslevel5/outlook_tcg/assets/9004618/216b68fe-0e7c-4942-ac3b-a44554abef08)
 ​
 
-- 画面遷移図
+### 画面遷移図
 
-  【顧客側】
+#### 顧客側
+
 ![PF-user](https://github.com/sslevel5/outlook_tcg/assets/9004618/beb4ac24-ee54-4093-b75f-e6ade4ec129e)
 
-　　【管理者側】
+#### 管理者側
+
 ![PF-admin](https://github.com/sslevel5/outlook_tcg/assets/9004618/c0cc0684-6db9-4abc-a402-3d00b3d7bd5c)
 
 ## 開発環境
@@ -46,10 +49,14 @@
 - Bootstrap
 - IDE：Cloud9
 
-## 使用gem
-- device
-- jquery-rails
-- enum_help
+
+## 使用Gem
+
+```
+gem 'devise'
+gem 'jquery-rails'
+gem 'enum_help'
+```
 
 ## 使用技術
 
@@ -68,6 +75,17 @@
 [![](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
 
+## 使用方法
+
+### インストール
+
+```
+$ git clone git@git@github.com:sslevel5/outlook_tcg.git
+$ cd outlook_tcg
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+```
 
 ## 使用素材
 
