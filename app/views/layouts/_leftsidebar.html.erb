@@ -94,7 +94,7 @@
       <% end %>
     </div>
     <div class="nav-item">
-      <%= link_to public_customer_path(current_customer), class: 'nav-link' do %>
+      <%= link_to public_customer_path(current_customer), class: 'nav-link', data: { "turbolinks" => false } do %>
         <i class="fa-regular fa-user"></i> プロフィール
       <% end %>
     </div>

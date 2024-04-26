@@ -48,27 +48,47 @@
 </div>
 
 <div id="cards_contents">
-  <div class="row m-1 tab" id="post_cards">
+  <div class="tab" id="post_cards_contents">
+  <div class="row m-1">
     <h2>投稿一覧</h2>
   </div>
   <%= render 'public/cards/index', cards: @customer.cards %>
+  </div>
 
-
-
-  <div class="row m-1 tab" id="favorite_cards">
+<div class="tab" id="favorite_cards_contents">
+  <div class="row m-1">
     <h2>いいね一覧</h2>
   </div>
   <%= render 'public/cards/index', cards: @favorite_cards %>
 </div>
+</div>
 
-<style>
-  $('#cards_contents .tab[id != "post_cards"]').hide();
 
-$('#botton_menu botton').on('click', function(event) {
-  $("#cards_contents .tab").hide();
-  $("#botton_menu .active").removeClass("active");
-  $(this).addClass("active");
-  $($(this).attr("href")).show();
-  event.preventDefault();
-});
-</style>
+<script>
+  $(document).ready(function() {
+    // 初期表示は投稿一覧を表示する
+    $('#favorite_cards_contents').hide();
+
+    // 「投稿一覧」ボタンがクリックされた時の処理
+    $('#post_cards').click(function() {
+      // すべてのタブを非表示に
+      $('.tab').hide();
+      // 「投稿一覧」タブを表示
+      $('#post_cards_contents').show(); // 投稿一覧のコンテンツを表示
+      // ボタンのアクティブ状態を設定
+      $('#botton_menu button').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    // 「いいね」ボタンがクリックされた時の処理
+    $('#favorite_cards').click(function() {
+      // すべてのタブを非表示に
+      $('.tab').hide();
+      // 「いいね一覧」タブを表示
+      $('#favorite_cards_contents').show(); // いいね一覧のコンテンツを表示
+      // ボタンのアクティブ状態を設定
+      $('#botton_menu button').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
