@@ -75,5 +75,3 @@
 
 以下、フリーイラストサイト
 - <a href="https://illustcenter.com/category/leisure/hobby/" target="_blank">イラストセンター</a>：https://illustcenter.com/category/leisure/hobby/
-
-![](https://img.shields.io/badge/HTML-1572B6?style=flat&logo=html5&logoColor=white)
