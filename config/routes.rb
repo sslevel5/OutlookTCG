@@ -1,13 +1,3 @@
-class ErrorAvoid
-  def initialize
-    @url = "attachments/"
-  end
-
-  def matches?(request)
-    @url.include?(request.url)
-  end
-end
-
 Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/home', to: 'public/homes#home', as: 'home'
@@ -39,7 +29,11 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :card_comments, only: [:create, :update]
     end
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] do
+      member do
+        get :favorites
+      end
+    end
     resources :talk_rooms, only: [:index,:create] do
       resources :talk_room_messages, only: [:create, :update]
     end
@@ -69,8 +63,4 @@ Rails.application.routes.draw do
     get 'homes/home', to: 'homes#home'
     resources :contacts, only: [:index, :show, :edit, :update]
   end
-
-  get '*path', to: 'application#render_404',
-    constraints: ErrorAvoid.new
-
 end

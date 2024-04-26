@@ -4,18 +4,17 @@ class Public::CustomersController < ApplicationController
   before_action :check_authorization, only: [:edit, :update]
 
   def show
-
     @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:card_id)
+    @favorite_cards = Card.find(favorites)
     @cards = Card.all
   end
 
   def edit
-
     @customer = Customer.find(params[:id])
   end
 
   def update
-
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "登録情報が更新されました。"
@@ -28,12 +27,10 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
-
   end
 
   def withdraw
     @customer = current_customer
-
     @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -57,7 +54,6 @@ class Public::CustomersController < ApplicationController
     if params[:id]
       @customer = Customer.find_by(id: params[:id])
       if @customer == nil
-
         render 'layouts/notfind'
       end
     end
