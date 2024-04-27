@@ -53,7 +53,7 @@ class Public::CustomersController < ApplicationController
   def correct_customer
     if params[:id]
       @customer = Customer.find_by(id: params[:id])
-      if @customer == nil
+      if @customer == nil || !@customer.is_active
         render 'layouts/notfind'
       end
     end
