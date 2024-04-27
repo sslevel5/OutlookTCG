@@ -140,7 +140,7 @@
     <% unless admin_signed_in? || customer_signed_in? %>
       <div class="navbar-nav text-right">
         <%= link_to new_admin_session_path, class: 'nav-link' do %>
-          <i class="fa-solid fa-user-gear"></i>管理者
+          <i class="fa-solid fa-user-gear  fa-right-from-bracket"></i>管理者
         <% end %>
       </div>
     <% end %>
