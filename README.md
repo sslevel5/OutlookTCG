@@ -80,7 +80,7 @@ gem 'enum_help'
 ### インストール
 
 ```
-$ git clone git@git@github.com:sslevel5/outlook_tcg.git
+$ git clone git@github.com:sslevel5/outlook_tcg.git
 $ cd outlook_tcg
 $ bundle install
 $ rails db:migrate
