@@ -143,7 +143,7 @@
 
 .new_card_botton{
   position: fixed;
-  bottom: 1%;
+  bottom: 20%;
   right: 5%;
   z-index: 100;
 }
