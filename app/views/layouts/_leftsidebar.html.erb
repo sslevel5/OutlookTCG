@@ -21,95 +21,95 @@
   <div class="mt-5"></div>
 
   <div class="navbar-nav text-right">
-  <% unless admin_signed_in? || customer_signed_in? %>
-    <div class="nav-item">
-      <%= link_to root_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-note-sticky"></i> トップ
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to new_customer_registration_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-user-plus"></i> 新規登録
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to new_customer_session_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-right-to-bracket"></i> ログイン
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to public_cards_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-layer-group"></i> 投稿一覧
-      <% end %>
-    </div>
-    <!--<div class="nav-item">-->
-      <!-- %= link_to about_path, class: 'nav-link' do %-->
-    <!--    <i class="fa-solid fa-at"></i> About-->
-      <!--% end %-->
-    <!--</div>-->
-  <% end %>
+    <% unless admin_signed_in? || customer_signed_in? %>
+      <div class="nav-item">
+        <%= link_to root_path, class: 'nav-link' do %>
+          <i class="fa-regular fa-note-sticky"></i> トップ
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to new_customer_registration_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-user-plus"></i> 新規登録
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to new_customer_session_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-right-to-bracket"></i> ログイン
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to public_cards_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-layer-group"></i> 投稿一覧
+        <% end %>
+      </div>
+      <!--<div class="nav-item">-->
+        <!-- %= link_to about_path, class: 'nav-link' do %-->
+      <!--    <i class="fa-solid fa-at"></i> About-->
+        <!--% end %-->
+      <!--</div>-->
+    <% end %>
 
-  <% if admin_signed_in? %>
-    <div class="nav-item">
-      <%= link_to admin_cards_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-layer-group"></i> 投稿 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to admin_customers_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-users"></i> ユーザー 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to admin_raritys_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-star"></i> レアリティ 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to admin_stores_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-shop"></i> 店舗 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to admin_talk_rooms_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-envelope"></i> トーク 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to admin_contacts_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-square-envelope"></i> お問い合わせ
-      <% end %>
-    </div>
-  <% end %>
+    <% if admin_signed_in? %>
+      <div class="nav-item">
+        <%= link_to admin_cards_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-layer-group"></i> 投稿 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to admin_customers_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-users"></i> ユーザー 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to admin_raritys_path, class: 'nav-link' do %>
+          <i class="fa-regular fa-star"></i> レアリティ 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to admin_stores_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-shop"></i> 店舗 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to admin_talk_rooms_path, class: 'nav-link' do %>
+          <i class="fa-regular fa-envelope"></i> トーク 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to admin_contacts_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-square-envelope"></i> お問い合わせ
+        <% end %>
+      </div>
+    <% end %>
 
-  <% if customer_signed_in? %>
-    <div class="nav-item">
-      <%= link_to new_public_card_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-        <i class="fa-solid fa-up-right-from-square"></i> 新規投稿
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to public_cards_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-        <i class="fa-solid fa-layer-group"></i> 投稿 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to public_customer_path(current_customer), class: 'nav-link', data: { "turbolinks" => false } do %>
-        <i class="fa-regular fa-user"></i> プロフィール
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to public_talk_rooms_path, class: 'nav-link' do %>
-        <i class="fa-regular fa-envelope"></i> トーク 一覧
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to public_contacts_path, class: 'nav-link' do %>
-        <i class="fa-solid fa-square-envelope"></i> お問い合わせ
-      <% end %>
-    </div>
-  <% end %>
-</div>
+    <% if customer_signed_in? %>
+      <div class="nav-item">
+        <%= link_to new_public_card_path, class: 'nav-link', data: { "turbolinks" => false } do %>
+          <i class="fa-solid fa-up-right-from-square"></i> 新規投稿
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to public_cards_path, class: 'nav-link', data: { "turbolinks" => false } do %>
+          <i class="fa-solid fa-layer-group"></i> 投稿 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to public_customer_path(current_customer), class: 'nav-link', data: { "turbolinks" => false } do %>
+          <i class="fa-regular fa-user"></i> プロフィール
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to public_talk_rooms_path, class: 'nav-link' do %>
+          <i class="fa-regular fa-envelope"></i> トーク 一覧
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to public_contacts_path, class: 'nav-link' do %>
+          <i class="fa-solid fa-square-envelope"></i> お問い合わせ
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 <div class="mt-5"></div>
 
