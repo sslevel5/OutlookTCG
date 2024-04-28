@@ -1,21 +1,16 @@
 <div class="container">
   <!-- トーク一覧の見出し -->
   <h3 class="mt-4 mb-4 text-center">トーク一覧</h3>
-
   <!-- トークルームのリストを表示 -->
   <div class="list-group">
     <!-- トークルームごとに処理 -->
     <% @talk_rooms.each do |talk_room| %>
-
       <!-- トークルームごとの相手のIDを取得 -->
       <% against_customer_id = talk_room.sending?(current_customer) ? talk_room.recipient_id : talk_room.sender_id %>
-
       <!-- トークルームへのリンク -->
       <%= link_to talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: 'btn btn-outline-secondary mb-1', data: { "turbolinks" => false }  do %>
-
         <!-- 最後のメッセージの情報を取得 -->
         <% last_message_info = talk_room.last_message_with_sender %>
-
         <!-- トークルームのリスト項目 -->
         <div class="m-1 list-group-item list-group-item-action d-flex justify-content-between align-items-center">
           <!-- トークルーム名 -->
@@ -46,9 +41,7 @@
             </div>
           </div>
         </div>
-
       <% end %>
-
     <% end %>
   </div>
 </div>

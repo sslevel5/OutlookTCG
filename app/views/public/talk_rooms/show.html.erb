@@ -9,12 +9,9 @@
           <%= link_to "戻る", public_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' %>
         </div>
       </div>
-
       <div id="messages">
-          <%= render partial: 'comment', locals: { talk_room: @talk_room } %>
-
+        <%= render partial: 'comment', locals: { talk_room: @talk_room } %>
       </div>
-
       <div class="row">
         <div class="col-5 offset-3 fixed-bottom">
           <%= render partial: 'form', locals: { talk_room: @talk_room } %>

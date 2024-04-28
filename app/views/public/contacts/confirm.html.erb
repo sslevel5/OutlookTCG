@@ -1,32 +1,32 @@
 <%= form_with(model: @contact, url: public_contacts_path, method: :post) do |form| %>
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-6">
-    <!-- お問い合わせ内容の確認を表示 -->
-      <div class="card shadow">
-        <div class="card-header text-white" style="background-color: #A9A9A9;">
-        <h2 class="card-title mb-0">お問い合わせ内容の確認</h2>
-        </div>
-        <div class="card-body">
-          <%= form.hidden_field :title %>
-          <%= form.hidden_field :message %>
-          <div class="mb-3">
-            <label class="form-label"><strong>【件名】</strong></label>
-            <p class="form-control-static"><%= @contact.title %></p>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <!-- お問い合わせ内容の確認を表示 -->
+        <div class="card shadow">
+          <div class="card-header text-white" style="background-color: #A9A9A9;">
+            <h2 class="card-title mb-0">お問い合わせ内容の確認</h2>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><strong>【内容】</strong></label>
-            <p class="form-control-static"><%= @contact.message %></p>
+          <div class="card-body">
+            <%= form.hidden_field :title %>
+            <%= form.hidden_field :message %>
+            <div class="mb-3">
+              <label class="form-label"><strong>【件名】</strong></label>
+              <p class="form-control-static"><%= @contact.title %></p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>【内容】</strong></label>
+              <p class="form-control-static"><%= @contact.message %></p>
+            </div>
+          </div>
+          <div class="text-center">
+            <!-- 修正リンク -->
+            <%= link_to '修正する', new_public_contact_path, class: 'btn btn-outline-secondary mt-3 mb-3 me-2' %>
+            <!-- 送信ボタン -->
+            <%= form.submit '送信する', class: 'btn btn-secondary mt-3 mb-3' %>
           </div>
         </div>
-        <div class="text-center">
-              <!-- 修正リンク -->
-        <%= link_to '修正する', new_public_contact_path, class: 'btn btn-outline-secondary mt-3 mb-3 me-2' %>
-        <!-- 送信ボタン -->
-        <%= form.submit '送信する', class: 'btn btn-secondary mt-3 mb-3' %>
-      <% end %>
-      </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

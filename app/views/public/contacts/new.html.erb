@@ -19,7 +19,6 @@
                   <p style="color: red;"><%= @contact.errors.full_messages_for(:title).first %></p>
                 <% end %>
             </div>
-
             <div class="mb-3">
               <label class="form-label"><strong>【内容】</strong></label>
               <%= form.text_area :message, class: 'form-control', rows: 5 %>
@@ -27,7 +26,6 @@
                   <p style="color: red;"><%= @contact.errors.full_messages_for(:message).first %></p>
                 <% end %>
             </div>
-
             <div class="text-center">
               <%= form.submit "確認", class: 'btn btn-outline-secondary' %>
             </div>
