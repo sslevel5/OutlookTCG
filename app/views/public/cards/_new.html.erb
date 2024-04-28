@@ -14,19 +14,19 @@
         <% end %>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-4">
         <%= f.text_field :price, class: 'form-control', pattern: "[0-9]+", placeholder: '価格(半角)' %>
         <% if @card.errors.include?(:price) %>
           <p style="color: red;"><%= @card.errors.full_messages_for(:price).first %></p>
         <% end %>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-4">
         <%= f.select :rarity_id, options_for_select((@raritys || []).map { |rarity| [rarity.name, rarity.id] }, { prompt: "レアリティ" }), { prompt: "レアリティ" }, class: 'form-control' %>
       <% if @card.errors.include?(:rarity) %>
           <p style="color: red;">選択してください</p>
         <% end %>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-4">
         <%= f.select :store_id, options_for_select((@stores || []).map { |store| [store.name, store.id] }, prompt: "店舗名"), { prompt: "店舗名" }, class: 'form-control' %>
         <% if @card.errors.include?(:store) %>
           <p style="color: red;">選択してください</p>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-4">
+      <div class="col-6">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-outline-success <%= 'active' if @card.is_active %> rounded">
             <%= f.radio_button :is_active, true, { checked: @card.is_active, class: 'form-check-input' } %> 有効
@@ -45,8 +45,7 @@
           </label>
         </div>
       </div>
-      <div class="col-md-5"></div>
-      <div class="col-md-3">
+      <div class="col-6 text-right">
         <label for="file-upload" class="custom-file-upload btn btn-outline-secondary m-0" style="font-size: 13px;">
           <i class="fa-solid fa-image"></i> 画像
         </label>
@@ -95,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector('.form');
   const submitButton = document.querySelector('input[type="submit"]');
-  
+
   // フォームの入力を監視する
   form.addEventListener('input', function() {
     const title = document.querySelector('#card_title').value.trim();
@@ -104,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const image = document.querySelector('#file-upload').value.trim();
     const rarity = document.querySelector('#card_rarity_id').value.trim();
     const store = document.querySelector('#card_store_id').value.trim();
-    
+
     // 全ての必須フィールドが入力されているかどうかをチェックする
     // また、文字数の制限も満たしているかどうかをチェックする
     if (title !== '' && title.length <= 19 &&

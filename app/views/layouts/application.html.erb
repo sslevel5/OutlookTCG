@@ -36,7 +36,7 @@
     </div>
     <!-- Footer for Small Screens -->
     <div class="row d-lg-none position-sticky fixed-bottom" style="width: auto; bottom: 0; margin-bottom: -50px; z-index: 10;">
-      <div class="col-12" style="background-color: #87CEEB;">
+      <div class="col-12" style="background-color: #A9A9A9;">
         <%= render 'layouts/footer' %>
       </div>
     </div>
@@ -45,7 +45,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const closeButtons = document.querySelectorAll('.close-btn');
-  
       closeButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
           this.parentNode.style.display = 'none';
