@@ -140,3 +140,7 @@
   writing-mode: vertical-rl;
   color: white;
 }
+
+.fixed-bottom{
+  z-index: 9999 !important;
+}
