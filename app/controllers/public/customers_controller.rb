@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:card_id)
-    @favorite_cards = Card.find(favorites)
+    @favorite_cards = Card.where(id: favorites, is_active: true)
     if current_customer == @customer  # もし投稿主の場合
       @cards = @customer.cards # すべてのカードを表示
     else  # 投稿主でない場合
