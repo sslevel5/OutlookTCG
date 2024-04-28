@@ -4,11 +4,11 @@ class Public::SessionsController < Devise::SessionsController
   before_action :redirect_if_admin_logged_in, only: [:new, :create]
 
   def after_sign_in_path_for(resource)
-     home_path
+    home_path
   end
 
   def after_sign_out_path_for(resource)
-     root_path
+    root_path
   end
 
   private

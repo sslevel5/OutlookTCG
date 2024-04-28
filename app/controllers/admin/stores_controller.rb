@@ -1,6 +1,6 @@
 class Admin::StoresController < ApplicationController
-before_action :authenticate_admin!
-before_action :nul_store, only: [:edit, :update]
+  before_action :authenticate_admin!
+  before_action :nul_store, only: [:edit, :update]
 
   def index
     @stores = Store.all
@@ -8,7 +8,7 @@ before_action :nul_store, only: [:edit, :update]
   end
 
   def show
-   @stores = Store.all
+    @stores = Store.all
     redirect_to edit_admin_store_path(params[:id])
   end
 
@@ -25,13 +25,12 @@ before_action :nul_store, only: [:edit, :update]
   end
 
   def edit
-   @stores = Store.all
+    @stores = Store.all
     @store = Store.find(params[:id])
   end
 
-
   def update
-   @stores = Store.all
+    @stores = Store.all
     @store = Store.find(params[:id])
     if @store.update(store_params)
       flash[:notice] = "店舗名を変更しました。"
@@ -42,8 +41,7 @@ before_action :nul_store, only: [:edit, :update]
     end
   end
 
-
-private
+  private
 
   def store_params
     params.require(:store).permit(:name)
@@ -52,10 +50,9 @@ private
   def nul_store
     if params[:id]
       @store = Store.find_by(id: params[:id])
-      if @store == nil
+      if @store.nil?
         render 'layouts/notfind'
       end
     end
   end
-
 end

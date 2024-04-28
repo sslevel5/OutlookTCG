@@ -6,6 +6,6 @@ class Admin::HomesController < ApplicationController
   end
 
   def home
-   @cards = Card.order(created_at: :desc).search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
+    @cards = Card.order(created_at: :desc).search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id])
   end
 end

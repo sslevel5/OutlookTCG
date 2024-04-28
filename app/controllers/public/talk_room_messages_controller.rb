@@ -2,7 +2,6 @@ class Public::TalkRoomMessagesController < ApplicationController
   before_action :authenticate_customer!
 
   def create
-
     @talk_room = TalkRoom.find(params[:talk_room_id])
     @message = @talk_room.talk_room_messages.build(message_params)
     @message.customer = current_customer
@@ -18,10 +17,9 @@ class Public::TalkRoomMessagesController < ApplicationController
     against_customer_id = @talk_room.recipient_id
     @against_customer = Customer.find(against_customer_id)
     @message.update(message_params)
-#   redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: against_customer_id)
+    #redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: against_customer_id)
     flash[:notice] = "変更しました。"
     redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
-
   end
 
   private
@@ -29,5 +27,4 @@ class Public::TalkRoomMessagesController < ApplicationController
   def message_params
     params.require(:talk_room_message).permit(:message, :is_active)
   end
-
 end

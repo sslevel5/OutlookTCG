@@ -17,5 +17,4 @@ class Admin::TalkRoomMessagesController < ApplicationController
   def message_params
     params.require(:talk_room_message).permit(:message, :is_active)
   end
-
 end

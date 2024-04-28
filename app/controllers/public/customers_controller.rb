@@ -45,7 +45,7 @@ class Public::CustomersController < ApplicationController
 
   def check_authorization
     @customer = Customer.find(params[:id])
-    if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL )
+    if (@customer.id != current_customer.id) || (@customer.email == Customer::GUEST_USER_EMAIL)
       redirect_to public_customer_path(@customer)
     end
   end
@@ -53,10 +53,9 @@ class Public::CustomersController < ApplicationController
   def correct_customer
     if params[:id]
       @customer = Customer.find_by(id: params[:id])
-      if @customer == nil || !@customer.is_active
+      if @customer.nil? || !@customer.is_active
         render 'layouts/notfind'
       end
     end
   end
-
 end

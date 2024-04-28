@@ -1,6 +1,6 @@
 class Admin::RaritysController < ApplicationController
-before_action :authenticate_admin!
-before_action :nul_rarity, only: [:edit, :update]
+  before_action :authenticate_admin!
+  before_action :nul_rarity, only: [:edit, :update]
 
   def index
     @raritys = Rarity.all
@@ -8,7 +8,7 @@ before_action :nul_rarity, only: [:edit, :update]
   end
 
   def show
-   @raritys = Rarity.all
+    @raritys = Rarity.all
     redirect_to edit_admin_rarity_path(params[:id])
   end
 
@@ -29,9 +29,8 @@ before_action :nul_rarity, only: [:edit, :update]
     @rarity = Rarity.find(params[:id])
   end
 
-
   def update
-   @raritys = Rarity.all
+    @raritys = Rarity.all
     @rarity = Rarity.find(params[:id])
     if @rarity.update(rarity_params)
       flash[:notice] = "レアリティを変更しました。"
@@ -42,8 +41,7 @@ before_action :nul_rarity, only: [:edit, :update]
     end
   end
 
-
-private
+  private
 
   def rarity_params
     params.require(:rarity).permit(:name)
@@ -52,7 +50,7 @@ private
   def nul_rarity
     if params[:id]
       @rarity = Rarity.find_by(id: params[:id])
-      if @rarity == nil
+      if @rarity.nil?
         render 'layouts/notfind'
       end
     end

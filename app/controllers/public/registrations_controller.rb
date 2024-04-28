@@ -7,7 +7,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     public_customer_path(resource)
   end
 
-
   private
 
   def redirect_if_admin_logged_in

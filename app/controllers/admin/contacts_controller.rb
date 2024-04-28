@@ -17,14 +17,13 @@ class Admin::ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-     flash[:notice] = "状態を変更しました。"
-     redirect_to admin_contact_path(@contact)
+      flash[:notice] = "状態を変更しました。"
+      redirect_to admin_contact_path(@contact)
     else
-     flash.now[:alert] = "状態の変更に失敗しました。"
-     render :edit
+      flash.now[:alert] = "状態の変更に失敗しました。"
+      render :edit
     end
   end
-
 
   private
 
@@ -35,7 +34,7 @@ class Admin::ContactsController < ApplicationController
   def nul_contact
     if params[:id]
       @contact = Contact.find_by(id: params[:id])
-      if @contact == nil
+      if @contact.nil?
         render 'layouts/notfind'
       end
     end
