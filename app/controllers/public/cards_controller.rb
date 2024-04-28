@@ -73,12 +73,11 @@ class Public::CardsController < ApplicationController
     redirect_to(public_cards_path) unless @customer == current_customer
   end
 
+
   def nul_card
-    if params[:id]
-      @card = Card.find_by(id: params[:id])
-      if @card.nil? || !@card.is_active
-        render 'layouts/notfind'
-      end
+    @card = Card.find_by(id: params[:id])
+    if @card.nil? || (!@card.is_active && current_customer != @card.customer)
+      render 'layouts/notfind'
     end
   end
 end
