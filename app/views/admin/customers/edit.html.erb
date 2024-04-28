@@ -6,7 +6,6 @@
           <h3 class="mt-3 mb-3 text-center">会員情報編集</h3>
           <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true, html: {class: "form"}) do |form| %>
             <%= render "public/shared/error_messages", resource: @customer %>
-
             <div class="form-group">
               <table class="table table-borderless">
                 <tr>
