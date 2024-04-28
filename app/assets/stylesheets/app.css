@@ -131,3 +131,12 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.search_form {
+    width: 100% !important; /* もしくは任意の固定値を指定 */
+}
+
+.footer_nav {
+  writing-mode: vertical-rl;
+  color: white;
+}

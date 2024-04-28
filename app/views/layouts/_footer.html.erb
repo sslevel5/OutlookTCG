@@ -1,3 +1,149 @@
-<h1>下</h1>
-<h1>下</h1>
-<h1>下</h1>
+<div class="row">
+    <div class="col-2 p-0">
+      <% if admin_signed_in? %>
+        <%= link_to admin_homes_top_path, class: 'nav-link' do %>
+          <%= image_tag 'logo.png', size: '50x50' %>
+        <% end %>
+      <% elsif customer_signed_in? %>
+        <%= link_to home_path, class: 'nav-link', data: { "turbolinks" => false } do %>
+          <%= image_tag 'logo.png', size: '50x50' %>
+        <% end %>
+      <% else %>
+        <%= link_to home_path, class: 'nav-link' do %>
+          <%= image_tag 'logo.png', size: '50x50' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-7 mt-3">
+    <div class="row">
+      <% unless admin_signed_in? || customer_signed_in? %>
+        <div>
+          <%= link_to root_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-regular fa-note-sticky"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_customer_registration_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-user-plus"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_customer_session_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-right-to-bracket"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to public_cards_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-layer-group"></i>
+          <% end %>
+        </div>
+        <div>
+           <%= link_to about_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-at"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if admin_signed_in? %>
+        <div>
+          <%= link_to admin_cards_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-layer-group"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to admin_customers_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-users"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to admin_raritys_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-regular fa-star"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to admin_stores_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-shop"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to admin_talk_rooms_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-regular fa-envelope"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to admin_contacts_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-square-envelope"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if customer_signed_in? %>
+        <div>
+          <%= link_to new_public_card_path, class: 'nav-link footer_nav pr-0', data: { "turbolinks" => false } do %>
+            <i class="fa-solid fa-up-right-from-square"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to public_cards_path, class: 'nav-link footer_nav pr-0', data: { "turbolinks" => false } do %>
+            <i class="fa-solid fa-layer-group"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to public_customer_path(current_customer), class: 'nav-link footer_nav pr-0', data: { "turbolinks" => false } do %>
+            <i class="fa-regular fa-user"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to public_talk_rooms_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-regular fa-envelope"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to public_contacts_path, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-square-envelope"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    </div>
+
+
+
+
+  <div class="row mt-3">
+  <!-- ログアウトリンクを追加 -->
+    <% if admin_signed_in? %>
+      <!-- 管理者ログイン時のログアウト -->
+      <div>
+        <div>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if customer_signed_in? %>
+      <!-- 顧客ログイン時のログアウト -->
+      <div>
+        <div>
+          <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link footer_nav pr-0' do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless admin_signed_in? || customer_signed_in? %>
+      <div>
+        <%= link_to new_admin_session_path, class: 'nav-link footer_nav pr-0' do %>
+          <i class="fa-solid fa-user-gear  fa-right-from-bracket" style="font-size: 14px;"></i>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
