@@ -140,3 +140,10 @@
   writing-mode: vertical-rl;
   color: white;
 }
+
+.new_card_botton{
+  position: fixed;
+  bottom: 1%;
+  right: 5%;
+  z-index: 11;
+}
