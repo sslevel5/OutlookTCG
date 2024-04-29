@@ -44,3 +44,37 @@
     <% end %>
   </tbody>
 </table>
+
+
+<% card.card_comments.each do |card_comment| %>
+  <% if card_comment.is_active %>
+    <div class="row">
+      <div class="col">
+        <%= card_comment.comment %>
+      </div>
+      <div class="col">
+        <%= card_comment.created_at.strftime('%Y/%m/%d') %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= link_to card_comment.customer.name, public_customer_path(card_comment.customer.id),class: "text-dark" %>
+      </div>
+      <div class="col">
+        <% if card_comment.customer == current_customer %>
+          <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch,class: "d-flex justify-content-around") do |form| %>
+            <p>
+              <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 〇
+            </p>
+            <p>
+              <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> ×
+            </p>
+            <p>
+              <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
+            </p>
+          <% end %>
+        <% end %>        
+      </div>
+    </div>
+  <% end %>
+<% end %>
