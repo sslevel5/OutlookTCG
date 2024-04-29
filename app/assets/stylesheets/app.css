@@ -151,3 +151,13 @@
 .fixed-bottom{
   z-index: 9999 !important;
 }
+
+@media screen and (max-width: 990px){
+  .lg_talk_room {
+    display:none;
+  }
+
+  .massage_name{
+    display:none;
+  }
+}

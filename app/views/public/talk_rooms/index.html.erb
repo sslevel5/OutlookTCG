@@ -1,8 +1,9 @@
 <div class="container">
   <!-- トーク一覧の見出し -->
   <h3 class="mt-4 mb-4 text-center">トーク一覧</h3>
-  <!-- トークルームのリストを表示 -->
-  <div class="list-group">
+
+  <!-- 990px以上　トークルームのリストを表示 -->
+  <div class="list-group lg_talk_room">
     <!-- トークルームごとに処理 -->
     <% @talk_rooms.each do |talk_room| %>
       <!-- トークルームごとの相手のIDを取得 -->
@@ -22,9 +23,6 @@
             <div class="last-message-info">
               <!-- 最後のトークの見出し -->
               <div class="row">
-                <div class="col-3">
-                  【最後のトーク】
-                </div>
                 <!-- 最後のメッセージの内容 -->
                 <div class="col-9 text-left">
                   <% if last_message_info[:message].nil? %>
@@ -44,4 +42,47 @@
       <% end %>
     <% end %>
   </div>
+
+  <!-- 990px未満　トークルームのリストを表示 -->
+  <div class="list-group d-lg-none">
+    <!-- トークルームごとに処理 -->
+    <% @talk_rooms.each do |talk_room| %>
+      <!-- トークルームごとの相手のIDを取得 -->
+      <% against_customer_id = talk_room.sending?(current_customer) ? talk_room.recipient_id : talk_room.sender_id %>
+      <!-- トークルームへのリンク -->
+      <%= link_to talk_rooms_path(talk_room.id, against_customer_id: against_customer_id), class: 'btn btn-outline-secondary mb-1', data: { "turbolinks" => false }  do %>
+        <!-- 最後のメッセージの情報を取得 -->
+        <% last_message_info = talk_room.last_message_with_sender %>
+        <!-- トークルームのリスト項目 -->
+        <div class="m-1 list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          <!-- トークルーム名 -->
+          <div class="col-3 p-0">
+            <h6 class="mb-0"><%= talk_room.name(current_customer) %></h6>
+          </div>
+          <!-- 最後のメッセージの情報 -->
+          <div class="col-9">
+            <div class="last-message-info">
+              <!-- 最後のトークの見出し -->
+              <div class="row">
+
+                <!-- 最後のメッセージの内容 -->
+                <div class="col-9 text-left">
+                  <% if last_message_info[:message].nil? %>
+                    <em>メッセージはありません</em>
+                  <% else %>
+                    <%= last_message_info[:message].message.truncate(20) %>
+                  <% end %>
+                </div>
+              </div>
+              <!-- 送信者の情報 -->
+              <% if last_message_info[:message].present? %>
+                <p class="mb-0"><strong>【送信者】</strong> <%= last_message_info[:sender].name %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>

@@ -2,11 +2,13 @@
   <div class="row justify-content-center mt-3">
     <div class="col-lg-8">
       <div class="row justify-content-between">
-        <div class="col-5">
-          <h3><%= link_to @against_customer.name, public_customer_path(@against_customer),class: "text-dark" %>とのトーク</h3>
-        </div>
         <div class="col-2 text-right">
-          <%= link_to "戻る", public_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' %>
+          <%= link_to public_talk_rooms_path, class: 'btn btn-outline-secondary mb-3' do %>
+            <i class="fa-solid fa-left-long"></i>
+          <% end %>
+        </div>
+        <div class="col-5 text-right">
+          <h3><%= link_to @against_customer.name, public_customer_path(@against_customer),class: "text-dark" %></h3>
         </div>
       </div>
       <div id="messages">
