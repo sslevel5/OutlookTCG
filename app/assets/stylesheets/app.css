@@ -152,12 +152,30 @@
   z-index: 9999 !important;
 }
 
+@media screen and (min-width: 990px) {
+	.contact_title_sp{
+	  display:none;
+	}
+
+	.card_title{
+	  display:none;
+	}
+}
+
 @media screen and (max-width: 990px){
   .lg_talk_room {
     display:none;
   }
 
   .massage_name{
+    display:none;
+  }
+
+  .contact_title{
+    display:none;
+  }
+
+  .card_title{
     display:none;
   }
 }
