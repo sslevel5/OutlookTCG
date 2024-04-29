@@ -133,7 +133,7 @@
 }
 
 .search_form {
-    width: 100% !important; /* もしくは任意の固定値を指定 */
+  width: 100% !important; /* もしくは任意の固定値を指定 */
 }
 
 .footer_nav {
@@ -146,4 +146,8 @@
   bottom: 20%;
   right: 5%;
   z-index: 100;
+}
+
+.fixed-bottom{
+  z-index: 9999 !important;
 }

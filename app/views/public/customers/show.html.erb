@@ -3,32 +3,45 @@
     <div class="col-lg-8 offset-lg-2">
       <div class="text-white p-4 rounded" style="background-color: #A9A9A9;">
         <div class="row">
-          <div class="col-3">
+          <!--lg以上のみ表示-->
+          <div class="col-3 d-none d-lg-block">
             <%= image_tag @customer.get_profile_image, size: '100x100', class: "rounded-circle mx-auto d-block mb-3" %>
             <h3 class="text-center mb-4"><%= @customer.name %></h3>
           </div>
+          <!--それ以外表示-->
+          <div class="col-3 d-lg-none">
+            <%= image_tag @customer.get_profile_image, size: '60x60', class: "rounded-circle mx-auto d-block mb-3" %>
+            <h3 class="text-center mb-4" style="font-size:12px;"><%= @customer.name %></h3>
+          </div>
+
           <div class="col-9">
             <div class="row">
               <div class="col-12">
               <% if current_customer == @customer %>
                 <div class="float-right" id="botton_menu">
-                  <button type="button" class="btn btn-outline-secondary ml-1 active" id="post_cards">投稿一覧</button>
-                   <button type="button" class="btn btn-outline-secondary ml-1" id="favorite_cards">いいね</button>
-                  <%= link_to "トークルーム一覧", public_talk_rooms_path, class: "btn btn-outline-secondary" %>
+                  <button type="button" class="btn btn-outline-secondary active" id="post_cards"><i class="fa-solid fa-layer-group"></i></button>
+                   <button type="button" class="btn btn-outline-secondary" id="favorite_cards"><i class="fa-regular fa-heart"></i></button>
+                  <%= link_to public_talk_rooms_path, class: "btn btn-outline-secondary" do %>
+                    <i class="fa-regular fa-message"></i>
+                  <% end %>
                   <% if @customer.email != Customer::GUEST_USER_EMAIL %>
-                    <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary ml-2", data: { "turbolinks" => false } do %>
+                    <%= link_to edit_public_customer_path(@customer), class: "btn btn-outline-secondary", data: { "turbolinks" => false } do %>
                       <i class="fa-solid fa-gear"></i>
                     <% end %>
                   <% else %>
-                    <button type="button" class="btn btn-secondary ml-2"><i class="fa-solid fa-gear"></i></button>
+                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-gear"></i></button>
                   <% end %>
                 </div>
               <% else %>
                 <div class="float-right">
                   <% if current_customer.already_messaged_with?(@customer) %>
-                    <%= link_to "トークルームへ", talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } %>
+                    <%= link_to talk_rooms_path(current_customer.my_talk_room(@customer).id, against_customer_id: @customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } do %>
+                      <i class="fa-regular fa-message"></i>
+                    <% end %>
                   <% else %>
-                    <%= link_to "トークを始める", new_talk_rooms_path(@customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } %>
+                    <%= link_to new_talk_rooms_path(@customer.id), class: "btn btn-secondary", data: { "turbolinks" => false } do %>
+                      <i class="fa-regular fa-message"></i>
+                    <% end %>
                   <% end %>
                 </div>
               <% end %>
