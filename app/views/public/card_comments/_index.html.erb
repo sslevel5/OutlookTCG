@@ -1,27 +1,22 @@
 <div class="mt-2">
   <% card.card_comments.order(created_at: :desc).each do |card_comment| %>
-    <div class="border-bottom">
       <% if card_comment.is_active %>
-
-
-
+          <div class="card p-1 mb-1" style="background-color: transparent;">
         <div class="row">
           <% if current_customer %>
             <div class="col">
               <%= link_to card_comment.customer.name, public_customer_path(card_comment.customer.id),class: "text-dark" %>
             </div>
           <% end %>
-          <div class="col-3 text-right">
+          <div class="col text-right">
             <%= card_comment.created_at.strftime('%Y/%m/%d') %>
           </div>
           <div class="col">
             <% if card_comment.customer == current_customer %>
               <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch,class: "d-flex justify-content-around") do |form| %>
+
                 <p>
-                  <%= form.radio_button :is_active, true, { checked: card_comment.is_active, class: 'form-check-input', id: 'active' } %> 〇
-                </p>
-                <p>
-                  <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> ×
+                  <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 削除
                 </p>
                 <p>
                   <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
@@ -29,19 +24,13 @@
               <% end %>
             <% end %>
           </div>
-
-
         </div>
-
-        <div class="row">
-          <div class="col-12">
+        <div class="row mb-2">
+          <div class="offset-1">
             <%= card_comment.comment %>
           </div>
         </div>
-
-
-
-      <% end %>
     </div>
+      <% end %>
   <% end %>
 </div>
