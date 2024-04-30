@@ -59,6 +59,88 @@
   <div class="col-lg-2"></div>
 </div>
 
+
+
+
+<div class="row">
+  <% if current_customer %>
+      <%= render 'public/favorites/btn', card: @card %>
+  <% end %>
+  <%= @card.title %>
+</div>
+<div class="row">
+  <div class="col">
+    <%= image_tag @card.image , class: "img-fluid mt-1", style: "max-height: 400px; width: auto;" %>
+  </div>
+  <div class="col">
+      <div class="row">
+        <div class="col">価格</div>
+        <div class="col">￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></div>
+      </div>
+      <div class="row">
+        <div class="col">レアリティ</div>
+        <div class="col"><%= @card.rarity.name %></div>
+      </div>
+      <div class="row">
+        <div class="col">店舗</div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <div class="col">日時</div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        投稿者</div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        紹介</div>
+      <div class="row"></div>
+  </div>
+
+</div>
+
+
+
+
+
+<%= image_tag @card.image , class: "img-fluid mt-1", style: "max-height: 400px; width: auto;" %>
+
+<% if current_customer %>
+    <%= render 'public/favorites/btn', card: @card %>
+<% end %>
+
+カード名:<%= @card.title %>
+
+価格:￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %>
+
+レアリティ:<%= @card.rarity.name %>
+
+店舗名:<%= @card.store.name %>
+
+<% if current_customer %>
+  投稿者:
+  <%= link_to public_customer_path(@card.customer.id) ,class: "text-dark" do %>
+    <%= @card.customer.name %>
+  <% end %>
+<% end %>
+
+投稿日:<%= @card.created_at.strftime('%Y/%m/%d %H:%M') %>
+
+<% if @card.customer == current_customer %>
+    <%= link_to "編集", edit_public_card_path(@card.id),class: "btn btn-outline-secondary",data: {"turbolinks"=>false} %>
+<% end %>
+
+
+
+
+
+
+
+
+
 <% if current_customer %>
   <%= render 'public/card_comments/form', card: @card %>
 <% end %>
