@@ -1,13 +1,13 @@
 <% if card.favorited_by?(current_customer) %>
   <p id="favorite_btn_<%= @card.id %>">
     <%= link_to public_card_favorite_path(card), method: :delete, remote: true,class: "text-dark" do %>
-      <i class="fa-solid fa-heart"></i> <%= card.favorites.count %>
+      <i class="fa-solid fa-heart"></i>
     <% end %>
   </p>
 <% else %>
   <p id="favorite_btn_<%= @card.id %>">
     <%= link_to public_card_favorite_path(card), method: :post, remote: true,class: "text-dark" do %>
-      <i class="fa-regular fa-heart"></i> <%= card.favorites.count %>
+      <i class="fa-regular fa-heart"></i>
     <% end %>
   </p>
 <% end %>
