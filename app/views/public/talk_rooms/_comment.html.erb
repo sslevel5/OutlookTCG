@@ -4,15 +4,15 @@
       <div class="media-body">
         <div class="container bg-light p-3 rounded">
           <div class="row">
-            <div class="text-center mr-5 ml-3">
-              <div class="col-auto">
+            <div class="text-center mr-lg-1 ml-lg-3  massage_name">
+              <div class="col-lg-auto">
                 <%= image_tag message.customer.get_profile_image, size: '50x50', class: "rounded-circle mb-3" %>
               </div>
               <div class="col-auto">
                 <strong><%= message.customer.name %></strong>
               </div>
             </div>
-            <div class="col-9">
+            <div class="col-lg-9">
               <%= message.message %>
             </div>
           </div>
@@ -22,13 +22,13 @@
             </div>
             <% if message.customer == current_customer %>
               <%= form_with(model: message, url: public_talk_room_talk_room_message_path(talk_room_id: talk_room.id, id: message.id), local: true, class: "d-flex justify-content-around") do |form| %>
-                <div class="col-md-4">
+                <div class="col-4">
                   <%= form.radio_button :is_active, true, class: 'form-check-input', id: 'active' %> 有効
                 </div>
-                <div class="col-md-4">
+                <div class="col-4">
                   <%= form.radio_button :is_active, false, class: 'form-check-input', id: 'inactive' %> 無効
                 </div>
-                <div class="col-md-4">
+                <div class="col-4">
                   <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
                 </div>
               <% end %>
