@@ -1,93 +1,30 @@
-<div class="row mt-5">
-  <div class="col-lg-2"></div>
-  <!-- 商品の画像 -->
-  <div class="col-lg-8">
-    <div class="row" style="box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
-      <div class="col-md-6 text-center">
-        <%= image_tag @card.image, size: "400x400", class: "img-fluid mt-1", style: "max-height: 400px; width: auto;" %>
-        <% if current_customer %>
-            <%= render 'public/favorites/btn', card: @card %>
-        <% end %>
-      </div>
-      <!-- 商品詳細 -->
-      <div class="col-md-6">
-        <table class="table">
-          <tr>
-            <th style="width: 30%; border-top: none;">カード名:</th>
-            <td style="width: 70%; border-top: none;"><%= @card.title %></td>
-          </tr>
-          <tr>
-            <th>カード紹介:</th>
-            <td><%= @card.body %></td>
-          </tr>
-          <tr>
-            <th>価格:</th>
-            <td>￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></td>
-          </tr>
-          <tr>
-            <th>レアリティ:</th>
-            <td><%= @card.rarity.name %></td>
-          </tr>
-          <tr>
-            <th>店舗名:</th>
-            <td><%= @card.store.name %></td>
-          </tr>
-          <% if current_customer %>
-            <tr>
-              <th>投稿者:</th>
-              <td>
-                <%= link_to public_customer_path(@card.customer.id) ,class: "text-dark" do %>
-                  <%= @card.customer.name %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-          <tr>
-            <th>投稿日:</th>
-            <td><%= @card.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-          </tr>
-          <% if @card.customer == current_customer %>
-            <th></th>
-            <td>
-              <%= link_to "編集", edit_public_card_path(@card.id),class: "btn btn-outline-secondary",data: {"turbolinks"=>false} %>
-            </td>
-          <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-2"></div>
-</div>
-
-
-
 <div class="row">
-  <div class="col-8 shadow offset-2">
-    <div class="row" style=" font-size:24px;">
+  <div class="col-lg-8 shadow offset-lg-2">
+    <div class="row p-3" style=" font-size:24px;">
         <% if current_customer %>
             <%= render 'public/favorites/btn', card: @card %>
         <% end %>
         &emsp;<%= @card.title %>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-lg-6 text-center">
         <%= image_tag @card.image , class: "img-fluid mt-1", style: "max-height: 400px; width: auto;" %>
       </div>
       <div class="col">
-          <div class="row">
-            <div class="col">価格</div>
+          <div class="row mb-2 border-bottom">
+            <div class="col-5">価格</div>
             <div class="col">￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %></div>
           </div>
-          <div class="row">
-            <div class="col">レアリティ</div>
+          <div class="row mb-2 border-bottom">
+            <div class="col-5">レアリティ</div>
             <div class="col"><%= @card.rarity.name %></div>
           </div>
-          <div class="row">
-            <div class="col">店舗</div>
+          <div class="row mb-2 border-bottom">
+            <div class="col-5">店舗</div>
             <div class="col"><%= @card.store.name %></div>
           </div>
-          <div class="row">
-            <div class="col">投稿日</div>
+          <div class="row mb-2 border-bottom">
+            <div class="col-5">投稿日</div>
             <div class="col"><%= @card.created_at.strftime('%Y/%m/%d %H:%M') %></div>
           </div>
           <div class="row">
@@ -98,7 +35,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="col">
+            <div class="col text-right">
               <% if @card.customer == current_customer %>
                   <%= link_to edit_public_card_path(@card.id),class: "btn btn-outline-secondary",data: {"turbolinks"=>false} do %>
                     <i class="fa-solid fa-gear"></i>
@@ -106,7 +43,7 @@
               <% end %>
             </div>
           </div>
-          <div class="row">
+          <div class="row shadow m-1 p-1" style="height:124px">
             <%= @card.body %>
           </div>
       </div>
