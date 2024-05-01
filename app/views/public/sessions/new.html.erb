@@ -23,8 +23,8 @@
               <div class="col">
                 <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
               </div>
-              <div class="col">
-                <%= link_to "ゲストログイン（閲覧用）",
+              <div class="col text-right">
+                <%= link_to "ゲスト",
                 customers_guest_sign_in_path, method: :post, type: "button",
                 class: "btn btn-secondary" %>
               </div>
