@@ -139,6 +139,7 @@
 .footer_nav {
   writing-mode: vertical-rl;
   color: white;
+  font-size: 12px !important;
 }
 
 .new_card_botton{
