@@ -46,6 +46,13 @@ GUEST_USER_EMAIL = "guest@example.com"
     TalkRoom.find_by(sender_id: self.id, recipient_id: customer.id) ||  TalkRoom.find_by(sender_id: customer.id, recipient_id: self.id)
   end
 
+  def unread_messages_count
+    TalkRoomMessage.joins(:talk_room)
+                   .where("talk_rooms.sender_id = ? OR talk_rooms.recipient_id = ?", id, id)
+                   .where("talk_room_messages.customer_id != ? AND talk_room_messages.is_active = ?", id, true)
+                   .count
+  end
+
   private
 
   def check_active_status
