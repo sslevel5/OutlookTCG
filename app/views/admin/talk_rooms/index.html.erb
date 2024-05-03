@@ -1,8 +1,13 @@
 <div class="m-1">
-  <h2>トークルーム一覧</h2>
+  <div class="col-4 card_title">
+    <h2>トークルーム一覧</h2>
+  </div>
+  <div class="col pr-0 card_title_sp">
+    <h4>トークルーム一覧</h4>
+  </div>
   <div class="row mt-1">
     <% @talk_rooms.each do |talk_room| %>
-      <div class="col-2 ">
+      <div class="col-lg-2 ">
         <div class="card mb-3">
           <div class="card-header text-white" style="background-color: #A9A9A9;">
             <h5 class="card-title mb-0">Talk Room</h5>

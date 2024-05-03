@@ -139,6 +139,7 @@
 .footer_nav {
   writing-mode: vertical-rl;
   color: white;
+  font-size: 12px !important;
 }
 
 .new_card_botton{
@@ -152,12 +153,13 @@
   z-index: 9999 !important;
 }
 
+/*990px以上の幅のデバイスである場合にスタイルを適用*/
 @media screen and (min-width: 990px) {
 	.contact_title_sp{
 	  display:none;
 	}
 
-	.card_title{
+	.card_title_sp{
 	  display:none;
 	}
 }
