@@ -50,6 +50,7 @@ GUEST_USER_EMAIL = "guest@example.com"
     TalkRoomMessage.joins(:talk_room)
                    .where("talk_rooms.sender_id = ? OR talk_rooms.recipient_id = ?", id, id)
                    .where("talk_room_messages.customer_id != ? AND talk_room_messages.is_active = ?", id, true)
+                   .where(read: false)
                    .count
   end
 

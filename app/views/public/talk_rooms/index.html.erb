@@ -34,7 +34,7 @@
               </div>
                 <!-- 未読メッセージ数 -->
                 <div class="col-1">
-                  <% unread_count = talk_room.unread_messages_count(current_customer) %>
+                  <% unread_count = @unread_messages_count %>
                   <% if unread_count > 0 %>
                     <span class="badge badge-danger"><%= unread_count %></span>
                   <% end %>

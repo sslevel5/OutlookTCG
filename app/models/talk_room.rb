@@ -51,5 +51,5 @@ class TalkRoom < ApplicationRecord
     # トークルームに関連する未読メッセージをすべて既読にする
     talk_room_messages.where(customer_id: customer.id, read: false).update_all(read: true)
   end
-  
+
 end
