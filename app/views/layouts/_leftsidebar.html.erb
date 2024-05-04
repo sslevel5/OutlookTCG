@@ -101,9 +101,6 @@
       <div class="nav-item">
         <%= link_to public_talk_rooms_path, class: 'nav-link' do %>
           <i class="fa-regular fa-message"></i> トーク 一覧
-          <% if current_customer.unread_messages_count.positive? %>
-            <span class="badge badge-danger"><%= current_customer.unread_messages_count %></span>
-          <% end %>
         <% end %>
       </div>
       <div class="nav-item">

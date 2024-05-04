@@ -6,7 +6,10 @@ class Public::TalkRoomMessagesController < ApplicationController
     @message = @talk_room.talk_room_messages.build(message_params)
     @message.customer = current_customer
     against_customer_id = @talk_room.sending?(current_customer) ? @talk_room.recipient_id : @talk_room.sender_id
-    @message.save
+
+    if @message.save
+      @talk_room.mark_messages_as_read(current_customer)
+    end
     #redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
   end
 
@@ -16,8 +19,7 @@ class Public::TalkRoomMessagesController < ApplicationController
     # メッセージが属するトークルームから受信者のIDを取得
     against_customer_id = @talk_room.recipient_id
     @against_customer = Customer.find(against_customer_id)
-    @message.update(message_params.merge(is_active: false)) # メッセージを既読にする
-    current_customer.decrement!(:unread_messages_count) unless @message.is_active? # 未読メッセージのカウントを減らす
+    @message.update(message_params)
     #redirect_to talk_rooms_path(id: @talk_room.id, against_customer_id: against_customer_id)
     flash[:notice] = "変更しました。"
     redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
