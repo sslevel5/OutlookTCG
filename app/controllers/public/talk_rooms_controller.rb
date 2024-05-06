@@ -16,6 +16,7 @@ class Public::TalkRoomsController < ApplicationController
 
   def index
     @customer = current_customer
+    @unread_messages_count = current_customer.unread_messages_count
     @talk_rooms = TalkRoom.where("sender_id = ? OR recipient_id = ?", current_customer.id, current_customer.id)
   end
 
@@ -24,6 +25,7 @@ class Public::TalkRoomsController < ApplicationController
     @against_customer = Customer.find(params[:against_customer_id])
     #talk_room = TalkRoom.find_by(sender_id: current_customer.id, recipient_id: @against_customer.id) || TalkRoom.find_by(sender_id: @against_customer.id, recipient_id: current_customer.id)
     @talk_room = TalkRoom.find(params[:id])
+    @talk_room.reset_unread_messages_count(@against_customer) # 未読メッセージ数をリセットする
   end
 
   def senders

@@ -37,4 +37,19 @@ class TalkRoom < ApplicationRecord
     { message: last_message, sender: sender }
   end
 
+  def unread_messages_count(customer)
+    talk_room_messages.where.not(customer_id: customer.id, read: true).count
+  end
+
+  def mark_messages_as_read(customer)
+    # トークルームに関連する未読メッセージをすべて既読にする
+    talk_room_messages.where(customer_id: customer.id, read: false).update_all(read: true)
+  end
+
+  # 未読メッセージ数をリセットするメソッド
+  def reset_unread_messages_count(customer)
+    # トークルームに関連する未読メッセージをすべて既読にする
+    talk_room_messages.where(customer_id: customer.id, read: false).update_all(read: true)
+  end
+
 end

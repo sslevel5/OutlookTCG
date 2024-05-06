@@ -32,6 +32,13 @@
                   <% end %>
                 </div>
               </div>
+                <!-- 未読メッセージ数 -->
+                <div class="col-1">
+                  <% unread_count = @unread_messages_count %>
+                  <% if unread_count > 0 %>
+                    <span class="badge badge-danger"><%= unread_count %></span>
+                  <% end %>
+                </div>
               <!-- 送信者の情報 -->
               <% if last_message_info[:message].present? %>
                 <p class="mb-0"><strong>【送信者】</strong> <%= last_message_info[:sender].name %></p>

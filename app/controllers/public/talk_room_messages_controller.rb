@@ -6,7 +6,10 @@ class Public::TalkRoomMessagesController < ApplicationController
     @message = @talk_room.talk_room_messages.build(message_params)
     @message.customer = current_customer
     against_customer_id = @talk_room.sending?(current_customer) ? @talk_room.recipient_id : @talk_room.sender_id
-    @message.save
+
+    if @message.save
+      @talk_room.mark_messages_as_read(current_customer)
+    end
     #redirect_to talk_rooms_path(@talk_room.id, against_customer_id: against_customer_id)
   end
 
