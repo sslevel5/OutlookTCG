@@ -458,3 +458,351 @@ Card.find_or_create_by!(
 end
 card7.created_at=1.day.ago
 card7.save
+
+Card.find_or_create_by!(
+  title: "鉄壁の縦",
+  body: "1枚は欲しいな",
+  price: 330,
+  rarity_id: Rarity.find_by(name: "RR").id,
+  store_id: Store.find_by(name: "老舗カード").id,
+  customer_id: Customer.find_by(email: "eee@eee").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '鉄壁の縦.png')), filename: '鉄壁の縦.png')
+end
+
+Card.find_or_create_by!(
+  title: "つるぎ",
+  body: "デッキに1枚は欲しい",
+  price: 80,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "神紙カード").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'つるぎ.png')), filename: 'つるぎ.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 450,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 600,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "神紙カード").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 300,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境カード",
+  price: 3600,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜UR.png')), filename: 'すごい竜UR.png')
+end
+
+Card.find_or_create_by!(
+  title: "破壊的な斧",
+  body: "環境カード",
+  price: 150,
+  rarity_id: Rarity.find_by(name: "C").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '破壊的な斧.png')), filename: '破壊的な斧.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "やすくない！？",
+  price: 90,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "デッキに1枚は欲しい",
+  price: 120,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "ccc@ccc").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "PSA10!",
+  price: 26000,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "晴れてるね").id,
+  customer_id: Customer.find_by(email: "ccc@ccc").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜ローダー.png')), filename: 'すごい竜ローダー.png')
+end
+
+Card.find_or_create_by!(
+  title: "古の竜",
+  body: "デッキに1枚は欲しい",
+  price: 120,
+  rarity_id: Rarity.find_by(name: "RR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '古の竜.png')), filename: '古の竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "デッキに1枚は欲しい",
+  price: 270,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "ddd@ddd").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "破壊的な斧",
+  body: "環境カード",
+  price: 430,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "fff@fff").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '破壊的な斧.png')), filename: '破壊的な斧.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜のデッキ",
+  body: "環境デッキ",
+  price: 11000,
+  rarity_id: Rarity.find_by(name: "RR").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "ddd@ddd").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜のデッキ.png')), filename: 'すごい竜のデッキ.png')
+end
+
+  Card.find_or_create_by!(
+    title: "鉄壁の縦",
+    body: "環境デッキ",
+    price: 310,
+    rarity_id: Rarity.find_by(name: "RR").id,
+    store_id: Store.find_by(name: "晴れてるね").id,
+    customer_id: Customer.find_by(email: "ddd@ddd").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '鉄壁の縦.png')), filename: '鉄壁の縦.png')
+  end
+
+  Card.find_or_create_by!(
+    title: "光のパワー",
+    body: "イラストがいい",
+    price: 2900,
+    rarity_id: Rarity.find_by(name: "UR").id,
+    store_id: Store.find_by(name: "ポンジョー").id,
+    customer_id: Customer.find_by(email: "eee@eee").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '光のパワー.png')), filename: '光のパワー.png')
+  end
+
+Card.find_or_create_by!(
+  title: "草のパワー",
+  body: "イラストがいい。レアリティ揃えたい！",
+  price: 2900,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "晴れてるね").id,
+  customer_id: Customer.find_by(email: "fff@fff").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '草のパワー.png')), filename: '草のパワー.png')
+end
+
+Card.find_or_create_by!(
+  title: "火のパワー",
+  body: "イラストがいい。レアリティあげたい！",
+  price: 3200,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "ドラゴンテール").id,
+  customer_id: Customer.find_by(email: "fff@fff").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '火のパワー.png')), filename: '火のパワー.png')
+end
+
+  Card.find_or_create_by!(
+    title: "白のデッキ",
+    body: "tire1に勝てる！",
+    price: 11200,
+    rarity_id: Rarity.find_by(name: "RR").id,
+    store_id: Store.find_by(name: "カードいっぱい").id,
+    customer_id: Customer.find_by(email: "ggg@ggg").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '白のデッキ.png')), filename: '白のデッキ.png')
+  end
+
+Card.find_or_create_by!(
+  title: "斧を使うもの",
+  body: "自分用メモ",
+  price: 121,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "ggg@ggg").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '斧を使うもの.png')), filename: '斧を使うもの.png')
+end
+
+Card.find_or_create_by!(
+  title: "すごい竜",
+  body: "環境ですごいカード",
+  price: 400,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "老舗カード").id,
+  customer_id: Customer.find_by(email: "ccc@ccc").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜.png')), filename: 'すごい竜.png')
+end
+
+Card.find_or_create_by!(
+  title: "光のパワー",
+  body: "イラストがいい",
+  price: 3100,
+  rarity_id: Rarity.find_by(name: "UR").id,
+  store_id: Store.find_by(name: "カードいっぱい").id,
+  customer_id: Customer.find_by(email: "ggg@ggg").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '光のパワー.png')), filename: '光のパワー.png')
+end
+
+  Card.find_or_create_by!(
+    title: "白のデッキ",
+    body: "tire1に勝つる！",
+    price: 11200,
+    rarity_id: Rarity.find_by(name: "RR").id,
+    store_id: Store.find_by(name: "カードいっぱい").id,
+    customer_id: Customer.find_by(email: "ggg@ggg").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '白のデッキ.png')), filename: '白のデッキ.png')
+  end
+
+  Card.find_or_create_by!(
+    title: "光のパワー",
+    body: "イラストがうつくしい",
+    price: 3200,
+    rarity_id: Rarity.find_by(name: "UR").id,
+    store_id: Store.find_by(name: "ポンジョー").id,
+    customer_id: Customer.find_by(email: "bbb@bbb").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '光のパワー.png')), filename: '光のパワー.png')
+  end
+
+Card.find_or_create_by!(
+  title: "つるぎ",
+  body: "なんいでもはいる",
+  price: 110,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "ポンジョー").id,
+  customer_id: Customer.find_by(email: "ddd@ddd").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'つるぎ.png')), filename: 'つるぎ.png')
+end
+
+  Card.find_or_create_by!(
+    title: "すごい竜",
+    body: "環境カード",
+    price: 4100,
+    rarity_id: Rarity.find_by(name: "UR").id,
+    store_id: Store.find_by(name: "カードいっぱい").id,
+    customer_id: Customer.find_by(email: "bbb@bbb").id
+  ) do |card|
+    # カードに画像を添付する
+    card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'すごい竜UR.png')), filename: 'すごい竜UR.png')
+  end
+
+Card.find_or_create_by!(
+  title: "鉄壁の縦",
+  body: "環境ですごいカード",
+  price: 1100,
+  rarity_id: Rarity.find_by(name: "HR").id,
+  store_id: Store.find_by(name: "老舗カード").id,
+  customer_id: Customer.find_by(email: "eee@eee").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '鉄壁の縦.png')), filename: '鉄壁の縦.png')
+end
+
+Card.find_or_create_by!(
+  title: "つるぎ",
+  body: "デッキに11枚は欲しい",
+  price: 120,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "神紙カード").id,
+  customer_id: Customer.find_by(email: "aaa@aaa").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'つるぎ.png')), filename: 'つるぎ.png')
+end
+
+Card.find_or_create_by!(
+  title: "つるぎ",
+  body: "デッキに1枚は欲しい",
+  price: 110,
+  rarity_id: Rarity.find_by(name: "R").id,
+  store_id: Store.find_by(name: "晴れてるね").id,
+  customer_id: Customer.find_by(email: "bbb@bbb").id
+) do |card|
+  # カードに画像を添付する
+  card.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'つるぎ.png')), filename: 'つるぎ.png')
+end
