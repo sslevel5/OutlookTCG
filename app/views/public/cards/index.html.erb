@@ -37,7 +37,10 @@
   </div>
 </div>
 
-<%= render 'public/cards/index', cards: @cards %>
+<div class="scroll-list jscroll">
+  <%= render 'public/cards/index', cards: @cards %>
+  <%= paginate @cards %>
+</div>
 <!--モーダル用-->
 <% if current_customer %>
 
@@ -48,3 +51,14 @@
     </div>
 
 <% end %>
+
+<script>
+  var jscrollOption = {
+    loadingHtml: '読み込み中・・・', //記事読み込み中の表示
+    autoTrigger: true, // 自動で読み込むか否か、trueで自動、falseでボタンクリックとなる。
+    padding: 20, // 指定したコンテンツの下かた何pxで読み込むかを指定(autoTrigger: trueの場合のみ)
+    contentSelector: '.jscroll' // 読み込む範囲の指定
+  };
+  $('.jscroll').jscroll(jscrollOption);
+
+</script>
