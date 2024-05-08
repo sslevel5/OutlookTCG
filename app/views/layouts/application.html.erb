@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/8b6488317f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<link rel="stylesheet" href="/assets/app.css">-->
@@ -41,16 +42,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const closeButtons = document.querySelectorAll('.close-btn');
-      closeButtons.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          this.parentNode.style.display = 'none';
-        });
-      });
-    });
-  </script>
 
 </html>
