@@ -10,7 +10,7 @@ class Public::CardsController < ApplicationController
   def index
     @card = Card.new # モーダル用
     @card_data = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).where(is_active: true).send(sort_order)
-    @cards = Kaminari.paginate_array(@card_data).page(params[:page]).per(30)
+    @cards = Kaminari.paginate_array(@card_data).page(params[:page]).per(24)
   end
 
   def create
