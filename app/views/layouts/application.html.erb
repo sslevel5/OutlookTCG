@@ -44,4 +44,15 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const closeButtons = document.querySelectorAll('.close-btn');
+      closeButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          this.parentNode.style.display = 'none';
+        });
+      });
+    });
+  </script>
+
 </html>

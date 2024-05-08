@@ -3,4 +3,22 @@
     <h2>新着</h2>
   </div>
 </div>
-<%= render 'admin/cards/index', cards: @cards %>
+<div class="scroll-list jscroll">
+  <%= render 'admin/cards/index', cards: @cards %>
+  <%= paginate @cards %>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js" integrity="sha512-51l8tSwY8XyM6zkByW3A0E36xeiwDpSQnvDfjBAzJAO9+O1RrEcOFYAs3yIF3EDRS/QWPqMzrl6t7ZKEJgkCgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(function() {
+    var jscrollOption = {
+      loadingHtml: '<i class="fa-solid fa-hourglass-start"></i>', //記事読み込み中の表示
+      autoTrigger: true, // 自動で読み込むか否か、trueで自動、falseでボタンクリックとなる。
+      padding: 20, // 指定したコンテンツの下かた何pxで読み込むかを指定(autoTrigger: trueの場合のみ)
+      contentSelector: '.jscroll', // 読み込む範囲の指定
+      nextSelector: 'span.next:last a'
+    };
+    //$(".jscroll").hide();
+    $(".jscroll").jscroll(jscrollOption);
+  });
+</script>

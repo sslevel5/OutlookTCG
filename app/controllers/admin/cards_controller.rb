@@ -3,7 +3,8 @@ class Admin::CardsController < ApplicationController
   before_action :nul_card, only: [:edit, :update, :show]
 
   def index
-    @cards = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).send(sort_order)
+    @card_data = Card.search(params[:q]).by_rarity(params[:rarity_id]).by_store(params[:store_id]).send(sort_order)
+    @cards = Kaminari.paginate_array(@card_data).page(params[:page]).per(24)
   end
 
   def show
