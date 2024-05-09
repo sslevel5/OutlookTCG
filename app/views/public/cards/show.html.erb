@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-lg-6 text-center">
-        <%= image_tag @card.image , class: "img-fluid mt-1", style: "max-height: 400px; width: auto;" %>
+        <%= image_tag @card.image , class: "img-fluid mt-1 mb-5", style: "max-height: 400px; width: auto;" %>
       </div>
       <div class="col">
           <div class="row mb-2 border-bottom">
@@ -55,6 +55,20 @@
     </div>
   </div>
 </div>
+
+<div>
+  <%= link_to "https://twitter.com/intent/tweet?url=
+              #{request.original_url}&text=
+              #{@card.title}%0A
+              価格:￥#{number_with_delimiter((@card.price).ceil.to_i, delimiter: ',')}%0A
+              レアリティ:#{@card.rarity.name}%0A
+              店舗:#{@card.store.name}",
+              class: 'btn btn-outline-secondary', target: "_blank" do %>
+    <i class="fa-brands fa-square-x-twitter fa-lg"></i>
+  <% end %>
+</div>
+
+
 
 <% if current_customer %>
   <%= render 'public/card_comments/form', card: @card %>
