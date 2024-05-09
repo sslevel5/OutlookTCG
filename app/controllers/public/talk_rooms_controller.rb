@@ -16,7 +16,6 @@ class Public::TalkRoomsController < ApplicationController
 
   def index
     @customer = current_customer
-    @unread_messages_count = current_customer.unread_messages_count
     @talk_rooms = TalkRoom.where("sender_id = ? OR recipient_id = ?", current_customer.id, current_customer.id)
   end
 
