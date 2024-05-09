@@ -41,8 +41,7 @@
               <% end %>
             </div>
             <div class="col text-right">
-              <%= link_to "https://twitter.com/intent/tweet?text=#{@card.title}%0A価格:￥#{number_with_delimiter((@card.price).ceil.to_i, delimiter: ',')}%0Aレアリティ:#{@card.rarity.name}%0A店舗:#{@card.store.name}%0A&url=
-                          #{request.original_url}%0A&hashtags=Outlook_tcg",
+              <%= link_to "https://twitter.com/intent/tweet?text=#{@card.title}%0A価格:￥#{number_with_delimiter((@card.price).ceil.to_i, delimiter: ',')}%0Aレアリティ:#{@card.rarity.name}%0A店舗:#{@card.store.name}%0A&url=#{request.original_url}%0A&hashtags=Outlook_tcg",
                           class: 'btn btn-outline-secondary', target: "_blank" do %>
                 <i class="fa-brands fa-square-x-twitter fa-lg"></i>
               <% end %>
