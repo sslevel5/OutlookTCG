@@ -14,12 +14,7 @@
     <!--<link rel="stylesheet" href="/assets/app.css">-->
     <%= stylesheet_link_tag 'app' %>
 
-        <!-- Twitterカード -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= @card.title %>">
-    <meta name="twitter:description" content="価格: ￥<%= number_with_delimiter((@card.price).ceil.to_i, delimiter: ',') %> / レアリティ: <%= @card.rarity.name %> / 店舗: <%= @card.store.name %>">
-    <meta name="twitter:image" content="<%= @card.image %>">
-    <meta name="twitter:url" content="<%= request.original_url %>">
+
   </head>
 
   <div class="container-fluid" style="background-color: #DCDCDC; min-height: 100vh;">
