@@ -52,7 +52,6 @@ class TalkRoom < ApplicationRecord
     talk_room_messages.where(customer_id: customer.id, read: false).update_all(read: true)
   end
 
-
   def unread_messages_count(customer)
     talk_room_messages.where.not(customer_id: customer.id).where(read: false).count
   end

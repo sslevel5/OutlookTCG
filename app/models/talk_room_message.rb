@@ -1,6 +1,6 @@
 class TalkRoomMessage < ApplicationRecord
   after_create :create_notification
-  
+
   belongs_to :talk_room
   belongs_to :customer
 

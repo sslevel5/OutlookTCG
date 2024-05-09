@@ -71,7 +71,6 @@
             <div class="last-message-info">
               <!-- 最後のトークの見出し -->
               <div class="row">
-
                 <!-- 最後のメッセージの内容 -->
                 <div class="col-9 text-left">
                   <% if last_message_info[:message].nil? %>
@@ -81,6 +80,13 @@
                   <% end %>
                 </div>
               </div>
+                <!-- 未読メッセージ数 -->
+                <div class="col-1">
+                  <% unread_count = talk_room.unread_messages_count(current_customer) %>
+                  <% if unread_count > 0 %>
+                    <span class="badge badge-danger"><%= unread_count %></span>
+                  <% end %>
+                </div>
               <!-- 送信者の情報 -->
               <% if last_message_info[:message].present? %>
                 <p class="mb-0"><strong>【送信者】</strong> <%= last_message_info[:sender].name %></p>
@@ -91,5 +97,4 @@
       <% end %>
     <% end %>
   </div>
-
 </div>
