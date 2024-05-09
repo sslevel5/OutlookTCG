@@ -185,3 +185,7 @@ nav.pagination {
     display:none;
   }
 }
+
+.talk_room_noti{
+  text-orientation: upright;
+}

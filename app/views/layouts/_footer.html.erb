@@ -97,6 +97,13 @@
           <div>
             <%= link_to public_talk_rooms_path, class: 'nav-link footer_nav pr-0' do %>
               <i class="fa-regular fa-message"></i>
+              <% total_unread_count = 0 %>
+              <% @talk_rooms.each do |talk_room| %>
+                <% total_unread_count += talk_room.unread_messages_count(current_customer) %>
+              <% end %>
+              <% if total_unread_count > 0 %>
+                <span class="badge badge-danger talk_room_noti"><%= total_unread_count %></span>
+              <% end %>
             <% end %>
           </div>
           <div>
