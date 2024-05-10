@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :cards, except: [:destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :card_comments, only: [:create, :update]
+      collection do
+        get 'search'
+      end
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] do
       member do
@@ -52,6 +55,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :cards, only: [:index, :show, :edit, :update] do
       resources :card_comments, only: [:create, :update]
+      collection do
+        get 'search'
+      end
     end
     resources :raritys, only: [:index, :create, :edit, :update, :show]
     resources :stores, only: [:index, :create, :edit, :update, :show]

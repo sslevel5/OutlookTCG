@@ -1,0 +1,37 @@
+  <div class="row m-2">
+    <%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 m-auto") do |form| %>
+    <div class="col-9 p-0">
+      <div class="row">
+        <%= form.text_field :q, class: "form-control search_form", placeholder: "カード検索", aria: { label: "検索" } %>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-1">
+      <%= form.button type: "submit", class: "btn btn-outline-light my-2 my-sm-0" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row m-2">
+      <label>レアリティ</label>
+      <div class="checkbox-group">
+        <% @raritys.each do |rarity| %>
+          <label class="checkbox-label">
+            <%= check_box_tag "rarity_id[]", rarity.id, Array(params[:rarity_id]).include?(rarity.id), id: "rarity_#{rarity.id}" %>
+            <span class="checkbox-label-genre"><%= rarity.name %></span>
+          </label>
+        <% end %>
+      </div>
+  </div>
+  <div class="row m-2">
+      <label>店舗名</label>
+      <div class="checkbox-group">
+        <% @stores.each do |store| %>
+          <label class="checkbox-label">
+            <%= check_box_tag "store_id[]", store.id, Array(params[:store_id]).include?(store.id), id: "store_#{store.id}" %>
+            <%= store.name %>
+          </label>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
