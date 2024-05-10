@@ -1,11 +1,10 @@
   <div class="row m-2">
-    <%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 m-auto") do |form| %>
+    <%= form_with(url: admin_signed_in? ? admin_cards_path : public_cards_path, method: "get", class: "form-inline my-2 my-lg-0 ml-auto") do |form| %>
     <div class="col-9 p-0">
       <div class="row">
-        <%= form.text_field :q, class: "form-control search_form", placeholder: "カード検索", aria: { label: "検索" } %>
+      <%= form.text_field :q, class: "form-control search_form", placeholder: "カード検索", aria: { label: "検索" } %>
       </div>
     </div>
-    <div class="col-1"></div>
     <div class="col-1">
       <%= form.button type: "submit", class: "btn btn-outline-light my-2 my-sm-0" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
