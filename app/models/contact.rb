@@ -4,4 +4,8 @@ class Contact < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
   validates :message, presence: true, length: { maximum: 200 }
 
+  def contact_total
+    contacts.where(is_active: true).count
+  end
+
 end

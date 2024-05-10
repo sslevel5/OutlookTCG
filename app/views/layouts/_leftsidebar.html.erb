@@ -78,6 +78,9 @@
       <div class="nav-item">
         <%= link_to admin_contacts_path, class: 'nav-link' do %>
           <i class="fa-solid fa-square-envelope"></i> お問い合わせ
+          <% if contact_total > 0 %>
+            <span class="badge badge-danger"><%= contact_total %></span>
+          <% end %>
         <% end %>
       </div>
     <% end %>
