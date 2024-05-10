@@ -74,6 +74,10 @@
           <div>
             <%= link_to admin_contacts_path, class: 'nav-link footer_nav pr-0' do %>
               <i class="fa-solid fa-square-envelope"></i>
+              <% contact_total = @contacts.where(is_active: true).count %>
+              <% if contact_total > 0 %>
+                <span class="badge badge-danger talk_room_noti"><%= contact_total %></span>
+              <% end %>
             <% end %>
           </div>
         <% end %>
