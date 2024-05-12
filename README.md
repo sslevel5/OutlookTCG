@@ -94,6 +94,7 @@
 gem 'devise'
 gem 'jquery-rails'
 gem 'enum_help'
+gem 'miyabi'
 ```
 
 ## 使用技術
