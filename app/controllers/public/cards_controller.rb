@@ -19,7 +19,7 @@ class Public::CardsController < ApplicationController
 
     if @card.title.match(/[一-龠々]/) #漢字を見つけ出す
       @card.conversion_title = @card.title.to_kanhira.to_hira #漢字をひらがなにして格納
-    elsif @card.title.is_kana?　#カタカナを見つけ出す
+    elsif @card.title.is_kana? #カタカナを見つけ出す
       @card.conversion_title = @card.title.to_hira #カタカナをひらがなにして格納
     else
       @card.conversion_title = @card.title
