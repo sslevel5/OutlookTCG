@@ -133,6 +133,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
+    miyabi (0.3.0)
+      nokogiri (~> 1.14)
     msgpack (1.7.2)
     mysql2 (0.5.6)
     net-imap (0.4.10)
@@ -266,6 +268,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.3)
+  miyabi
   mysql2
   net-imap
   net-pop

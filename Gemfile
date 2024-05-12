@@ -60,6 +60,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem "enum_help"
 gem 'kaminari'
+gem 'miyabi'
 
 #デプロイ用
 gem 'dotenv-rails'

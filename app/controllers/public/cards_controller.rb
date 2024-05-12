@@ -16,6 +16,15 @@ class Public::CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.customer_id = current_customer.id
+
+    if @card.title.match(/[一-龠々]/) #漢字を見つけ出す
+      @card.conversion_title = @card.title.to_kanhira.to_hira #漢字をひらがなにして格納
+    elsif @card.title.is_kana?　#カタカナを見つけ出さす
+      @card.conversion_title = @card.title.to_hira #カタカナをひらがなにして格納
+    else
+      @card.conversion_title = @card.title
+    end
+
     if @card.save
       flash[:notice] = "投稿しました。"
       redirect_to public_card_path(@card.id)

@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2024_05_03_125616) do
 
   create_table "cards", force: :cascade do |t|
     t.string "title", null: false
+    t.string "conversion_title"
     t.text "body", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false
@@ -71,7 +72,6 @@ ActiveRecord::Schema.define(version: 2024_05_03_125616) do
     t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title_kana"
   end
 
   create_table "contact_messages", force: :cascade do |t|
