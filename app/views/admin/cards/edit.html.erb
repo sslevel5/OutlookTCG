@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-outline-success <%= 'active' if @card.is_active %> rounded">
                     <%= f.radio_button :is_active, true, { checked: @card.is_active, class: 'form-check-input' } %> 有効
@@ -54,8 +54,7 @@
                   </label>
                 </div>
               </div>
-              <div class="col-md-5"></div>
-              <div class="col-md-3">
+              <div class="col-6 text-right">
                 <label for="file-upload" class="custom-file-upload btn btn-outline-secondary m-0" style="font-size: 13px;">
                   <i class="fa-solid fa-image"></i> 画像
                 </label>
