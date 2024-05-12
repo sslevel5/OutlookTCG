@@ -53,19 +53,19 @@
 
 | 新規投稿画面| モーダル画面 |
 | --------------------- | -----------|
-|![スクリーンショット (353)](https://github.com/sslevel5/outlook_tcg/assets/9004618/cea47943-59d4-4b77-9e5e-185c9e5d5be2)|![スクリーンショット (351)](https://github.com/sslevel5/outlook_tcg/assets/9004618/0340303c-a21b-424f-a8ce-a8427de2260a)|
+|![スクリーンショット (373)](https://github.com/sslevel5/outlook_tcg/assets/9004618/68fa3c44-19a1-43c3-960e-37b9026a1da4)|![スクリーンショット (374)](https://github.com/sslevel5/outlook_tcg/assets/9004618/1b3e131c-88fd-4d80-8d0d-3b38dfc2b656)|
 
 | 投稿詳細画面| 投稿一覧画面 |
 | --------------------- | -----------|
-|![スクリーンショット (355)](https://github.com/sslevel5/outlook_tcg/assets/9004618/225a7624-83ca-4667-badb-9cb21026102a)|![スクリーンショット (352)](https://github.com/sslevel5/outlook_tcg/assets/9004618/b34ef20c-e525-4345-a0e8-ed35819deb53)|
+|![スクリーンショット (375)](https://github.com/sslevel5/outlook_tcg/assets/9004618/f9488578-8d18-4538-98fd-4c3472104e1d)|![スクリーンショット (376)](https://github.com/sslevel5/outlook_tcg/assets/9004618/0ed73d7c-2d2d-407a-ac0c-e6cd4b1b6e87)|
 
 | マイページ(投稿一覧)| マイページ(いいね一覧) |
 | --------------------- | -----------|
-|![スクリーンショット (356)](https://github.com/sslevel5/outlook_tcg/assets/9004618/fde603de-2f52-402d-8045-3e9bd2249b3f)|![スクリーンショット (357)](https://github.com/sslevel5/outlook_tcg/assets/9004618/9fe309b3-4d97-4e49-80fd-924fe898eb4f)|
+|![スクリーンショット (377)](https://github.com/sslevel5/outlook_tcg/assets/9004618/06b38842-7f8a-402c-abaa-bd30f066c99f)|![スクリーンショット (378)](https://github.com/sslevel5/outlook_tcg/assets/9004618/c4d70332-7637-4bd1-8115-cbe9bf66b9e8)|
 
 |トーク一覧|トークルーム|
 | --------------------- | -----------|
-|![スクリーンショット (358)](https://github.com/sslevel5/outlook_tcg/assets/9004618/f5325620-ef86-4034-8afe-caf57dab174e)|![スクリーンショット (359)](https://github.com/sslevel5/outlook_tcg/assets/9004618/b227a1d4-fbec-4711-bd64-38cf59f81453)|
+|![スクリーンショット (379)](https://github.com/sslevel5/outlook_tcg/assets/9004618/dc46b5b1-c3d6-437e-8db0-d0040ccded99)|![スクリーンショット (380)](https://github.com/sslevel5/outlook_tcg/assets/9004618/1e509542-2908-4f8f-979d-04b143d82e6e)|
 
 |お問い合せ履歴|お問い合せフォーム|
 | --------------------- | -----------|
@@ -75,6 +75,9 @@
 | --------------------- | -----------|
 |![スクリーンショット (362)](https://github.com/sslevel5/outlook_tcg/assets/9004618/2fd6f992-5957-4857-b3ca-cca9d7f9acda)|![スクリーンショット (363)](https://github.com/sslevel5/outlook_tcg/assets/9004618/8ee5adee-0632-4a79-855f-97865a1b0cb9)|
 
+|レスポンシブ(投稿一覧)|(トーク一覧)|(検索ページ)|
+|------------|---|-------------|
+![スクリーンショット (382)](https://github.com/sslevel5/outlook_tcg/assets/9004618/6c9e6f38-a2cd-4b3c-84d0-a88ac3e8eb87)|![スクリーンショット (383)](https://github.com/sslevel5/outlook_tcg/assets/9004618/cd6bed0d-068d-4ef3-adec-a971211a433b)|![スクリーンショット (384)](https://github.com/sslevel5/outlook_tcg/assets/9004618/6673aefe-6586-4baf-9d4f-44b796b643d8)|
 
 ## 開発環境
 - OS: Linux(CentOS)
