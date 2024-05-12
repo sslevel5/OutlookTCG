@@ -28,7 +28,7 @@
 
 ### ER図
 
-![ER](https://github.com/sslevel5/outlook_tcg/assets/9004618/216b68fe-0e7c-4942-ac3b-a44554abef08)
+![ER (1)](https://github.com/sslevel5/outlook_tcg/assets/9004618/16b599b5-8746-4479-ba1d-42a7bc554c68)
 ​
 
 ### 画面遷移図
