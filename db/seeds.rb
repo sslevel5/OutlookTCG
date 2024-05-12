@@ -89,6 +89,7 @@ end
 
 Card.find_or_create_by!(
   title: "鉄壁の縦",
+  conversion_title: "てっぺきなたて",
   body: "1枚は欲しいな",
   price: 370,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -113,6 +114,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 500,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -125,6 +127,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 700,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -137,6 +140,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 400,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -149,6 +153,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 4000,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -161,6 +166,7 @@ end
 
 Card.find_or_create_by!(
   title: "破壊的な斧",
+  conversion_title: "はかいてきなおの",
   body: "環境カード",
   price: 200,
   rarity_id: Rarity.find_by(name: "C").id,
@@ -173,6 +179,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "やすくない！？",
   price: 100,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -185,6 +192,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "デッキに1枚は欲しい",
   price: 170,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -197,6 +205,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "PSA10!",
   price: 27000,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -209,6 +218,7 @@ end
 
 Card.find_or_create_by!(
   title: "古の竜",
+  conversion_title: "いにしえのりゅう",
   body: "デッキに1枚は欲しい",
   price: 100,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -221,6 +231,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "デッキに1枚は欲しい",
   price: 170,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -233,6 +244,7 @@ end
 
 Card.find_or_create_by!(
   title: "破壊的な斧",
+  conversion_title: "はかいてきなおの",
   body: "環境カード",
   price: 400,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -245,6 +257,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜のデッキ",
+  conversion_title: "すごいりゅうのでっき",
   body: "環境デッキ",
   price: 14000,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -258,6 +271,7 @@ end
 card=
   Card.find_or_create_by!(
     title: "鉄壁の縦",
+    conversion_title: "てっぺきなたて",
     body: "環境デッキ",
     price: 340,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -273,6 +287,7 @@ card.save
 card1=
   Card.find_or_create_by!(
     title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
     body: "イラストがいい",
     price: 3400,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -287,6 +302,7 @@ card1.save
 
 Card.find_or_create_by!(
   title: "草のパワー",
+  conversion_title: "くさのぱわー",
   body: "イラストがいい。レアリティ揃えたい！",
   price: 3000,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -299,6 +315,7 @@ end
 
 Card.find_or_create_by!(
   title: "火のパワー",
+  conversion_title: "ひのぱわー",
   body: "イラストがいい。レアリティあげたい！",
   price: 3900,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -312,6 +329,7 @@ end
 card2=
   Card.find_or_create_by!(
     title: "白のデッキ",
+  conversion_title: "しろのでっき",
     body: "tire1に勝てる！",
     price: 11100,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -326,6 +344,7 @@ card2.save
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "自分用メモ",
   price: 111,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -338,6 +357,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境ですごいカード",
   price: 500,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -350,6 +370,7 @@ end
 
 Card.find_or_create_by!(
   title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
   body: "イラストがいい",
   price: 3600,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -363,6 +384,7 @@ end
 card3=
   Card.find_or_create_by!(
     title: "白のデッキ",
+  conversion_title: "しろのでっき",
     body: "tire1に勝つる！",
     price: 11300,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -378,6 +400,7 @@ card3.save
 card4=
   Card.find_or_create_by!(
     title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
     body: "イラストがうつくしい",
     price: 3800,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -405,6 +428,7 @@ end
 card5=
   Card.find_or_create_by!(
     title: "すごい竜",
+    conversion_title: "すごいりゅう",
     body: "環境カード",
     price: 4500,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -419,6 +443,7 @@ card5.save
 
 Card.find_or_create_by!(
   title: "鉄壁の縦",
+  conversion_title: "てっぺきなたて",
   body: "環境ですごいカード",
   price: 1500,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -461,6 +486,7 @@ card7.save
 
 Card.find_or_create_by!(
   title: "鉄壁の縦",
+  conversion_title: "てっぺきなたて",
   body: "1枚は欲しいな",
   price: 330,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -485,6 +511,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 450,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -497,6 +524,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 600,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -509,6 +537,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 300,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -521,6 +550,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境カード",
   price: 3600,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -533,6 +563,7 @@ end
 
 Card.find_or_create_by!(
   title: "破壊的な斧",
+  conversion_title: "はかいてきなおの",
   body: "環境カード",
   price: 150,
   rarity_id: Rarity.find_by(name: "C").id,
@@ -545,6 +576,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "やすくない！？",
   price: 90,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -557,6 +589,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "デッキに1枚は欲しい",
   price: 120,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -569,6 +602,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "PSA10!",
   price: 26000,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -581,6 +615,7 @@ end
 
 Card.find_or_create_by!(
   title: "古の竜",
+  conversion_title: "いにしえのりゅう",
   body: "デッキに1枚は欲しい",
   price: 120,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -593,6 +628,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "デッキに1枚は欲しい",
   price: 270,
   rarity_id: Rarity.find_by(name: "HR").id,
@@ -605,6 +641,7 @@ end
 
 Card.find_or_create_by!(
   title: "破壊的な斧",
+  conversion_title: "はかいてきなおの",
   body: "環境カード",
   price: 430,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -617,6 +654,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜のデッキ",
+  conversion_title: "すごいりゅうのでっき",
   body: "環境デッキ",
   price: 11000,
   rarity_id: Rarity.find_by(name: "RR").id,
@@ -629,6 +667,7 @@ end
 
   Card.find_or_create_by!(
     title: "鉄壁の縦",
+    conversion_title: "てっぺきなたて",
     body: "環境デッキ",
     price: 310,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -641,6 +680,7 @@ end
 
   Card.find_or_create_by!(
     title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
     body: "イラストがいい",
     price: 2900,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -653,6 +693,7 @@ end
 
 Card.find_or_create_by!(
   title: "草のパワー",
+  conversion_title: "くさのぱわー",
   body: "イラストがいい。レアリティ揃えたい！",
   price: 2900,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -665,6 +706,7 @@ end
 
 Card.find_or_create_by!(
   title: "火のパワー",
+  conversion_title: "ひのぱわー",
   body: "イラストがいい。レアリティあげたい！",
   price: 3200,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -677,6 +719,7 @@ end
 
   Card.find_or_create_by!(
     title: "白のデッキ",
+  conversion_title: "しろのでっき",
     body: "tire1に勝てる！",
     price: 11200,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -689,6 +732,7 @@ end
 
 Card.find_or_create_by!(
   title: "斧を使うもの",
+  conversion_title: "おのをつかうもの",
   body: "自分用メモ",
   price: 121,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -701,6 +745,7 @@ end
 
 Card.find_or_create_by!(
   title: "すごい竜",
+  conversion_title: "すごいりゅう",
   body: "環境ですごいカード",
   price: 400,
   rarity_id: Rarity.find_by(name: "R").id,
@@ -713,6 +758,7 @@ end
 
 Card.find_or_create_by!(
   title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
   body: "イラストがいい",
   price: 3100,
   rarity_id: Rarity.find_by(name: "UR").id,
@@ -725,6 +771,7 @@ end
 
   Card.find_or_create_by!(
     title: "白のデッキ",
+  conversion_title: "しろのでっき",
     body: "tire1に勝つる！",
     price: 11200,
     rarity_id: Rarity.find_by(name: "RR").id,
@@ -737,6 +784,7 @@ end
 
   Card.find_or_create_by!(
     title: "光のパワー",
+  conversion_title: "ひかりのぱわー",
     body: "イラストがうつくしい",
     price: 3200,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -761,6 +809,7 @@ end
 
   Card.find_or_create_by!(
     title: "すごい竜",
+    conversion_title: "すごいりゅう",
     body: "環境カード",
     price: 4100,
     rarity_id: Rarity.find_by(name: "UR").id,
@@ -773,6 +822,7 @@ end
 
 Card.find_or_create_by!(
   title: "鉄壁の縦",
+  conversion_title: "てっぺきなたて",
   body: "環境ですごいカード",
   price: 1100,
   rarity_id: Rarity.find_by(name: "HR").id,

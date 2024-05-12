@@ -18,7 +18,7 @@ class Card < ApplicationRecord
   end
 
   scope :search, ->(query) {
-    where("title LIKE ?", "%#{query}%") if query.present?
+    where("title LIKE ? OR conversion_title LIKE ?", "%#{query}%", "%#{query}%") if query.present?
   }
 
   scope :by_rarity, ->(rarity_id) {
