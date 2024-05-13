@@ -27,6 +27,7 @@ class Public::SessionsController < Devise::SessionsController
     #byebug
     if !@customer.is_active
       reset_session
+      #強制ログアウト
       flash[:alert] = "アカウントが無効です。管理者にお問い合わせください。"
       redirect_to new_customer_session_path
     end
