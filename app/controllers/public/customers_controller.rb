@@ -40,6 +40,14 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+  
+  def withdraw
+    withdrew_email = "withdrew_" + Time.now.to_i.to_s + @user.email
+    @user.update(email: withdrew_email, active: false)
+    reset_session
+    flash[:notice] = "退会しました。"
+    redirect_to root_path
+  end
 
   private
 

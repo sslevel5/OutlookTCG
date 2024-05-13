@@ -16,7 +16,7 @@
               <%= form_with(model: [card_comment.card, card_comment], local: true, url: public_card_card_comment_path(card_comment.card, card_comment), method: :patch,class: "d-flex justify-content-around") do |form| %>
 
                 <p>
-                  <%= form.radio_button :is_active, false, { checked: !card_comment.is_active, class: 'form-check-input', id: 'inactive' } %> 削除
+                  <%= form.radio_button :is_active, false, { checked: card_comment.is_active, class: 'form-check-input', id: 'inactive', id: 'active' } %> 削除
                 </p>
                 <p>
                   <%= form.submit "変更", class: 'btn btn-outline-secondary btn-sm', style: "font-size: 13px;" %>
