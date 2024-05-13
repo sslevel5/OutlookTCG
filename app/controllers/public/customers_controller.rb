@@ -35,8 +35,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    withdrew_email = "withdrew_" + Time.now.to_i.to_s + @customer.email
-    @customer.update(email: withdrew_email, is_active: false) # 会員ステータスを退会に変更
+    @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
@@ -45,7 +44,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation)
+    params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation, :is_active)
   end
 
   def check_authorization

@@ -18,7 +18,7 @@
                     <% if @customer.errors.include?(:name) %>
                       <p style="color: red;"><%= @customer.errors.full_messages_for(:name).first %></p>
                     <% end %>
-                    </td>
+                  </td>
                 </tr>
                 <tr>
                   <th class="col-md-4">メールアドレス</th>
@@ -32,12 +32,10 @@
                   <th class="col-md-4">会員ステータス</th>
                   <td>
                     <div class="form-check form-check-inline">
-                      <%= form.radio_button :is_active, true, id: "customer_is_active_true", class: 'form-check-input' %>
-                      <%= form.label :is_active, "有効", value: true, for: "customer_is_active_true", class: 'form-check-label' %>
+                      <%= form.radio_button :is_active, true, { checked: @customer.is_active, class: 'form-check-input', id: "customer_is_active_true" } %> 有効
                     </div>
                     <div class="form-check form-check-inline">
-                      <%= form.radio_button :is_active, false, id: "customer_is_active_false", class: 'form-check-input' %>
-                      <%= form.label :is_active, "退会", value: false, for: "customer_is_active_false", class: 'form-check-label' %>
+                      <%= form.radio_button :is_active, false,{ checked: !@customer.is_active, class: 'form-check-input', id: "customer_is_active_false" } %> 退会
                     </div>
                   </td>
                 </tr>

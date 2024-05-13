@@ -28,7 +28,7 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation)
+    params.require(:customer).permit(:name ,:profile_image ,:introduction ,:email, :password, :password_confirmation, :is_active)
   end
 
   def nul_customer
