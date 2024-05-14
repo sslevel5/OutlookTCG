@@ -2,6 +2,7 @@ class Public::CardsController < ApplicationController
   before_action :authenticate_customer!, only: [:new, :create, :edit, :update]
   before_action :correct_customer, only: [:edit, :update]
   before_action :nul_card, only: [:edit, :update, :show]
+  require 'nkf'
 
   def new
     @card = Card.new
@@ -18,9 +19,9 @@ class Public::CardsController < ApplicationController
     @card.customer_id = current_customer.id
 
     if @card.title.match(/[一-龠々]/) #漢字を見つけ出す
-      @card.conversion_title = @card.title.to_kanhira.to_hira #漢字をひらがなにして格納
+      @card.conversion_title = NKF.nkf('-w -X', @card.title).to_kanhira.to_hira #漢字をひらがなにして格納
     elsif @card.title.is_kana? #カタカナを見つけ出す
-      @card.conversion_title = @card.title.to_hira #カタカナをひらがなにして格納
+      @card.conversion_title = NKF.nkf('-w -X', @card.title).to_hira #カタカナをひらがなにして格納
     else
       @card.conversion_title = @card.title
     end
