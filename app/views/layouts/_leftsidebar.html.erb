@@ -3,7 +3,7 @@
   <div class="navbar-nav">
     <div class="nav-item">
       <% if admin_signed_in? %>
-        <%= link_to admin_homes_top_path, class: 'nav-link' do %>
+        <%= link_to admin_homes_top_path, class: 'nav-link', data: { "turbolinks" => false } do %>
           <%= image_tag 'logo.png', size: '100x100' %>
         <% end %>
       <% elsif customer_signed_in? %>
@@ -11,7 +11,7 @@
           <%= image_tag 'logo.png', size: '100x100' %>
         <% end %>
       <% else %>
-        <%= link_to home_path, class: 'nav-link' do %>
+        <%= link_to home_path, class: 'nav-link', data: { "turbolinks" => false } do %>
           <%= image_tag 'logo.png', size: '100x100' %>
         <% end %>
       <% end %>
