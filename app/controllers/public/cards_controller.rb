@@ -56,6 +56,10 @@ class Public::CardsController < ApplicationController
       render :edit
     end
   end
+  
+  
+  
+  
 
   private
 
